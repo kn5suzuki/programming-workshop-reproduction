@@ -7,7 +7,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text({ type: "text/plain" }));
 var jsonParser = bodyParser.json();
 
-const { runCheck } = require("./runCheck");
+const { runCheck } = require("./run_check");
 const crypto = require("crypto");
 
 const WIDTH = 16;
@@ -117,7 +117,7 @@ app.post("/poststage", function (req, res) {
   }
   stageHashSet.add(stageHash);
 
-  const dir_path_to_write = "./dist/posted_stage/";
+  const dir_path_to_write = "./posted_stage/";
   const Time = `${Date.now()}`;
 
   let stageId = makeid();
@@ -287,7 +287,7 @@ app.post("/postcleardata", function (req, res) {
     return;
   }
 
-  const dir_path_to_write = "./dist/posted_stage/";
+  const dir_path_to_write = "./posted_stage/";
   const mapData = JSON.parse(
     fs.readFileSync(dir_path_to_write + reqBody.stageId + ".json", "utf8")
   );
@@ -421,7 +421,7 @@ app.post("/postlike", function (req, res) {
     return;
   }
 
-  const dir_path_to_write = "./dist/posted_stage/";
+  const dir_path_to_write = "./posted_stage/";
   let stageinfo_json = JSON.parse(
     fs.readFileSync(dir_path_to_write + "stageinfo.json", "utf8")
   );
@@ -502,7 +502,7 @@ app.post("/deletestage", function (req, res) {
     return;
   }
 
-  const dir_path_to_write = "./dist/posted_stage/";
+  const dir_path_to_write = "./posted_stage/";
   const output_json = { deleted: 1 };
   fs.writeFile(
     dir_path_to_write + reqBody.stageId + ".json",

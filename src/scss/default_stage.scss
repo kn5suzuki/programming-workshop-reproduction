@@ -1,0 +1,298 @@
+$bg_color: rgb(255, 255, 255);
+// $bg_color: rgb(255, 255, 255);
+$bg_color2: rgb(0, 0, 0);
+// $bg_color2: rgb(62, 62, 62);
+$easy: rgb(50, 90, 180);
+$easy_hover: rgb(31, 54, 109);
+$normal: rgb(120, 190, 40);
+$normal_hover: rgb(64, 101, 21);
+$hard: rgb(240, 70, 20);
+$hard_hover: rgb(111, 33, 9);
+
+body {
+  background-color: $bg_color;
+  // color: black;
+  color: $bg_color2;
+  font-size: 1.4rem;
+}
+
+body.commentary {
+  background-color: $bg_color2;
+  color: $bg_color;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin: 0.5rem;
+}
+
+.level {
+  // padding: 1rem;
+  padding-top: 0rem;
+
+  // margin: 0.5rema
+  div {
+    width: 28rem;
+    height: 4rem;
+    vertical-align: top;
+    position: relative;
+    display: inline-block;
+
+    div {
+      //width: 8rem;
+      width: fit-content;
+      height: 4rem;
+      display: inline-block;
+      padding: 0.8rem 0.5em;
+      box-sizing: border-box;
+      vertical-align: middle;
+      margin-left: 1rem;
+
+      a {
+        color: $bg_color;
+        padding: 0.5rem;
+        border-radius: 1rem 1rem;
+        margin: 0;
+        box-shadow: 2px 3px rgba(0, 0, 0, 0.2);
+
+        &:active {
+          box-shadow: none !important;
+          position: relative;
+          left: 2px;
+          top: 3px;
+        }
+
+        @at-root .commentary & {
+          color: $bg_color2;
+          box-shadow: 2px 3px rgba(255, 255, 255, 0.4);
+        }
+      }
+    }
+
+    p {
+      width: 12rem;
+      height: 4rem;
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0;
+      padding: 0;
+
+      .restriction {
+        color: $hard;
+        padding-left: 1rem;
+      }
+    }
+  }
+
+  div.star0::before {
+    content: url(../img/web/star0.svg);
+    padding: 0.5rem 0.5em;
+    position: absolute;
+    top: -1rem;
+    z-index: 1;
+  }
+
+  div.star1::before {
+    content: url(../img/web/star1.svg);
+    padding: 0.5rem 0.5em;
+    position: absolute;
+    top: -1.4rem;
+    left: 0.6rem;
+    z-index: 1;
+  }
+
+  div.star2::before {
+    content: url(../img/web/star2.svg);
+    padding: 0.5rem 0.5em;
+    position: absolute;
+    top: -0.6rem;
+    left: 0.3rem;
+    z-index: 1;
+  }
+
+  div.star3::before {
+    content: url(../img/web/star3.svg);
+    padding: 0.5rem 0.5em;
+    position: absolute;
+    top: -1.1rem;
+    left: 0.2rem;
+    z-index: 1;
+  }
+}
+
+#easy > div > div > a {
+  background-color: $easy;
+
+  &:hover {
+    background-color: $easy_hover;
+  }
+}
+
+#normal > div > div > a {
+  background-color: $normal;
+
+  &:hover {
+    background-color: $normal_hover;
+  }
+}
+
+#hard > div > div > a {
+  background-color: $hard;
+
+  &:hover {
+    background-color: $hard_hover;
+  }
+}
+
+.tab {
+  position: absolute;
+  display: inline-block;
+  right: 2rem;
+  top: -5px;
+
+  a {
+    display: inline-block;
+    padding: 1rem;
+    cursor: pointer;
+    border-radius: 0 0 1rem 1rem;
+
+    box-shadow: 2px 3px rgba(0, 0, 0, 0.2);
+    color: rgb(0, 0, 0);
+    border: 1px solid rgb(0, 0, 0);
+
+    &:active {
+      box-shadow: none !important;
+      position: relative;
+      left: 2px;
+      top: 3px;
+    }
+
+    @at-root .commentary & {
+      box-shadow: 2px 3px rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid rgb(255, 255, 255);
+    }
+  }
+}
+
+.stage-select {
+  #tab1 {
+    box-shadow: none;
+    position: relative;
+    left: 2px;
+    top: 3px;
+  }
+
+  .stage-select-hide {
+    display: none;
+  }
+}
+
+.commentary {
+  #tab2 {
+    box-shadow: none;
+    position: relative;
+    left: 2px;
+    top: 3px;
+  }
+
+  .commentary-hide {
+    display: none;
+  }
+}
+
+body .record-delete {
+  text-align: right;
+  position: relative;
+  right: -1.5rem;
+  bottom: -1rem;
+}
+
+.record-delete-hide {
+  display: none;
+}
+
+$btn_color: black;
+$btn_color2: white;
+.btn {
+  // aの中のdivに対して適用する。ボタンの中をdivで囲うことで、中で改行が起こっても変にならないようにする
+  padding: 1rem;
+  background-color: $btn_color2;
+  border-radius: 1rem 1rem;
+  color: $btn_color;
+  border-color: $btn_color;
+  border-style: solid;
+  // line-height: 5rem;
+  display: inline-block;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $btn_color;
+    color: $bg_color;
+  }
+
+  @at-root .commentary & {
+    color: $btn_color2;
+    border-color: $btn_color2;
+    background-color: $btn_color;
+    &:hover {
+      background-color: $btn_color2;
+      color: $bg_color2;
+    }
+  }
+}
+
+#tab1 {
+  background-color: $bg_color;
+  color: rgb(0, 0, 0);
+}
+#tab2 {
+  background-color: $bg_color2;
+  color: rgb(255, 255, 255);
+}
+
+#hideHard {
+  display: none;
+}
+#hard.hidden {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+  #hideHard {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 3;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @at-root .commentary & {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    div {
+      width: 100%;
+      height: fit-content;
+      font-size: 1.5rem;
+      font-weight: bold;
+      background-color: rgba(17, 84, 240, 0.3);
+      padding: 0;
+      text-align: center;
+      @at-root .commentary & {
+        background-color: rgba(28, 86, 221, 0.627);
+      }
+    }
+  }
+}

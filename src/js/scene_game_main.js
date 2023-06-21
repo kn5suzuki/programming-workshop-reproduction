@@ -6,7 +6,7 @@ import player2 from "../img/game/player2_l.png";
 import inventoryImage from "../img/game/inventory.png";
 import tileImage from "../img/game/tileset.png";
 
-const { SceneGame } = require("./sceneGame");
+const { SceneGame } = require("./scene_game");
 
 class SceneGameMain extends Phaser.Scene {
   init(data) {

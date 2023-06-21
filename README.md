@@ -32,6 +32,12 @@ npm install --save-dev css-loader style-loader sass-loader sass
 npm install --save-dev json-loader
 ```
 
+webpack5 以降は crypto がデフォルトで使えないらしい
+
+```
+npm install --save-dev assert buffer console-browserify constants-browserify crypto-browserify domain-browser events stream-http https-browserify os-browserify path-browserify punycode process querystring-es3 stream-browserify readable-stream readable-stream readable-stream readable-stream readable-stream string_decoder util timers-browserify tty-browserify url util vm-browserify browserify-zlib
+```
+
 必要なライブラリのインストール
 
 ```

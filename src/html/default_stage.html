@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=1300" />
+
+    <title>プログラミング教室2022</title>
+  </head>
+
+  <body class="stage-select">
+    <h1 class="commentary-hide">ステージを選ぶ</h1>
+    <h1 class="stage-select-hide">答え・解説</h1>
+
+    <div class="tab">
+      <a id="tab1">ステージ選択</a>
+      <a id="tab2">解説</a>
+    </div>
+    <div class="level" id="easy">
+      <h2>初級</h2>
+    </div>
+    <div class="level" id="normal">
+      <h2>中級</h2>
+    </div>
+    <div class="level" id="hard">
+      <h2>上級</h2>
+      <div id="hideHard">
+        <div>初級・中級をクリア後 解放</div>
+      </div>
+    </div>
+    <br />
+    <div class="center">
+      <a href="./index.html"><div class="std_btn">トップページにもどる</div></a>
+    </div>
+    <div class="record-delete">
+      <a id="delete-btn"><div class="std_btn">クリアデータを削除する</div></a>
+    </div>
+  </body>
+  <script>
+    let stageinfoURL = "./default_stage/stageinfo.json";
+    let request = new XMLHttpRequest();
+    request.open("GET", "/defalt_stage_info");
+    request.responseType = "json";
+    request.send();
+    request.addEventListener("load", () => {
+      const stageinfo = request.response;
+
+      let localStorageUsable = 0;
+      let clearlevels;
+      try {
+        // localStorageが使える場合のみ
+        localStorageUsable = 1;
+        let clearleveljson = localStorage.getItem("clearlevel");
+        if (clearleveljson === null) {
+          // 存在しない場合は生成する
+          clearleveljson = new Object();
+          for (let i = 0; i < stageinfo["stages"].length; i++) {
+            clearleveljson[i] = -1;
+          }
+          clearleveljson = JSON.stringify(clearleveljson);
+          localStorage.setItem("clearlevel", clearleveljson);
+        }
+        clearlevels = JSON.parse(clearleveljson);
+      } catch (e) {
+        localStorageUsable = 0;
+        clearlevels = null;
+        document
+          .querySelector(".record-delete")
+          .classList.add("record-delete-hide");
+        // console.log(e);
+      }
+
+      stageinfo["stages"].forEach((stage, index) => {
+        const containerelem = document.getElementById(stage["level"]);
+        if (!containerelem) {
+          console.log(stage);
+          return;
+        }
+        const container = document.createElement("div");
+        const buttoncontainer = document.createElement("div");
+        const button = document.createElement("a");
+
+        const commentarycontainer = document.createElement("div");
+        const commentary = document.createElement("a");
+
+        const description = document.createElement("p");
+
+        buttoncontainer.setAttribute("class", "commentary-hide");
+        button.setAttribute("href", `./game.html?stage=${index}`);
+        button.innerText = "ステージ " + ("0" + index).slice(-2);
+        // button.innerText = `ステージ${index}`;
+        buttoncontainer.appendChild(button);
+
+        commentarycontainer.setAttribute("class", "stage-select-hide");
+        commentary.setAttribute(
+          "href",
+          `./default_stage/commentary/stage${index}.html`
+        );
+        // commentary.innerText = `ステージ${index}`;
+        commentary.innerText = "ステージ " + ("0" + index).slice(-2);
+        commentarycontainer.appendChild(commentary);
+
+        description.innerText = stage["description"];
+        if (stage["restriction"]) {
+          const a = document.createElement("a");
+          a.setAttribute("href", stage["restriction"]);
+          a.setAttribute("class", "restriction");
+          a.innerText = "※制約";
+          description.appendChild(a);
+        }
+
+        //  localStorageが使える場合のみ
+        try {
+          container.setAttribute("class", `star${clearlevels[index] + 1}`);
+        } catch (e) {
+          // console.log(e);
+        }
+
+        container.appendChild(buttoncontainer);
+        container.appendChild(commentarycontainer);
+        container.appendChild(description);
+
+        containerelem.appendChild(container);
+      });
+
+      try {
+        let hardStage = 0;
+        for (let i = 0; i < stageinfo["stages"].length; ++i) {
+          if (stageinfo["stages"][i].level == "hard") {
+            break;
+          } else {
+            hardStage++;
+          }
+        }
+        for (let i = 0; i < hardStage; ++i) {
+          if (clearlevels[i] == -1) {
+            let hardDomain = document.getElementById("hard");
+            hardDomain.classList.add("hidden");
+            break;
+          }
+        }
+      } catch (e) {
+        // console.log(e);
+      }
+    });
+
+    document.getElementById("tab1").addEventListener("click", () => {
+      document.querySelector("body").classList = ["stage-select"];
+    });
+    document.getElementById("tab2").addEventListener("click", () => {
+      document.querySelector("body").classList = ["commentary"];
+    });
+    document.getElementById("delete-btn").addEventListener("click", () => {
+      const ans = window.confirm("クリアデータを削除します");
+      if (ans) {
+        localStorage.removeItem("clearlevel");
+        window.location.reload();
+      }
+    });
+  </script>
+</html>

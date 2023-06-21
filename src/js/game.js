@@ -1,8 +1,8 @@
 import "../scss/common.scss";
 import "../scss/game.scss";
 import Phaser from "phaser";
-import SceneGameMain from "./sceneGameMain";
-import { ClearPostedStage } from "./postClearData";
+import SceneGameMain from "./scene_game_main";
+import { ClearPostedStage } from "./post_clear_data";
 
 require("./blocks.js");
 

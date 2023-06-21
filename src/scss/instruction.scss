@@ -1,0 +1,73 @@
+$first: rgba(0, 255, 217, 0.759);
+$second: rgba(3, 215, 183, 0.738);
+$third: rgba(0, 255, 217, 0.608);
+$fourth: rgba(0, 255, 217, 0.207);
+
+h1 {
+  font-size: 3rem;
+  //   background-color: $first;
+  padding: 1rem;
+  padding-left: 1.2rem;
+  border-radius: 30px 30px 30px 30px;
+}
+
+h2 {
+  background-color: $second;
+  padding: 1rem;
+  padding-left: 1.2rem;
+  font-size: 2rem;
+  border-radius: 20px 20px 20px 20px;
+}
+
+h3 {
+  margin-top: 3rem;
+  font-size: 1.5rem;
+  background-color: $third;
+  padding: 1rem;
+  padding-left: 1.2rem;
+  border-radius: 25px 25px 25px 25px;
+}
+h4 {
+  font-size: 1.2rem;
+  background-color: $fourth;
+  padding: 1rem;
+  padding-left: 1.2rem;
+  border-radius: 20px 20px 20px 20px;
+}
+
+a {
+  color: #e9967a;
+  text-decoration: underline;
+}
+
+p {
+  margin: 0.5rem;
+  margin-top: 1rem;
+}
+
+.contents {
+  margin: 2rem;
+  margin-bottom: 5rem;
+}
+
+.red {
+  color: black;
+  text-decoration: underline;
+  text-decoration-color: red;
+}
+
+.img {
+  float: right;
+  display: block;
+  border: 2px solid #d0d0d0;
+  border-radius: 3px;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+p::after {
+  content: ".";
+  display: block;
+  clear: both;
+  height: 0;
+  visibility: hidden;
+}

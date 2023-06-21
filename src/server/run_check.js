@@ -1,4 +1,4 @@
-const { SceneGame } = require("../js/sceneGame");
+const { SceneGame } = require("../js/scene_game");
 
 // マップデータ、BlocklyのJSONデータ、残り体力をサーバー側で検証
 class runCheck {
