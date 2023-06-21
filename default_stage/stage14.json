@@ -373,10 +373,10 @@
   "blocks": [
     "moveForward",
     "turn",
-    "while_if",
+    "whileIf",
     "while",
     "ifelse",
-    "check_path",
+    "checkPath",
     "checkFeet",
     "not",
     "callGroup",

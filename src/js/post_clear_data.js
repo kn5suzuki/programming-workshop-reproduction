@@ -1,10 +1,10 @@
-const postStageError = document.getElementById("postStageError");
-const postStage_state = document.getElementById("postStage_state");
-const postEnd = document.getElementById("postEnd");
-const likeButton = document.getElementById("likeButton");
+const postStageError = document.getElementById("post-stage-error");
+const postStageState = document.getElementById("post-stage-state");
+const postEnd = document.getElementById("post-end");
+const likeButton = document.getElementById("like-button");
 
 function cannotSendTwice() {
-  postStage_state.innerText = "投稿済みです。";
+  postStageState.innerText = "投稿済みです。";
 }
 
 function postData(
@@ -28,11 +28,11 @@ function postData(
       if (xhr.status === 200) {
         //console.log(xhr.responseText);
         if (xhr.responseText == "RECORD") {
-          postStage_state.innerText = "投稿完了！\n新記録達成です";
+          postStageState.innerText = "投稿完了！\n新記録達成です";
         } else if (xhr.responseText == "OK") {
-          postStage_state.innerText = "投稿完了！";
+          postStageState.innerText = "投稿完了！";
         } else {
-          postStage_state.innerText = "エラー。正しく送信されませんでした。";
+          postStageState.innerText = "エラー。正しく送信されませんでした。";
         }
 
         const shareURL = encodeURIComponent(
@@ -42,15 +42,15 @@ function postData(
           `eeicプログラミング教室　${submitter}さんのステージ「${stageName}」を${blockNum}ブロック、${steps}ステップでクリアしました。`
         );
         document
-          .getElementById("shareTwitterA")
+          .getElementById("share-twitterA")
           .setAttribute(
             "href",
             `https://twitter.com/intent/tweet?url=${shareURL}&text=${tweet}&hashtags=近未来体験2022,eeic,五月祭`
           );
         postEnd.style.display = "block";
-        document.getElementById("postDataButton").onclick = cannotSendTwice;
+        document.getElementById("post-data-button").onclick = cannotSendTwice;
       } else {
-        postStage_state.innerText =
+        postStageState.innerText =
           "サーバーに正しく通信できませんでした。もう一度投稿してみてください。";
       }
     }
@@ -62,19 +62,19 @@ function postData(
     name: name,
   };
   xhr.send(JSON.stringify(data));
-  postStage_state.innerText = "投稿中…";
-  postStage_state.style.display = "block";
+  postStageState.innerText = "投稿中…";
+  postStageState.style.display = "block";
 }
 
 function CheckPostData(stageId, blocks, steps, blockNum, stageName, submitter) {
-  const user_name = document.getElementById("input_user_name").value;
-  if (!user_name) {
+  const userName = document.getElementById("input-user-name").value;
+  if (!userName) {
     postStageError.innerText = "なまえを入力してください。";
-  } else if (user_name.length > 50) {
+  } else if (userName.length > 50) {
     postStageError.innerText = "なまえが長すぎます。";
   } else {
     postStageError.style.display = "none";
-    postData(stageId, blocks, steps, user_name, blockNum, stageName, submitter);
+    postData(stageId, blocks, steps, userName, blockNum, stageName, submitter);
     return;
   }
   postStageError.style.display = "block";
@@ -137,12 +137,12 @@ export function ClearPostedStage(
 ) {
   const detail = document.getElementById("detail");
   detail.innerText = `${blockNum}ブロック、${steps}ステップでクリアしました。`;
-  const postDataButton = document.getElementById("postDataButton");
+  const postDataButton = document.getElementById("post-data-button");
   postDataButton.onclick = () => {
     CheckPostData(stageId, blocks, steps, blockNum, stageName, submitter);
   };
-  const backToGameButton = document.getElementById("backToGameButton");
-  const GameClearMenu = document.getElementById("GameClearMenu");
+  const backToGameButton = document.getElementById("back-to-game-button");
+  const GameClearMenu = document.getElementById("game-clear-menu");
   if (checkLike(stageId)) {
     likeButton.classList.add("posting");
     likeButton.classList.add("posted");
@@ -159,8 +159,8 @@ export function ClearPostedStage(
     postDataButton.onclick = () => {};
     GameClearMenu.style.display = "none";
     postStageError.style.display = "none";
-    postStage_state.innerText = "";
-    postStage_state.style.display = "none";
+    postStageState.innerText = "";
+    postStageState.style.display = "none";
     postEnd.style.display = "none";
   };
   GameClearMenu.style.display = "flex";

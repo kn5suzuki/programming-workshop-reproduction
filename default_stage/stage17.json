@@ -376,7 +376,7 @@
     "if",
     "turn",
     "check",
-    "while_if",
+    "whileIf",
     "check3",
     "pickUpNumber",
     "dropNumber",

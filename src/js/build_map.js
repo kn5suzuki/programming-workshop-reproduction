@@ -1,16 +1,16 @@
-const buildMapCanvas = document.getElementById("buildMapCanvas");
-const selectTileDiv = document.getElementById("selectTile");
+const buildMapCanvas = document.getElementById("build-map-canvas");
+const selectTileDiv = document.getElementById("select-tile");
 const gridSize = 30;
 const WIDTH = 16;
 const HEIGHT = 20;
 const context = buildMapCanvas.getContext("2d");
 
-export let stage_data = new Array(HEIGHT);
-for (let y = 0; y < HEIGHT; ++y) stage_data[y] = new Array(WIDTH).fill("grass");
+export let stageData = new Array(HEIGHT);
+for (let y = 0; y < HEIGHT; ++y) stageData[y] = new Array(WIDTH).fill("grass");
 
 export let player = { x: -1, y: -1, dir: "r" };
-export let teleport_black = new Array();
-export let teleport_white = new Array();
+export let teleportBlack = new Array();
+export let teleportWhite = new Array();
 
 let selectedTileElem = document.getElementById("player");
 let selectedTile = "player";
@@ -55,11 +55,11 @@ Promise.all([
     }
     selectTile(selectedTileElem);
 
-    const elements = document.querySelectorAll(".selectTile>div");
+    const elements = document.querySelectorAll(".select-tile>div");
     elements.forEach((elem) => {
       elem.onclick = () => selectTile(elem);
     });
-    document.getElementById("player_rotate").onclick = () => rotatePlayer();
+    document.getElementById("player-rotate").onclick = () => rotatePlayer();
 
     let mouseDrag = false;
 
@@ -80,7 +80,7 @@ Promise.all([
       const x = Math.floor(((clientX - rect.left) / rect.width) * WIDTH);
       const y = Math.floor(((clientY - rect.top) / rect.height) * HEIGHT);
       if (x < 0 || WIDTH <= x || y < 0 || HEIGHT <= y) return;
-      const tile = stage_data[y][x];
+      const tile = stageData[y][x];
       if (selectedTile.startsWith("ans")) {
         updateStage(x, y, tile.split(":")[0] + ":" + selectedTile);
       } else if (selectedTile == "player") {
@@ -91,20 +91,20 @@ Promise.all([
         updateStage(prevX, prevY, "path");
         updateStage(x, y, "path");
       } else if (selectedTile == "teleport1") {
-        if (teleport_black.find((e) => e.x == x && e.y == y)) return;
-        while (teleport_black.length >= 2) {
-          const p = teleport_black.pop();
+        if (teleportBlack.find((e) => e.x == x && e.y == y)) return;
+        while (teleportBlack.length >= 2) {
+          const p = teleportBlack.pop();
           updateStage(p.x, p.y, "path");
         }
-        teleport_black.push({ x: x, y: y });
+        teleportBlack.push({ x: x, y: y });
         updateStage(x, y, "teleport1");
       } else if (selectedTile == "teleport2") {
-        if (teleport_white.find((e) => e.x == x && e.y == y)) return;
-        while (teleport_white.length >= 2) {
-          const p = teleport_white.pop();
+        if (teleportWhite.find((e) => e.x == x && e.y == y)) return;
+        while (teleportWhite.length >= 2) {
+          const p = teleportWhite.pop();
           updateStage(p.x, p.y, "path");
         }
-        teleport_white.push({ x: x, y: y });
+        teleportWhite.push({ x: x, y: y });
         updateStage(x, y, "teleport2");
       } else {
         updateStage(x, y, selectedTile);
@@ -128,15 +128,15 @@ Promise.all([
     });
 
     // リセットボタン
-    document.getElementById("resetMap").onclick = () => {
+    document.getElementById("reset-map").onclick = () => {
       player = { x: -1, y: -1, dir: "r" };
       for (let y = 0; y < HEIGHT; ++y) {
         for (let x = 0; x < WIDTH; ++x) {
           updateStage(x, y, "grass");
         }
       }
-      teleport_black.length = 0;
-      teleport_white.length = 0;
+      teleportBlack.length = 0;
+      teleportWhite.length = 0;
     };
   })
   .catch((e) => {
@@ -146,13 +146,13 @@ Promise.all([
 function updateStage(x, y, stageData) {
   if (x < 0 || WIDTH <= x || y < 0 || HEIGHT <= y) return;
   if (stageData) {
-    const prevStage = stage_data[y][x];
-    stage_data[y][x] = stageData;
+    const prevStage = stageData[y][x];
+    stageData[y][x] = stageData;
     if (prevStage == "teleport1") {
-      teleport_black = teleport_black.filter((e) => e.x != x || e.y != y);
+      teleportBlack = teleportBlack.filter((e) => e.x != x || e.y != y);
     }
     if (prevStage == "teleport2") {
-      teleport_white = teleport_white.filter((e) => e.x != x || e.y != y);
+      teleportWhite = teleportWhite.filter((e) => e.x != x || e.y != y);
     }
   }
   if (x == player.x && y == player.y) {
@@ -163,10 +163,10 @@ function updateStage(x, y, stageData) {
       gridSize,
       gridSize
     );
-    stage_data[y][x] = "path";
+    stageData[y][x] = "path";
     return;
   }
-  const d = stage_data[y][x];
+  const d = stageData[y][x];
   const tileName = {
     grass: 0,
     path: 1,
@@ -224,13 +224,13 @@ function selectTile(tileElem) {
 }
 
 function rotatePlayer() {
-  const next_dir = {
+  const nextDir = {
     r: "u",
     u: "l",
     l: "d",
     d: "r",
   };
-  const n = next_dir[player.dir];
+  const n = nextDir[player.dir];
   const playerTileElem = document.getElementById("player");
   playerTileElem.classList.remove(`player_${player.dir}`);
   playerTileElem.classList.add(`player_${n}`);
@@ -239,26 +239,26 @@ function rotatePlayer() {
 }
 
 export function checkMap() {
-  const buildMapError = document.getElementById("buildMapError");
+  const buildMapError = document.getElementById("build-map-error");
 
-  teleport_black = teleport_black.filter(
-    (e) => stage_data[e.y][e.x] == "teleport1"
+  teleportBlack = teleportBlack.filter(
+    (e) => stageData[e.y][e.x] == "teleport1"
   );
-  teleport_white = teleport_white.filter(
-    (e) => stage_data[e.y][e.x] == "teleport2"
+  teleportWhite = teleportWhite.filter(
+    (e) => stageData[e.y][e.x] == "teleport2"
   );
 
   let checkGoal = false;
   for (let y = 0; y < HEIGHT; ++y) {
     for (let x = 0; x < WIDTH; ++x) {
-      if (stage_data[y][x] == "goal") checkGoal = true;
+      if (stageData[y][x] == "goal") checkGoal = true;
     }
   }
   if (player.x < 0 || WIDTH <= player.x || player.y < 0 || HEIGHT <= player.y) {
     buildMapError.innerText = "キャラクターを配置してください。";
   } else if (!checkGoal) {
     buildMapError.innerText = "ゴールを配置してください。";
-  } else if (teleport_black.length == 1 || teleport_white.length == 1) {
+  } else if (teleportBlack.length == 1 || teleportWhite.length == 1) {
     buildMapError.innerText = "ワープのマークは２つ配置してください。";
   } else {
     buildMapError.style.display = "none";

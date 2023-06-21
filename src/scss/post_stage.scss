@@ -1,5 +1,5 @@
-$bg_color: rgb(255, 255, 255);
-$font_color: rgb(0, 0, 0);
+$bg-color: rgb(255, 255, 255);
+$font-color: rgb(0, 0, 0);
 
 .mode_change_button {
   font-size: 1.8rem;
@@ -31,7 +31,7 @@ div.block_left {
   font-size: 20px;
 }
 
-#player_rotation {
+#player-rotation {
   font-size: 20px;
 }
 
@@ -40,7 +40,7 @@ div.block_left {
   bottom: -4rem;
 }
 
-.input_box {
+.input-box {
   display: flex;
   /*アイコン、テキストボックスを調整する*/
   align-items: center;
@@ -54,17 +54,17 @@ div.block_left {
   margin-bottom: 1rem;
 }
 
-.input_inner {
+.input-inner {
   width: 100%;
   height: 100%;
   background-color: transparent;
-  /*.input_boxの枠線お角一部被るため透明に*/
+  /*.input-boxの枠線お角一部被るため透明に*/
   position: relative;
 }
 
-.input_text {
+.input-text {
   text-align: left;
-  color: $font_color;
+  color: $font-color;
   position: absolute;
   z-index: 1;
   /*.input_stringよりも上に配置*/
@@ -108,7 +108,7 @@ div.block_left {
 //  -webkit-transition: all 0.2s;
 //}
 //
-//.input_text:focus+.input_string {
+//.input-text:focus+.input_string {
 //  color: white;
 //  font-size: 15px;
 //  line-height: 10px;
@@ -202,7 +202,7 @@ header {
         content: none;
       }
 
-      @at-root body.buildMap &.buildMap {
+      @at-root body.build-map &.build-map {
         background-color: $selected_color;
 
         &::after {
@@ -210,7 +210,7 @@ header {
         }
       }
 
-      @at-root body.selectBlockly &.selectBlockly {
+      @at-root body.select-blockly &.select-blockly {
         background-color: $selected_color;
 
         &::after {
@@ -218,7 +218,7 @@ header {
         }
       }
 
-      @at-root body.testPlay &.testPlay {
+      @at-root body.test-play &.test-play {
         background-color: $selected_color;
 
         &::after {
@@ -226,7 +226,7 @@ header {
         }
       }
 
-      @at-root body.postStage &.postStage {
+      @at-root body.post-stage &.post-stage {
         background-color: $selected_color;
 
         &::after {
@@ -246,11 +246,11 @@ header {
   padding: 0;
 }
 
-body.buildMap #buildMap {
+body.build-map #build-map {
   visibility: visible;
 }
 
-#buildMap {
+#build-map {
   position: absolute;
   top: 0;
   left: 0;
@@ -267,11 +267,11 @@ body.buildMap #buildMap {
     grid-template-rows: calc(100vh - 60px);
   }
 
-  #buildMapCanvasDiv {
+  #build-map-canvas-div {
     width: 100%;
     height: 100%;
 
-    #buildMapCanvas {
+    #build-map-canvas {
       width: 100%;
       height: 100%;
       border: 0;
@@ -279,7 +279,7 @@ body.buildMap #buildMap {
     }
   }
 
-  #mapMenu {
+  #map-menu {
     width: 100%;
     height: 100%;
     display: grid;
@@ -290,7 +290,7 @@ body.buildMap #buildMap {
       margin: 1rem 0;
     }
 
-    .selectTile {
+    .select-tile {
       display: flex;
       flex-wrap: wrap;
       width: 100%;
@@ -329,33 +329,33 @@ body.buildMap #buildMap {
           display: none;
         }
 
-        &.player_l {
-          #player_l {
+        &.player-l {
+          #player-l {
             display: inline;
           }
         }
 
-        &.player_r {
-          #player_r {
+        &.player-r {
+          #player-r {
             display: inline;
           }
         }
 
-        &.player_u {
-          #player_u {
+        &.player-u {
+          #player-u {
             display: inline;
           }
         }
 
-        &.player_d {
-          #player_d {
+        &.player-d {
+          #player-d {
             display: inline;
           }
         }
       }
     }
 
-    .buttonAndError {
+    .button-and-error {
       display: grid;
       align-items: center;
       grid-template-columns: auto auto 1fr;
@@ -372,11 +372,11 @@ body.buildMap #buildMap {
   }
 }
 
-body.selectBlockly #selectBlockly {
+body.select-blockly #select-blockly {
   visibility: visible;
 }
 
-#selectBlockly {
+#select-blockly {
   position: absolute;
   top: 0;
   left: 0;
@@ -391,20 +391,20 @@ body.selectBlockly #selectBlockly {
     height: calc(100vh - 60px);
   }
 
-  #selectBlocklyDiv {
+  #select-blockly-div {
     left: 490px;
     top: 10px;
     width: 100%;
     box-shadow: 1px -1px 2px rgba(0, 0, 0, 0.22);
   }
 
-  #selectBlocklyMenu {
+  #select-blockly-menu {
     height: 100%;
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 80% 20%;
 
-    #selectedBlocks {
+    #selected-blocks {
       overflow: scroll;
       + div {
         display: flex;
@@ -427,11 +427,11 @@ body.selectBlockly #selectBlockly {
   }
 }
 
-body.testPlay #testPlay {
+body.test-play #test-play {
   visibility: visible;
 }
 
-#testPlay {
+#test-play {
   position: absolute;
   top: 0;
   left: 0;
@@ -439,12 +439,12 @@ body.testPlay #testPlay {
   visibility: hidden;
   width: 100%;
 
-  #gameWrapper {
+  #game-wrapper {
     grid-template-columns: 480px 1fr;
     grid-template-rows: 0px 600px 110px;
     height: 100%;
   }
-  #meterBox {
+  #meter-box {
     > div {
       display: flex;
       justify-content: center;
@@ -455,42 +455,42 @@ body.testPlay #testPlay {
   /*縦に入りきらない場合*/
   @media (max-height: 780px) {
     height: calc(100vh - 60px);
-    #gameWrapper {
+    #game-wrapper {
       grid-template-rows: 0px calc(100vh - 60px);
       grid-template-columns: 120px calc((100vh - 60px) * 4 / 5) auto 150px;
     }
 
-    #blocklyDiv {
+    #blockly-div {
       grid-column: 3;
       grid-row: 2;
     }
 
-    #ButtonDiv2 {
+    #button-div2 {
       grid-column: 3;
       grid-row: 2;
     }
 
-    #phaserDiv {
+    #phaser-div {
       width: 100%;
       height: 100%;
       grid-column: 2;
       grid-row: 2;
     }
 
-    #phaserDiv > canvas {
+    #phaser-div > canvas {
       width: 100%;
       height: 100%;
       border: 0;
     }
 
-    #ButtonDiv {
+    #button-div {
       grid-column: 1;
       grid-row: 2;
       grid-template-columns: 1fr;
       grid-template-rows: repeat(4, 1fr);
     }
 
-    #meterBox {
+    #meter-box {
       grid-column: 4;
       grid-row: 2;
 
@@ -498,40 +498,40 @@ body.testPlay #testPlay {
       grid-template-rows: auto auto auto;
     }
 
-    #playerChangeButton {
+    #player-change-button {
       grid-column: 1;
       grid-row: 1;
     }
 
-    #executeButton {
+    #execute-button {
       grid-column: 1;
       grid-row: 3;
     }
 
-    #resetButton {
+    #reset-button {
       grid-column: 1;
       grid-row: 4;
     }
 
-    #speedupButton {
+    #speedup-button {
       grid-column: 1;
       grid-row: 2;
     }
 
-    #alertBox {
+    #alert-box {
       grid-column: 1;
       height: 100%;
       box-sizing: border-box;
     }
 
-    .meterChildBox {
+    .meter-child-box {
       padding-left: 0.5rem;
       padding-right: 0.5rem;
       margin: 0;
     }
   }
 
-  #gameClear_next {
+  #game-clear-next {
     z-index: 3;
     width: 100%;
     height: 100%;
@@ -555,11 +555,11 @@ body.testPlay #testPlay {
   }
 }
 
-body.postStage #postStage {
+body.post-stage #post-stage {
   visibility: visible;
 }
 
-#postStage {
+#post-stage {
   position: absolute;
   top: 0;
   left: 0;
@@ -568,12 +568,12 @@ body.postStage #postStage {
   width: 100%;
   height: 100%;
 
-  #postStageDiv {
+  #post-stage-div {
     width: 50%;
     margin: 0 auto;
   }
 
-  #postStageConfirm {
+  #post-stage-confirm {
     z-index: 3;
     width: 100%;
     height: 100%;
@@ -584,7 +584,7 @@ body.postStage #postStage {
     bottom: 0;
     background-color: rgba(255, 255, 255, 1);
 
-    #postStageConfirmDiv {
+    #post-stage-confirmDiv {
       width: 50%;
       margin: 0 auto;
 
@@ -596,7 +596,7 @@ body.postStage #postStage {
         }
       }
 
-      #postStageConfirmButtonDiv {
+      #post-stage-confirmbutton-div {
         text-align: center;
       }
 
@@ -605,10 +605,10 @@ body.postStage #postStage {
         text-align: center;
       }
 
-      #postEnd {
+      #post-end {
         position: relative;
 
-        #shareTwitter {
+        #share-twitter {
           position: relative;
           display: inline-block;
           left: auto;
@@ -620,7 +620,7 @@ body.postStage #postStage {
   }
 }
 
-.errorMessage {
+.error-message {
   font-size: 1.2rem;
   margin-left: 1rem;
   padding: 0.5rem 1rem;

@@ -140,7 +140,7 @@ Blockly.Blocks["check"] = {
     this.setHelpUrl("");
   },
 };
-Blockly.Blocks["check_path"] = {
+Blockly.Blocks["checkPath"] = {
   init: function () {
     this.appendDummyInput()
       .appendField(
@@ -160,7 +160,7 @@ Blockly.Blocks["check_path"] = {
   },
 };
 
-Blockly.Blocks["check_front"] = {
+Blockly.Blocks["checkFront"] = {
   init: function () {
     this.appendDummyInput()
       .appendField("前が")
@@ -258,7 +258,7 @@ Blockly.Blocks["not"] = {
   },
 };
 /*
-Blockly.Blocks['if_and'] = {
+Blockly.Blocks['ifAnd'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("もし");
@@ -284,7 +284,7 @@ Blockly.Blocks['if_and'] = {
   }
 };
 
-Blockly.Blocks['if_or'] = {
+Blockly.Blocks['ifOr'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("もし");
@@ -311,7 +311,7 @@ Blockly.Blocks['if_or'] = {
 };
 */
 
-Blockly.Blocks["can_teleport"] = {
+Blockly.Blocks["canTeleport"] = {
   init: function () {
     this.appendDummyInput()
       .appendField(
@@ -340,7 +340,7 @@ Blockly.Blocks["teleportation"] = {
   },
 };
 
-Blockly.Blocks["while_if"] = {
+Blockly.Blocks["whileIf"] = {
   init: function () {
     this.appendValueInput("condition").setCheck(null);
     this.appendDummyInput().appendField("であるかぎり");

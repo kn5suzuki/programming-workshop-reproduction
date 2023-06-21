@@ -2,16 +2,16 @@ import "../scss/common.scss";
 import "../scss/posted_stage.scss";
 
 const imgUrl = require("../img/game/tileset.png");
-let MyStageIds = new Object();
+let myStageIds = new Object();
 try {
-  const s = localStorage.getItem("mystage");
-  if (s) MyStageIds = JSON.parse(s) || {};
+  const s = localStorage.getItem("myStage");
+  if (s) myStageIds = JSON.parse(s) || {};
 } catch (e) {
   // console.log(e);
 }
 
-if (!MyStageIds || Object.keys(MyStageIds).length == 0) {
-  document.getElementById("noStage").style.display = "block";
+if (!myStageIds || Object.keys(myStageIds).length == 0) {
+  document.getElementById("no-stage").style.display = "block";
   document.getElementById("main").style.display = "none";
 }
 
@@ -197,7 +197,7 @@ request.addEventListener("load", () => {
     const stageInfo = request.response;
     Object.keys(stageInfo["stages"]).forEach((index) => {
       if (
-        MyStageIds.hasOwnProperty(index) &&
+        myStageIds.hasOwnProperty(index) &&
         !stageInfo["stages"][index].deleted
       )
         stages.push({ index: index, stage: stageInfo["stages"][index] });
@@ -205,7 +205,7 @@ request.addEventListener("load", () => {
     const count = stages.length;
 
     if (count == 0) {
-      document.getElementById("noStage").style.display = "block";
+      document.getElementById("no-stage").style.display = "block";
       document.getElementById("main").style.display = "none";
     }
     let randomOrder = new Array(count);
@@ -238,22 +238,22 @@ request.addEventListener("load", () => {
 
     const pageNum = Math.ceil(count / 6);
     let page = 0;
-    const to_prev = document.getElementById("to_prev");
-    const to_next = document.getElementById("to_next");
+    const toPrev = document.getElementById("to-prev");
+    const toNext = document.getElementById("to-next");
     function updatePage() {
-      to_prev.classList.add("enable");
-      to_next.classList.add("enable");
+      toPrev.classList.add("enable");
+      toNext.classList.add("enable");
       if (page <= 0) {
         page = 0;
-        to_prev.classList.remove("enable");
+        toPrev.classList.remove("enable");
       }
       if (page >= pageNum - 1) {
         page = pageNum - 1;
-        to_next.classList.remove("enable");
+        toNext.classList.remove("enable");
       }
       if (page <= 0) {
         page = 0;
-        to_prev.classList.remove("enable");
+        toPrev.classList.remove("enable");
       }
       for (let i = 0; i < 6; ++i) {
         const stage = stages[order[page * 6 + i]];
@@ -263,14 +263,14 @@ request.addEventListener("load", () => {
           update(i, null, null);
         }
       }
-      const to_next_page = document.getElementById("to_next_page");
-      to_next_page.innerText = `${page + 1}/${pageNum}`;
+      const toNextPage = document.getElementById("to-next-page");
+      toNextPage.innerText = `${page + 1}/${pageNum}`;
     }
-    to_prev.addEventListener("click", () => {
+    toPrev.addEventListener("click", () => {
       page -= 1;
       updatePage();
     });
-    to_next.addEventListener("click", () => {
+    toNext.addEventListener("click", () => {
       page += 1;
       updatePage();
     });
@@ -315,7 +315,7 @@ request.addEventListener("load", () => {
         request.setRequestHeader("Content-type", "text/plain");
         const deleteData = {
           stageId: deleteId,
-          deleteKey: MyStageIds[deleteId],
+          deleteKey: myStageIds[deleteId],
         };
 
         request.onreadystatechange = () => {

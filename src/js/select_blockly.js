@@ -11,16 +11,16 @@ const AllBlocks = [
   "replaceNumber",
   "putNumber",
   "check",
-  "check_path",
-  "check_front",
+  "checkPath",
+  "checkFront",
   "and",
   "or",
   "not",
-  "can_teleport",
+  "canTeleport",
   "check3",
   "checkFeet",
   "while",
-  "while_if",
+  "whileIf",
   "if",
   "ifelse",
   "grouping",
@@ -30,7 +30,7 @@ const AllBlocks = [
 
 //Blocklyのツールボックスの設定
 var options = {
-  toolbox: document.getElementById("selectBlocklyToolbox"),
+  toolbox: document.getElementById("select-blockly-toolbox"),
   collapse: true,
   comments: true,
   disable: true,
@@ -53,15 +53,15 @@ var options = {
 };
 
 //使うブロックの配置
-var toolboxDiv = document.getElementById("selectBlocklyToolbox");
+var toolboxDiv = document.getElementById("select-blockly-toolbox");
 toolboxDiv.innerHTML = "";
 AllBlocks.forEach((block) => {
   toolboxDiv.innerHTML += `<block type="${block}"></block>`;
 });
 
 //blocklyを設定
-var selectBlocklyDiv = document.getElementById("selectBlocklyDiv");
-let workspace = Blockly.inject("selectBlocklyDiv", options);
+var selectBlocklyDiv = document.getElementById("select-blockly-div");
+let workspace = Blockly.inject("select-blockly-div", options);
 
 export let selectedBlocks = new Array();
 
@@ -90,7 +90,7 @@ workspace.addChangeListener(function (event) {
   //console.log(selectedBlocks);
 
   if (JSON.stringify(prevSelectedBlocks) != JSON.stringify(selectedBlocks)) {
-    const selectedBlocksList = document.getElementById("selectedBlocksList");
+    const selectedBlocksList = document.getElementById("selected-blocks-list");
     selectedBlocksList.innerHTML = "";
     selectedBlocks.forEach((b) => {
       const AllBlocksToName = {
@@ -103,19 +103,19 @@ workspace.addChangeListener(function (event) {
         check:
           "「道」「草」「岩」「数字」「土の道」「石の道」「木の道」かどうか",
         //"check2": "「草」または「岩」かどうか",
-        check_path: "道かどうか",
-        check_front:
+        checkPath: "道かどうか",
+        checkFront:
           "前が「道」「草」「岩」「数字」「土の道」「石の道」「木の道」かどうか",
         grouping: "ていぎ",
         callGroup: "実行",
         and: "かつ",
         or: "または",
-        //"if_and": "もし〜かつ～なら",
-        //"if_or": "もし～または～なら",
+        //"ifAnd": "もし〜かつ～なら",
+        //"ifOr": "もし～または～なら",
         not: "でない",
-        can_teleport: "ワープできる場所にいる",
+        canTeleport: "ワープできる場所にいる",
         teleportation: "ワープする",
-        while_if: "～であるかぎり",
+        whileIf: "～であるかぎり",
         check3: "足元の数字と持っている数字をくらべる",
         pickUpNumber: "数字をひろう",
         dropNumber: "数字をおく",

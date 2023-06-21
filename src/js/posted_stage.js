@@ -258,22 +258,22 @@ request.addEventListener("load", () => {
 
     const pageNum = Math.ceil(count / 6);
     let page = 0;
-    const to_prev = document.getElementById("to_prev");
-    const to_next = document.getElementById("to_next");
+    const toPrev = document.getElementById("to-prev");
+    const toNext = document.getElementById("to-next");
     function updatePage() {
-      to_prev.classList.add("enable");
-      to_next.classList.add("enable");
+      toPrev.classList.add("enable");
+      toNext.classList.add("enable");
       if (page <= 0) {
         page = 0;
-        to_prev.classList.remove("enable");
+        toPrev.classList.remove("enable");
       }
       if (page >= pageNum - 1) {
         page = pageNum - 1;
-        to_next.classList.remove("enable");
+        toNext.classList.remove("enable");
       }
       if (page <= 0) {
         page = 0;
-        to_prev.classList.remove("enable");
+        toPrev.classList.remove("enable");
       }
       for (let i = 0; i < 6; ++i) {
         const stage = stages[order[page * 6 + i]];
@@ -283,14 +283,14 @@ request.addEventListener("load", () => {
           update(i, null, null);
         }
       }
-      const to_next_page = document.getElementById("to_next_page");
-      to_next_page.innerText = `${page + 1}/${pageNum}`;
+      const toNextPage = document.getElementById("to-next-page");
+      toNextPage.innerText = `${page + 1}/${pageNum}`;
     }
-    to_prev.addEventListener("click", () => {
+    toPrev.addEventListener("click", () => {
       page -= 1;
       updatePage();
     });
-    to_next.addEventListener("click", () => {
+    toNext.addEventListener("click", () => {
       page += 1;
       updatePage();
     });

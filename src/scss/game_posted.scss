@@ -2,7 +2,7 @@ body {
   position: relative;
 }
 
-#GameClearMenu {
+#game-clear-menu {
   position: absolute;
   top: 0;
   left: 0;
@@ -37,7 +37,7 @@ body {
     }
   }
 
-  #shareTwitter {
+  #share-twitter {
     position: relative;
     display: inline-block;
     margin: 1rem;
@@ -45,7 +45,7 @@ body {
     top: auto;
   }
 
-  #likeButton {
+  #like-button {
     &.posting {
       background-color: rgb(230, 230, 230);
     }

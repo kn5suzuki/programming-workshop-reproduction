@@ -18,7 +18,7 @@
     crossorigin="anonymous">
   </head>
   <body>
-    <div id="gameWrapper">
+    <div id="game-wrapper">
       <header id="header" class="header">
         <h1>
           <a href="/">EEIC プログラミング教室</a>
@@ -27,83 +27,83 @@
           <li class="menu__single">
             <a id="title" href="#" class="init-bottom"></a>
             <ul class="menu__second-level">
-              <li><a id="previousStageButton"></a></li>
-              <li><a id="nextStageButton"></a></li>
+              <li><a id="previous-stage-button"></a></li>
+              <li><a id="next-stage-button"></a></li>
             </ul>
           </li>
         </ul>
         <nav class="header-nav">
           <ul>
-            <li class="headerButton">
-              <a id="titleButton" href="#">他のステージ</a>
+            <li class="header-button">
+              <a id="title-button" href="#">他のステージ</a>
             </li>
-            <li class="headerButton">
-              <a id="commentaryButton" href="#" type="hidden">ヒント・答え</a>
+            <li class="header-button">
+              <a id="commentary-button" href="#" type="hidden">ヒント・答え</a>
             </li>
-            <li class="headerButton">
+            <li class="header-button">
               <a href="instruction.html">あそびかた</a>
             </li>
           </ul>
         </nav>
       </header>
-      <div id="phaserDiv"></div>
+      <div id="phaser-div"></div>
       <!-- blockly workspace -->
-      <div id="blocklyDiv"></div>
-      <div id="meterBox">
-        <div id="clearCondition" class="meterChildBox">
-          <p class="meterTitleText">クリア条件</p>
+      <div id="blockly-div"></div>
+      <div id="meter-box">
+        <div id="clear-condition" class="meter-child-box">
+          <p class="meter-title-text">クリア条件</p>
           <div id="level1" class="level1"></div>
           <div id="level2" class="level2"></div>
         </div>
-        <div id="meter" class="meterChildBox">
-          <p class="meterTitleText">スコア</p>
-          <div id="numFrame" class="numFrame"></div>
-          <div id="numEnergy" class="numEnergy"></div>
+        <div id="meter" class="meter-child-box">
+          <p class="meter-title-text">スコア</p>
+          <div id="num-frame" class="num-frame"></div>
+          <div id="num-energy" class="num-energy"></div>
         </div>
-        <div id="alertBox" class="meterChildBox">
+        <div id="alert-box" class="meter-child-box">
           <p id="alert"></p>
         </div>
       </div>
-      <div id="ButtonDiv">
-        <div id="playerChangeButton" class="playerChange_btn"></div>
-        <div id="executeButton">
+      <div id="button-div">
+        <div id="player-change-button" class="player-change-btn"></div>
+        <div id="execute-button">
           <div class="execute"></div>
-          <p class="buttonText">実行</p>
+          <p class="button-text">実行</p>
         </div>
-        <div id="resetButton">
+        <div id="reset-button">
           <div class="reset"></div>
-          <p class="buttonText">やり直し</p>
+          <p class="button-text">やり直し</p>
         </div>
-        <div id="speedupButton" class="speedup_btn">
+        <div id="speedup-button" class="speedup-btn">
           <input
-            id="speedupToggle"
-            class="speedupToggle-input"
+            id="speedup-toggle"
+            class="speedup-toggle-input"
             type="checkbox"
           />
-          <label for="speedupToggle" class="speedupToggle-label"></label>
-          <p class="buttonText">早送り</p>
+          <label for="speedup-toggle" class="speedup-toggle-label"></label>
+          <p class="button-text">早送り</p>
         </div>
       </div>
-      <div id="ButtonDiv2">
-        <div id="undoButton" class="undo_btn" title="元にもどす"></div>
-        <div id="redoButton" class="redo_btn" title="やり直し"></div>
-        <div id="eraseButton" class="erase" title="すべて消す"></div>
+      <div id="button-div2">
+        <div id="undo-button" class="undo-btn" title="元にもどす"></div>
+        <div id="redo-button" class="redo-btn" title="やり直し"></div>
+        <div id="erase-button" class="erase" title="すべて消す"></div>
       </div>
-      <div id="gameClearDiv">
-        <div id="gameClearWrapper">
-          <div id="stageClear2">
+      <div id="game-clear-div">
+        <div id="game-clear-wrapper">
+          <div id="stage-clear2">
             <img src="../img/game/stageclear2.png" />
           </div>
-          <div id="stageClearStars" class="star1">
+          <div id="stage-clear-stars" class="star1">
             <img src="../img/game/star2.png" id="star1" />
             <img src="../img/game/star2.png" id="star2" />
             <img src="../img/game/star2.png" id="star3" />
-            <div id="shareTwitter">
-              <a id="shareTwitterA" target="_blank"
+            <div id="share-twitter">
+              <a id="share-twitterA" target="_blank"
                 ><div>
                   <svg
                     version="1.1"
-                    id="Logo"
+                    id="logo"
                     xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink"
                     x="0px"
@@ -117,9 +117,9 @@
                         fill: #ffffff;
                       }
                     </style>
-                    <g id="Logo_1_">
+                    <g id="logo_1_">
                       <path
-                        id="white_background"
+                        id="white-background"
                         class="st0"
                         d="M221.95,51.29c0.15,2.17,0.15,4.34,0.15,6.53c0,66.73-50.8,143.69-143.69,143.69v-0.04C50.97,201.51,24.1,193.65,1,178.83c3.99,0.48,8,0.72,12.02,0.73c22.74,0.02,44.83-7.61,62.72-21.66c-21.61-0.41-40.56-14.5-47.18-35.07c7.57,1.46,15.37,1.16,22.8-0.87C27.8,117.2,10.85,96.5,10.85,72.46c0-0.22,0-0.43,0-0.64c7.02,3.91,14.88,6.08,22.92,6.32C11.58,63.31,4.74,33.79,18.14,10.71c25.64,31.55,63.47,50.73,104.08,52.76c-4.07-17.54,1.49-35.92,14.61-48.25c20.34-19.12,52.33-18.14,71.45,2.19c11.31-2.23,22.15-6.38,32.07-12.26c-3.77,11.69-11.66,21.62-22.2,27.93c10.01-1.18,19.79-3.86,29-7.95C240.37,35.29,231.83,44.14,221.95,51.29z"
                       />
@@ -128,17 +128,17 @@
                 </div></a
               >
             </div>
-            <div id="shareFacebook">
-              <a id="shareFacebookA"><div>Facebookでシェア</div></a>
+            <div id="share-facebook">
+              <a id="share-facebookA"><div>Facebookでシェア</div></a>
             </div>
           </div>
-          <div id="gameClearButtons">
+          <div id="game-clear-buttons">
             <div>
-              <a id="nextStageButton2" style="display: none" class="button"
+              <a id="next-stage-button2" style="display: none" class="button"
                 ><div>次のステージ</div></a
               >
               <a
-                id="nextStageButton3"
+                id="next-stage-button3"
                 style="display: none"
                 href="./default_stage.html"
                 class="button"
@@ -146,26 +146,28 @@
               >
             </div>
             <div>
-              <a id="tryAgainButton" class="button"><div>もう一度</div></a>
+              <a id="try-again-button" class="button"><div>もう一度</div></a>
             </div>
           </div>
           <div>
-            <a id="ansButton" class="button" target="_blank"><div>解説</div></a>
+            <a id="ans-button" class="button" target="_blank"
+              ><div>解説</div></a
+            >
           </div>
         </div>
       </div>
-      <div id="gameOverDiv">
-        <div id="gameOverWrapper">
-          <div id="gameOverTitle">ゲーム<br />オーバー</div>
-          <div id="gameOverReasonWrapper">
-            <div id="gameOverReason"></div>
+      <div id="game-over-div">
+        <div id="game-over-wrapper">
+          <div id="game-over-title">ゲーム<br />オーバー</div>
+          <div id="game-over-reason-wrapper">
+            <div id="game-over-reason"></div>
           </div>
-          <div id="gameoverButtons">
+          <div id="game-over-buttons">
             <div>
-              <a id="tryAgainButton2" class="button"><div>もう一度</div></a>
+              <a id="try-again-button2" class="button"><div>もう一度</div></a>
             </div>
             <div>
-              <a id="ansButton2" class="button" target="_blank"
+              <a id="ans-button2" class="button" target="_blank"
                 ><div>解説</div></a
               >
             </div>

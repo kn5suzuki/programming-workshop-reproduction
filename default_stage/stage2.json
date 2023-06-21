@@ -371,7 +371,7 @@
   "teleportX": [],
   "teleportY": [],
   "teleportId": [],
-  "blocks": ["moveForward", "while", "turn", "ifelse", "check", "while_if"],
+  "blocks": ["moveForward", "while", "turn", "ifelse", "check", "whileIf"],
   "keyCount": 0,
   "clearLevel": {
     "star2": { "block": 8 },

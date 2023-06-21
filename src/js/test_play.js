@@ -2,22 +2,10 @@ import * as Blockly from "blockly/core";
 import Phaser from "phaser";
 require("./blocks.js");
 
-import {
-  stage_data,
-  player,
-  teleport_black,
-  teleport_white,
-} from "./build_map";
+import { stageData, player, teleportBlack, teleportWhite } from "./build_map";
 import { selectedBlocks } from "./select_blockly";
 
-//console.log("testPlay");
-
 //画像のインポート
-//import stageclear from '../game-img/stageclear2.png';
-//import nextstage from '../game-img/nextstage.png';
-//import nextstage2 from '../game-img/nextstage2.png';
-//import gototitle from '../game-img/title.png';
-//import gototitle2 from '../game-img/title-next.png';
 import player1 from "../img/game/player_l.png";
 import player2 from "../img/game/player2_l.png";
 //import star from '../img/game/star2.png';
@@ -57,7 +45,7 @@ var config = {
   type: Phaser.AUTO,
   width: 30 * 16,
   height: 30 * 20,
-  parent: "phaserDiv",
+  parent: "phaser-div",
   physics: {
     default: "arcade",
     arcade: {
@@ -79,7 +67,7 @@ var game;
 export let mapData = {
   width: 16,
   height: 20,
-  map: stage_data,
+  map: stageData,
   playerX: player.x,
   playerY: player.y,
   playerDirection: { d: 0, l: 1, r: 2, u: 3 }[player.dir],
@@ -92,7 +80,7 @@ export function startTestPlay() {
   mapData = {
     width: 16,
     height: 20,
-    map: stage_data,
+    map: stageData,
     playerX: player.x,
     playerY: player.y,
     playerDirection: { d: 0, l: 1, r: 2, u: 3 }[player.dir],
@@ -102,23 +90,23 @@ export function startTestPlay() {
     blocks: selectedBlocks,
   };
 
-  teleport_black.forEach((t, i) => {
+  teleportBlack.forEach((t, i) => {
     mapData.teleportX.push(t.x);
     mapData.teleportY.push(t.y);
-    mapData.teleportId.push((i + 1) % teleport_black.length);
+    mapData.teleportId.push((i + 1) % teleportBlack.length);
   });
-  teleport_white.forEach((t, i) => {
+  teleportWhite.forEach((t, i) => {
     mapData.teleportX.push(t.x);
     mapData.teleportY.push(t.y);
     mapData.teleportId.push(
-      teleport_black.length + ((i + 1) % teleport_white.length)
+      teleportBlack.length + ((i + 1) % teleportWhite.length)
     );
   });
 
   game = new Phaser.Game(config);
   game.scene.start("game", {
     mode: "testPlay",
-    stage_num: -1,
+    stageNum: -1,
     stageInfo: {},
     mapData: mapData,
     gameClearCallBack: gameClear,
@@ -128,7 +116,7 @@ export function startTestPlay() {
 export let clearBlocks;
 export let clearSteps;
 function gameClear(blocks, steps) {
-  document.getElementById("gameClear_next").style.display = "flex";
+  document.getElementById("game-clear-next").style.display = "flex";
   clearBlocks = blocks;
   clearSteps = steps;
 }

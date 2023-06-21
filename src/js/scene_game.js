@@ -3,7 +3,7 @@ const cloneDeep = require("lodash/cloneDeep");
 class SceneGame {
   init(data, t) {
     this.mode = data.mode;
-    this.stageNum = data.stage_num;
+    this.stageNum = data.stageNum;
     this.stageInfo = data.stageInfo;
     this.mapData = data.mapData;
     this.gameClearCallBack = data.gameClearCallBack;
@@ -122,8 +122,8 @@ class SceneGame {
       }
     }
 
-    if (this.mode == "default") this.stage_title = this.mapData.description;
-    else if (this.mode == "posted") this.stage_title = this.mapData.name;
+    if (this.mode == "default") this.stageTitle = this.mapData.description;
+    else if (this.mode == "posted") this.stageTitle = this.mapData.name;
     this.blockCount = 0;
     this.steps = 0;
 
@@ -212,20 +212,20 @@ class SceneGame {
     });
 
     //blocklyを設定
-    var blocklyDiv = document.getElementById("blocklyDiv");
-    this.workspace = this.Blockly.inject("blocklyDiv", options);
+    var blocklyDiv = document.getElementById("blockly-div");
+    this.workspace = this.Blockly.inject("blockly-div", options);
 
     this.teleportIndex = this.mapData.teleportId;
 
     if (this.mode == "default") {
       //ステージ番号・タイトル
       this.title = document.getElementById("title");
-      this.title.innerHTML = `ステージ${this.stageNum} 『 ${this.stage_title} 』`;
+      this.title.innerHTML = `ステージ${this.stageNum} 『 ${this.stageTitle} 』`;
 
       //注意書きを入れる
       var alert = document.getElementById("alert");
       if (this.mapData.alert) {
-        var alertBox = document.getElementById("alertBox");
+        var alertBox = document.getElementById("alert-box");
         alertBox.style.display = "flex";
         alert.innerHTML = this.mapData.alert;
       }
@@ -245,11 +245,11 @@ class SceneGame {
     } else if (this.mode == "posted") {
       //タイトル
       this.title = document.getElementById("title");
-      this.title.innerHTML = `ステージ『 ${this.stage_title} 』`;
+      this.title.innerHTML = `ステージ『 ${this.stageTitle} 』`;
     }
     //体力・ブロック数制限を記載
-    this.numEnergy = document.getElementById("numEnergy");
-    this.numFrame = document.getElementById("numFrame");
+    this.numEnergy = document.getElementById("num-energy");
+    this.numFrame = document.getElementById("num-frame");
     this.updateScoreBoard();
 
     //Blocklyのイベントハンドラ
@@ -262,37 +262,37 @@ class SceneGame {
     );
 
     //実行ボタンの設定
-    const executeButton = document.getElementById("executeButton");
+    const executeButton = document.getElementById("execute-button");
     executeButton.onclick = this.LoadBlocksAndGenerateCommand.bind(this);
 
     //プレイヤー変更ボタンの設定
-    const playerChangeButton = document.getElementById("playerChangeButton");
+    const playerChangeButton = document.getElementById("player-change-button");
     playerChangeButton.onclick = this.playerChange.bind(this);
 
     //リセットボタンの設定
-    const resetButton = document.getElementById("resetButton");
+    const resetButton = document.getElementById("reset-button");
     resetButton.onclick = this.resetCommand.bind(this);
 
     if (this.mode == "default") {
       //タイトルボタンの設定
-      const titleButton = document.getElementById("titleButton");
+      const titleButton = document.getElementById("title-button");
       const titleLink = "./default_stage.html";
       titleButton.setAttribute("href", titleLink);
     }
 
     //全消去ボタンの設定
-    const eraseButton = document.getElementById("eraseButton");
+    const eraseButton = document.getElementById("erase-button");
     eraseButton.onclick = this.eraseCommand.bind(this);
 
     //undo, redoボタンの設定
-    const undoButton = document.getElementById("undoButton");
+    const undoButton = document.getElementById("undo-button");
     undoButton.onclick = this.undoCommand.bind(this);
 
-    const redoButton = document.getElementById("redoButton");
+    const redoButton = document.getElementById("redo-button");
     redoButton.onclick = this.redoCommand.bind(this);
 
     //早送りボタンの設定
-    const speedupButton = document.getElementById("speedupToggle");
+    const speedupButton = document.getElementById("speedup-toggle");
     speedupButton.onclick = () => {
       this.toggleFastForward(speedupButton.checked);
     };
@@ -300,7 +300,7 @@ class SceneGame {
     //解説ボタンの設定
     if (this.mode == "default") {
       //解説ボタンの設定
-      const commentaryButton = document.getElementById("commentaryButton");
+      const commentaryButton = document.getElementById("commentary-button");
       commentaryButton.style.visibility = "visible";
       commentaryButton.setAttribute(
         "href",
@@ -310,21 +310,21 @@ class SceneGame {
 
     if (this.mode == "default") {
       //前のステージボタンの設定
-      let previous_stage_num = Number(this.stageNum) - 1;
-      if (previous_stage_num >= 0) {
-        let previous_stage_title =
-          this.stageInfo.stages[previous_stage_num].description;
+      let previousStageNum = Number(this.stageNum) - 1;
+      if (previousStageNum >= 0) {
+        let previousStageTitle =
+          this.stageInfo.stages[previousStageNum].description;
         const previousStageButton = document.getElementById(
-          "previousStageButton"
+          "previous-stage-button"
         );
         previousStageButton.setAttribute(
           "href",
-          "game_default.html?stage=" + previous_stage_num
+          "game_default.html?stage=" + previousStageNum
         );
-        previousStageButton.innerHTML = `前のステージ『 ${previous_stage_title} 』`;
+        previousStageButton.innerHTML = `前のステージ『 ${previousStageTitle} 』`;
       } else {
         const previousStageButton = document.getElementById(
-          "previousStageButton"
+          "previous-stage-button"
         );
         const previousLink = "./default_stage.html";
         previousStageButton.setAttribute("href", previousLink);
@@ -332,8 +332,8 @@ class SceneGame {
       }
 
       //次のステージボタンの設定
-      let next_stage_num = Number(this.stageNum) + 1;
-      if (next_stage_num < this.stageInfo.stages.length) {
+      let nextStageNum = Number(this.stageNum) + 1;
+      if (nextStageNum < this.stageInfo.stages.length) {
         let hardStage;
         for (let i = 0; i < this.stageInfo.stages.length; ++i) {
           if (this.stageInfo.stages.level == "hard") {
@@ -344,7 +344,7 @@ class SceneGame {
         if (this.stageNum == hardStage - 1) {
           let i;
           try {
-            const clearLevelJson = localStorage.getItem("clearLevel");
+            const clearLevelJson = localStorage.getItem("clear-level");
             const clearLevels = JSON.parse(clearLevelJson);
             for (i = 0; i < hardStage; ++i) {
               if (clearLevels[i] == -1) {
@@ -357,27 +357,27 @@ class SceneGame {
           }
 
           if (i == hardStage - 1) {
-            let next_stage_title =
-              this.stageInfo.stages[next_stage_num].description;
-            const nextStageButton = document.getElementById("nextStageButton");
+            let nextStageTitle =
+              this.stageInfo.stages[nextStageNum].description;
+            const nextStageButton =
+              document.getElementById("next-stage-button");
             nextStageButton.setAttribute(
               "href",
-              "game_default.html?stage=" + next_stage_num
+              "game_default.html?stage=" + nextStageNum
             );
-            nextStageButton.innerHTML = `次のステージ『 ${next_stage_title} 』`;
+            nextStageButton.innerHTML = `次のステージ『 ${nextStageTitle} 』`;
           }
         } else {
-          let next_stage_title =
-            this.stageInfo.stages[next_stage_num].description;
-          const nextStageButton = document.getElementById("nextStageButton");
+          let nextStageTitle = this.stageInfo.stages[nextStageNum].description;
+          const nextStageButton = document.getElementById("next-stage-button");
           nextStageButton.setAttribute(
             "href",
-            "game_default.html?stage=" + next_stage_num
+            "game_default.html?stage=" + nextStageNum
           );
-          nextStageButton.innerHTML = `次のステージ『 ${next_stage_title} 』`;
+          nextStageButton.innerHTML = `次のステージ『 ${nextStageTitle} 』`;
         }
       } else {
-        const nextStageButton = document.getElementById("nextStageButton");
+        const nextStageButton = document.getElementById("next-stage-button");
         const nextLink = "./default_stage.html";
         nextStageButton.setAttribute("href", nextLink);
         nextStageButton.innerHTML = "他のステージ";
@@ -501,7 +501,7 @@ class SceneGame {
     this.runCode(false);
   }
   //さまざまな関数
-  runCode(is_server) {
+  runCode(isServer) {
     if (!this.isRunning) {
       if (this.workspace) this.workspace.highlightBlock(false);
       return "end";
@@ -554,7 +554,7 @@ class SceneGame {
         this.getMap(this.player.gridX, this.player.gridY) ==
         this.tileName["goal"]
       ) {
-        if (!is_server) this.clearGame();
+        if (!isServer) this.clearGame();
         return "clear";
       }
 
@@ -581,12 +581,12 @@ class SceneGame {
     if (direction == 5) {
       return this.player.number;
     }
-    var player_direction = this.getDirection(player); ////0:right,1;left,2:up,3,downを返すように
+    var playerDirection = this.getDirection(player); ////0:right,1;left,2:up,3,downを返すように
     var dir = 0;
-    if (direction == 0) dir = [0, 1, 2, 3][player_direction]; //前
-    if (direction == 1) dir = [3, 2, 0, 1][player_direction]; //右
-    if (direction == 2) dir = [2, 3, 1, 0][player_direction]; //左
-    if (direction == 3) dir = [1, 0, 3, 2][player_direction]; //後ろ
+    if (direction == 0) dir = [0, 1, 2, 3][playerDirection]; //前
+    if (direction == 1) dir = [3, 2, 0, 1][playerDirection]; //右
+    if (direction == 2) dir = [2, 3, 1, 0][playerDirection]; //左
+    if (direction == 3) dir = [1, 0, 3, 2][playerDirection]; //後ろ
     if (direction == 4) dir = 4; //足元
     const dx = [1, -1, 0, 0, 0];
     const dy = [0, 0, -1, 1, 0];
@@ -781,7 +781,7 @@ class SceneGame {
     this.player.direction = newDir;
     if (player.setFrame) player.setFrame(newDir * 3 + 1);
   }
-  // can_teleportブロックのための関数
+  // canTeleportブロックのための関数
   canTeleport(color) {
     const tile = this.getMap(this.player.gridX, this.player.gridY);
     if (color == "black") return tile == this.tileName["teleport1"];
@@ -790,11 +790,11 @@ class SceneGame {
 
   clearGame() {
     if (this.mode == "default") {
-      this.clearGame_default();
+      this.clearGameDefault();
     } else if (this.mode == "posted") {
       this.clearGame_posted();
     } else if (this.mode == "testPlay") {
-      this.clearGame_testPlay();
+      this.clearGameTestPlay();
     }
   }
   clearGame_posted() {
@@ -805,11 +805,11 @@ class SceneGame {
         this.blocks,
         this.steps,
         blockCount,
-        this.stage_title,
+        this.stageTitle,
         this.mapData.submitter
       );
     try {
-      let clearPostedStage = localStorage.getItem("postedStage");
+      let clearPostedStage = localStorage.getItem("posted-stage");
       let fastClear = { steps: this.steps, blocks: blockCount }; // とりあえず最速と仮定して過去の記録と比較する
       let shortClear = { steps: this.steps, blocks: blockCount }; // とりあえず最短と仮定して過去の記録と比較する
 
@@ -826,7 +826,7 @@ class SceneGame {
             fastest.steps === this.steps &&
             fastest.blocks < blockCount
           ) {
-            fastClear = fasteset;
+            fastClear = fastest;
           }
           if (shortest.blocks < blockCount) {
             shortClear = shortest;
@@ -844,17 +844,17 @@ class SceneGame {
       // console.log(e);
     }
   }
-  clearGame_testPlay() {
+  clearGameTestPlay() {
     this.endRunning();
     if (this.gameClearCallBack) this.gameClearCallBack(this.blocks, this.steps);
   }
-  clearGame_default() {
+  clearGameDefault() {
     //console.log(this.stageNum);
     window.saveNum = -1;
     //console.log("goal");
     this.endRunning();
 
-    const stageClearStars = document.getElementById("stageClearStars");
+    const stageClearStars = document.getElementById("stage-clear-stars");
     stageClearStars.className = "";
 
     const blockNum = this.countBlocks();
@@ -921,18 +921,20 @@ class SceneGame {
     const twitterURL = `https://twitter.com/intent/tweet?text=${tweet}&url=${shareURL}`;
     const facebookURL = `http://www.facebook.com/share.php?u=${shareURL}`;
 
-    document.getElementById("shareTwitterA").setAttribute("href", twitterURL);
-    document.getElementById("shareFacebookA").setAttribute("href", facebookURL);
+    document.getElementById("share-twitterA").setAttribute("href", twitterURL);
+    document
+      .getElementById("share-facebookA")
+      .setAttribute("href", facebookURL);
 
     // 解説ボタン
-    const ansButton = document.getElementById("ansButton");
+    const ansButton = document.getElementById("ans-button");
     ansButton.setAttribute(
       "href",
       "./default_stage/commentary/stage" + this.stageNum + ".html"
     );
 
-    const nextStageButton2 = document.getElementById("nextStageButton2");
-    const nextStageButton3 = document.getElementById("nextStageButton3");
+    const nextStageButton2 = document.getElementById("next-stage-button2");
+    const nextStageButton3 = document.getElementById("next-stage-button3");
     //次のステージボタンの設定
     if (Number(this.stageNum) + 1 < this.stageInfo.stages.length) {
       window.saveNum = Number(this.stageNum) + 1;
@@ -946,14 +948,14 @@ class SceneGame {
     }
 
     //再挑戦ボタン
-    const tryAgainButton = document.getElementById("tryAgainButton");
+    const tryAgainButton = document.getElementById("try-again-button");
     tryAgainButton.onclick = () => {
       this.resetRunning();
-      document.getElementById("gameClearDiv").style.display = "none";
+      document.getElementById("game-clear-div").style.display = "none";
     };
 
     // ゲームクリア画面を表示
-    document.getElementById("gameClearDiv").style.display = "block";
+    document.getElementById("game-clear-div").style.display = "block";
   }
   gameOver(reason, withoutWait) {
     // １ステップだけ待つ
@@ -975,57 +977,57 @@ class SceneGame {
   }
   gameOverDefault(reason) {
     //説明
-    const gameOverReason = document.getElementById("gameOverReason");
+    const gameOverReason = document.getElementById("game-over-reason");
     gameOverReason.innerText = reason;
 
     // 解説ボタン
-    const ansButton = document.getElementById("ansButton2");
+    const ansButton = document.getElementById("ans-button2");
     ansButton.setAttribute(
       "href",
       "./default_stage/commentary/stage" + this.stageNum + ".html"
     );
 
     //再挑戦ボタン
-    const tryAgainButton = document.getElementById("tryAgainButton2");
+    const tryAgainButton = document.getElementById("try-again-button2");
     tryAgainButton.onclick = () => {
       this.resetRunning();
-      document.getElementById("gameOverDiv").style.display = "none";
+      document.getElementById("game-over-div").style.display = "none";
     };
 
     // ゲームオーバー画面を表示
-    const gameOverDiv = document.getElementById("gameOverDiv");
+    const gameOverDiv = document.getElementById("game-over-div");
     gameOverDiv.style.display = "block";
   }
   gameOverPosted(reason) {
     //説明
-    const gameOverReason = document.getElementById("gameOverReason");
+    const gameOverReason = document.getElementById("game-over-reason");
     gameOverReason.innerText = reason;
 
     //再挑戦ボタン
-    const tryAgainButton = document.getElementById("tryAgainButton2");
+    const tryAgainButton = document.getElementById("try-again-button2");
     tryAgainButton.onclick = () => {
       this.resetRunning();
       document.getElementById("gameOverDiv").style.display = "none";
     };
 
     // ゲームオーバー画面を表示
-    const gameOverDiv = document.getElementById("gameOverDiv");
+    const gameOverDiv = document.getElementById("game-over-div");
     gameOverDiv.style.display = "block";
   }
   gameOverTestPlay(reason) {
     //説明
-    const gameOverReason = document.getElementById("gameOverReason");
+    const gameOverReason = document.getElementById("game-over-reason");
     gameOverReason.innerText = reason;
 
     //再挑戦ボタン
-    const tryAgainButton = document.getElementById("tryAgainButton2");
+    const tryAgainButton = document.getElementById("try-again-button2");
     tryAgainButton.onclick = () => {
       this.resetRunning();
       document.getElementById("gameOverDiv").style.display = "none";
     };
 
     // ゲームオーバー画面を表示
-    const gameOverDiv = document.getElementById("gameOverDiv");
+    const gameOverDiv = document.getElementById("game-over-div");
     gameOverDiv.style.display = "block";
   }
   exitGameScene() {
@@ -1169,15 +1171,15 @@ class SceneGame {
     this.player.setAlpha(1);
 
     //ゲームクリア画面
-    const gameClearDiv = document.getElementById("gameClearDiv");
+    const gameClearDiv = document.getElementById("game-clear-div");
     if (gameClearDiv) gameClearDiv.style.display = "none";
 
     //ゲームオーバー画面
-    const gameOverDiv = document.getElementById("gameOverDiv");
+    const gameOverDiv = document.getElementById("game-over-div");
     if (gameOverDiv) gameOverDiv.style.display = "none";
 
     // 早送りボタン
-    const speedupButton = document.getElementById("speedupToggle");
+    const speedupButton = document.getElementById("speedup-toggle");
     this.toggleFastForward(speedupButton.checked);
   }
   playerChange() {
@@ -1197,12 +1199,12 @@ class SceneGame {
   }
 
   checkIf(player, direction, type) {
-    var player_direction = this.getDirection(player); ////0:right,1;left,2:up,3,downを返すように
+    var playerDirection = this.getDirection(player); ////0:right,1;left,2:up,3,downを返すように
     var dir = 0;
-    if (direction == 0) dir = [0, 1, 2, 3][player_direction]; //前
-    if (direction == 1) dir = [3, 2, 0, 1][player_direction]; //右
-    if (direction == 2) dir = [2, 3, 1, 0][player_direction]; //左
-    if (direction == 3) dir = [1, 0, 3, 2][player_direction]; //後ろ
+    if (direction == 0) dir = [0, 1, 2, 3][playerDirection]; //前
+    if (direction == 1) dir = [3, 2, 0, 1][playerDirection]; //右
+    if (direction == 2) dir = [2, 3, 1, 0][playerDirection]; //左
+    if (direction == 3) dir = [1, 0, 3, 2][playerDirection]; //後ろ
     if (direction == 4) dir = 4;
     if (dir != 4 && player.setFrame)
       player.setFrame(12 + [2, 1, 3, 0][dir] * 3);
@@ -1228,7 +1230,7 @@ class SceneGame {
     }
     return tile != null && tile == this.tileName[type];
   }
-  run_teleport() {
+  runTeleport() {
     //カス実装
     let x = this.player.gridX;
     let y = this.player.gridY;
@@ -1258,7 +1260,7 @@ class SceneGame {
       this.numFrame.innerHTML = `ブロック数: ${this.blockCount}`;
   }
   // Blocklyのブロックを再帰的に実行
-  *execute_block(block) {
+  *executeBlock(block) {
     if (!block || !block.id) return;
     let result = true;
     function* checkBlock(block) {
@@ -1277,11 +1279,11 @@ class SceneGame {
           result = this.checkIf(this.player, direction, thing);
           yield block.id;
           break;
-        case "check_path":
+        case "checkPath":
           result = this.checkIf(this.player, direction, "movable");
           yield block.id;
           break;
-        case "check_front":
+        case "checkFront":
           result = this.checkIf(this.player, 0, thing);
           yield block.id;
           break;
@@ -1322,7 +1324,7 @@ class SceneGame {
           }
           break;
         }
-        case "can_teleport":
+        case "canTeleport":
           yield block.id;
           result = this.canTeleport(place);
           break;
@@ -1347,7 +1349,7 @@ class SceneGame {
       block.inputs && block.inputs.ifTrue && block.inputs.ifTrue.block;
     const ifFalse =
       block.inputs && block.inputs.ifFalse && block.inputs.ifFalse.block;
-    const group_name = block.fields && block.fields.group_name;
+    const groupName = block.fields && block.fields.group_name;
     const cond1 =
       block.inputs && block.inputs.cond1 && block.inputs.cond1.block;
     const cond2 =
@@ -1372,7 +1374,7 @@ class SceneGame {
       case "while":
         while (true) {
           yield block.id;
-          if (childBlock) yield* this.execute_block(childBlock);
+          if (childBlock) yield* this.executeBlock(childBlock);
         }
         break;
       case "remove":
@@ -1385,7 +1387,7 @@ class SceneGame {
           yield* checkBlock.bind(this, condition)();
         }
         if (result) {
-          if (ifTrue) yield* this.execute_block(ifTrue);
+          if (ifTrue) yield* this.executeBlock(ifTrue);
         }
         break;
       case "ifelse":
@@ -1394,36 +1396,36 @@ class SceneGame {
           yield* checkBlock.bind(this, condition)();
         }
         if (result) {
-          if (ifTrue) yield* this.execute_block(ifTrue);
+          if (ifTrue) yield* this.executeBlock(ifTrue);
         } else {
-          if (ifFalse) yield* this.execute_block(ifFalse);
+          if (ifFalse) yield* this.executeBlock(ifFalse);
         }
         break;
       case "grouping":
         yield block.id;
-        this.funcs[group_name] = block;
+        this.funcs[groupName] = block;
         break;
       case "callGroup":
         yield block.id;
-        if (!this.funcs[group_name]) {
+        if (!this.funcs[groupName]) {
           this.gameOver(
-            group_name +
+            groupName +
               "という名前のブロックはありません。「ていぎ」のブロックは、「実行」の前に必要です。",
             true
           );
           break;
         }
-        yield this.funcs[group_name].id;
+        yield this.funcs[groupName].id;
 
-        let group_code =
-          this.funcs[group_name].inputs &&
-          this.funcs[group_name].inputs.group_code &&
-          this.funcs[group_name].inputs.group_code.block;
-        if (group_code) {
-          yield* this.execute_block(group_code);
+        let groupCode =
+          this.funcs[groupName].inputs &&
+          this.funcs[groupName].inputs.group_code &&
+          this.funcs[groupName].inputs.group_code.block;
+        if (groupCode) {
+          yield* this.executeBlock(groupCode);
         }
         break;
-      case "if_and":
+      case "ifAnd":
         yield block.id;
         if (cond1) {
           yield* checkBlock.bind(this, cond1)();
@@ -1432,12 +1434,12 @@ class SceneGame {
           yield* checkBlock.bind(this, cond2)();
         }
         if (result) {
-          if (ifTrue) yield* this.execute_block(ifTrue);
+          if (ifTrue) yield* this.executeBlock(ifTrue);
         } else {
-          if (ifFalse) yield* this.execute_block(ifFalse);
+          if (ifFalse) yield* this.executeBlock(ifFalse);
         }
         break;
-      case "if_or":
+      case "ifOr":
         yield block.id;
         if (cond1) {
           yield* checkBlock.bind(this, cond1)();
@@ -1446,23 +1448,23 @@ class SceneGame {
           yield* checkBlock.bind(this, cond2)();
         }
         if (result) {
-          if (ifTrue) yield* this.execute_block(ifTrue);
+          if (ifTrue) yield* this.executeBlock(ifTrue);
         } else {
-          if (ifFalse) yield* this.execute_block(ifFalse);
+          if (ifFalse) yield* this.executeBlock(ifFalse);
         }
         break;
       case "teleportation":
-        this.run_teleport();
+        this.runTeleport();
         yield block.id;
         break;
 
-      case "while_if":
+      case "whileIf":
         yield block.id;
         if (condition) {
           yield* checkBlock.bind(this, condition)();
         }
         while (result) {
-          if (childBlock) yield* this.execute_block(childBlock);
+          if (childBlock) yield* this.executeBlock(childBlock);
           yield block.id;
           if (condition) {
             yield* checkBlock.bind(this, condition)();
@@ -1490,7 +1492,7 @@ class SceneGame {
         console.error("unknown block", block);
     }
     if (block.next) {
-      yield* this.execute_block(block.next.block);
+      yield* this.executeBlock(block.next.block);
     }
   }
 
@@ -1499,16 +1501,16 @@ class SceneGame {
     //console.log(this.blocks.blocks.blocks);
     this.commandGenerator = function* () {
       for (let i = 0; i < this.blocks.blocks.blocks.length; ++i)
-        yield* this.execute_block(this.blocks.blocks.blocks[i]);
+        yield* this.executeBlock(this.blocks.blocks.blocks[i]);
     }.bind(this)();
     if (!this.isRunning) this.isRunning = true;
   }
 
-  count_block(block) {
+  countBlock(block) {
     let count = 0;
     for (let k in block) {
       if (typeof block[k] === "object") {
-        count += this.count_block(block[k]);
+        count += this.countBlock(block[k]);
       } else if (k == "id") count += 1;
     }
     return count;
@@ -1519,7 +1521,7 @@ class SceneGame {
       return null;
     let count = 0;
     for (let i = 0; i < this.blocks.blocks.blocks.length; ++i)
-      count += this.count_block(this.blocks.blocks.blocks[i]);
+      count += this.countBlock(this.blocks.blocks.blocks[i]);
     return count;
   }
 
@@ -1527,12 +1529,12 @@ class SceneGame {
     if (!blocks || !blocks.blocks || !blocks.blocks.blocks) return 0;
     let count = 0;
     for (let i = 0; i < blocks.blocks.blocks.length; ++i)
-      count += this.count_block(blocks.blocks.blocks[i]);
+      count += this.countBlock(blocks.blocks.blocks[i]);
     return count;
   }
 
   // サーバー上でクリアチェックをする
-  run_check(blocks, steps) {
+  runCheck(blocks, steps) {
     this.blocks = blocks;
     this.preloadServer();
     this.resetRunningServer();

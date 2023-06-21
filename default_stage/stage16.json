@@ -378,8 +378,8 @@
     "turn",
     "if",
     "check",
-    "while_if",
-    "can_teleport",
+    "whileIf",
+    "canTeleport",
     "teleportation"
   ],
   "keyCount": 0,

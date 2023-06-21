@@ -374,10 +374,10 @@
   "blocks": [
     "moveForward",
     "while",
-    "while_if",
+    "whileIf",
     "ifelse",
     "check",
-    "can_teleport",
+    "canTeleport",
     "teleportation"
   ],
   "keyCount": 0,

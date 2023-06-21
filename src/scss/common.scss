@@ -1,9 +1,9 @@
 @charset "UTF-8";
 // $bg_color: rgb(12, 39, 53);
-$bg_color: rgb(255, 255, 255);
+$bg-color: rgb(255, 255, 255);
 
 body {
-  background-color: $bg_color;
+  background-color: $bg-color;
   // color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
   font-family: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴ Pro",
@@ -35,15 +35,15 @@ a {
 }
 
 // $btn_color: rgb(255, 255, 255);
-$btn_color: rgb(0, 0, 0);
+$btn-color: rgb(0, 0, 0);
 
-.std_btn {
+.std-btn {
   // aの中のdivに対して適用する。ボタンの中をdivで囲うことで、中で改行が起こっても変にならないようにする
   padding: 1rem;
   background-color: white;
   border-radius: 1rem 1rem;
-  color: $btn_color;
-  border-color: $btn_color;
+  color: $btn-color;
+  border-color: $btn-color;
   border-style: solid;
   // line-height: 5rem;
   display: inline-block;
@@ -51,7 +51,7 @@ $btn_color: rgb(0, 0, 0);
   cursor: pointer;
 
   &:hover {
-    background-color: $btn_color;
-    color: $bg_color;
+    background-color: $btn-color;
+    color: $bg-color;
   }
 }

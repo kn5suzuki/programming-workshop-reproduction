@@ -23,7 +23,7 @@ body {
     Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-#gameWrapper {
+#game-wrapper {
   display: grid;
   grid-template-columns: 480px 1fr;
   grid-template-rows: 60px 600px 110px;
@@ -31,7 +31,7 @@ body {
   width: 100vw;
 }
 
-#phaserDiv {
+#phaser-div {
   /* position: absolute;
   left: 10px;
   top: 10px; */
@@ -45,14 +45,14 @@ body {
   height: 600px;
 }
 
-#phaserDiv > canvas {
+#phaser-div > canvas {
   width: 100%;
   height: 100%;
   margin: 0;
   border: 0;
 }
 
-#blocklyDiv {
+#blockly-div {
   /* position: absolute;
   left: 490px;
   top: 10px;
@@ -63,7 +63,7 @@ body {
   grid-row: 2;
   box-shadow: 1px -1px 2px rgba(0, 0, 0, 0.22);
 }
-#ButtonDiv {
+#button-div {
   /* position: absolute;
   left: 10px;
   top: 610px;
@@ -83,7 +83,7 @@ body {
   /* box-shadow: -1px 3px 5px rgba(0, 0, 0, 0.22); */
 }
 
-#executeButton {
+#execute-button {
   grid-column: 3;
   grid-row: 1;
   z-index: 1;
@@ -126,7 +126,7 @@ body {
   opacity: 0.7;
 }
 
-#playerChangeButton {
+#player-change-button {
   grid-column: 1;
   grid-row: 1;
   z-index: 1;
@@ -136,7 +136,7 @@ body {
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 }
 
-.playerChange_btn {
+.player-change-btn {
   /* grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 1;
@@ -149,7 +149,7 @@ body {
   text-decoration: none;
   background-image: url(../img/game/changeplayer.png);
 }
-.playerChange_btn:hover {
+.player-change-btn:hover {
   background-image: url(../img/game/changeplayer2.png);
   cursor: pointer;
   text-decoration: none;
@@ -159,11 +159,11 @@ body {
   transform: scale(1.05, 1.05);
 }
 
-#commentaryButton {
+#commentary-button {
   visibility: hidden;
 }
 
-#resetButton {
+#reset-button {
   /* padding: 10px; */
   grid-column: 4;
   grid-row: 1;
@@ -242,7 +242,7 @@ body {
   transform: scale(1.05, 1.05);
   opacity: 1;
 }
-#meterBox {
+#meter-box {
   grid-column: 2;
   grid-row: 3;
   z-index: 1;
@@ -252,7 +252,7 @@ body {
   direction: rtl;
   grid-template-columns: 267px 225px repeat(auto-fit, minmax(150px, 1fr));
 }
-.meterChildBox {
+.meter-child-box {
   background-color: #dcdcdc;
   flex-direction: column;
   display: flex;
@@ -264,12 +264,10 @@ body {
   padding-right: 0.5em;
   direction: ltr;
 }
-#meter.meterChildBox {
-}
-.meterChildBox > div {
+.meter-child-box > div {
   text-align: center;
 }
-#numEnergy {
+#num-energy {
   /* grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 1;
@@ -277,7 +275,7 @@ body {
   z-index: 1;
   color: #000000;
 }
-#numFrame {
+#num-frame {
   /* grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 2;
@@ -285,8 +283,7 @@ body {
   z-index: 1;
   color: #000000;
 }
-#clearCondition {
-}
+
 #level1 {
   /* grid-column-start: 2;
   grid-column-end: 3;
@@ -305,7 +302,7 @@ body {
   z-index: 1;
   color: #000000;
 }
-#alertBox {
+#alert-box {
   text-align: center;
   vertical-align: middle;
   z-index: 1;
@@ -326,7 +323,7 @@ p#alert {
   font-weight: bold;
   min-width: 60px;
 }
-#speedupButton {
+#speedup-button {
   position: relative;
   align-self: center;
   justify-self: center;
@@ -335,7 +332,7 @@ p#alert {
   grid-row: 1;
   z-index: 1;
 }
-.speedupToggle-input {
+.speedup-toggle-input {
   position: absolute;
   left: 0;
   top: 0;
@@ -346,7 +343,7 @@ p#alert {
   cursor: pointer;
 }
 
-.speedupToggle-label {
+.speedup-toggle-label {
   width: 75px;
   height: 42px;
   background: #ccc;
@@ -357,10 +354,10 @@ p#alert {
   box-sizing: border-box;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22) inset;
 }
-.speedupToggle-label:hover {
+.speedup-toggle-label:hover {
   cursor: pointer;
 }
-.speedupToggle-label:after {
+.speedup-toggle-label:after {
   content: "";
   position: absolute;
   width: 42px;
@@ -374,21 +371,21 @@ p#alert {
   transition: 0.4s;
 }
 
-.speedupToggle-input:checked + .speedupToggle-label {
+.speedup-toggle-input:checked + .speedup-toggle-label {
   background-color: #4bd865;
 }
-.speedupToggle-input:checked + .speedupToggle-label:after {
+.speedup-toggle-input:checked + .speedup-toggle-label:after {
   left: 40px;
 }
 
-.speedupToggle-switch {
+.speedup-toggle-switch {
   position: relative;
   width: 75px;
   height: 42px;
   margin: auto;
 }
 
-#ButtonDiv2 {
+#button-div2 {
   grid-column: 2;
   grid-row: 2;
   display: grid;
@@ -396,7 +393,7 @@ p#alert {
   grid-template-rows: repeat(4, 0.8fr) 1fr;
 }
 
-#gameClearDiv {
+#game-clear-div {
   grid-column: 1;
   grid-row: 2;
   z-index: 1;
@@ -404,22 +401,22 @@ p#alert {
   display: none;
 }
 
-#gameClearWrapper {
+#game-clear-wrapper {
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: 50% 20% 15% 15%;
   width: 100%;
   height: 100%;
 }
-#stageClear2 {
+#stage-clear2 {
   grid-row: 1;
   width: 80%;
   margin: 0 auto;
 }
-#stageClear2 img {
+#stage-clear2 img {
   width: 100%;
 }
-#stageClearStars {
+#stage-clear-stars {
   grid-row: 2;
   position: relative;
 }
@@ -444,22 +441,22 @@ p#alert {
   width: 20%;
   display: none;
 }
-#stageClearStars.star1 #star1 {
+#stage-clear-stars.star1 #star1 {
   display: block;
 }
-#stageClearStars.star2 #star2 {
+#stage-clear-stars.star2 #star2 {
   display: block;
 }
-#stageClearStars.star3 #star3 {
+#stage-clear-stars.star3 #star3 {
   display: block;
 }
-#shareTwitter {
+#share-twitter {
   position: absolute;
   left: 65%;
   top: 20%;
   width: fit-content;
 }
-#shareTwitter > a > div {
+#share-twitter > a > div {
   background-color: rgb(29, 161, 242);
   color: white;
   border-radius: 6px;
@@ -470,18 +467,18 @@ p#alert {
   width: 112px;
   box-sizing: border-box;
 }
-#shareTwitter > a > div > svg {
+#share-twitter > a > div > svg {
   width: 18px;
   margin: 5px 8px;
   vertical-align: middle;
 }
-#shareFacebook {
+#share-facebook {
   position: absolute;
   left: 65%;
   top: 60%;
   width: fit-content;
 }
-#shareFacebook > a > div {
+#share-facebook > a > div {
   background-color: rgb(24, 119, 242);
   color: white;
   border-radius: 6px;
@@ -500,14 +497,14 @@ a {
 a:visited {
   color: unset;
 }
-#gameClearDiv img {
+#game-clear-div img {
   image-rendering: pixelated;
 }
-#gameClearButtons {
+#game-clear-buttons {
   display: grid;
   grid-template-columns: 50% 50%;
 }
-#gameClearButtons > div {
+#game-clear-buttons > div {
   width: 100%;
 }
 .button {
@@ -530,7 +527,7 @@ a:visited {
   transform: scale(1.1);
 }
 
-#gameOverDiv {
+#game-over-div {
   grid-column: 1;
   grid-row: 2;
   z-index: 3;
@@ -538,21 +535,21 @@ a:visited {
   display: none;
 }
 
-#gameOverWrapper {
+#game-over-wrapper {
   display: grid;
   width: 100%;
   height: 100%;
   grid-template-columns: 100%;
   grid-template-rows: 50% 30% 20%;
 }
-#gameOverTitle {
+#game-over-title {
   font-size: 5rem;
   font-weight: 900;
   color: white;
   text-align: center;
   text-shadow: 2px 4px #4bd865;
 }
-#gameOverReason {
+#game-over-reason {
   background-color: #5ff079;
   width: 70%;
   margin: 0 auto;
@@ -560,42 +557,42 @@ a:visited {
   border-top: solid 2px #ffffff;
   border-bottom: solid 2px #ffffff;
 }
-#gameoverButtons {
+#game-over-buttons {
   display: grid;
   grid-template-columns: 50% 50%;
 }
 /*縦に入りきらない場合*/
 @media (max-height: 780px) {
-  #gameWrapper {
+  #game-wrapper {
     grid-template-rows: 60px calc(100vh - 60px);
     grid-template-columns: 120px calc((100vh - 60px) * 4 / 5) auto 150px;
   }
-  #blocklyDiv {
+  #blockly-div {
     grid-column: 3;
     grid-row: 2;
   }
-  #ButtonDiv2 {
+  #button-div2 {
     grid-column: 3;
     grid-row: 2;
   }
 
-  #phaserDiv {
+  #phaser-div {
     width: 100%;
     height: 100%;
     grid-column: 2;
     grid-row: 2;
   }
-  #phaserDiv > canvas {
+  #phaser-div > canvas {
     width: 100%;
     height: 100%;
   }
-  #ButtonDiv {
+  #button-div {
     grid-column: 1;
     grid-row: 2;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(4, 1fr);
   }
-  #meterBox {
+  #meter-box {
     grid-column: 4;
     grid-row: 2;
 
@@ -603,50 +600,50 @@ a:visited {
     grid-template-rows: auto auto auto;
   }
 
-  #playerChangeButton {
+  #player-change-button {
     grid-column: 1;
     grid-row: 1;
   }
 
-  #executeButton {
+  #execute-button {
     grid-column: 1;
     grid-row: 3;
   }
 
-  #resetButton {
+  #reset-button {
     grid-column: 1;
     grid-row: 4;
   }
-  #speedupButton {
+  #speedup-button {
     grid-column: 1;
     grid-row: 2;
   }
-  #alertBox {
+  #alert-box {
     grid-column: 1;
     height: 100%;
     box-sizing: border-box;
   }
-  .meterChildBox {
+  .meter-child-box {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     margin: 0;
   }
-  #ButtonDiv > div > div,
-  #ButtonDiv > div > p {
+  #button-div > div > div,
+  #button-div > div > p {
     display: inline-block;
   }
 
-  #gameClearDiv {
+  #game-clear-div {
     grid-column: 2;
     grid-row: 2;
   }
 
-  #gameOverDiv {
+  #game-over-div {
     grid-column: 2;
     grid-row: 2;
   }
 }
-#undoButton {
+#undo-button {
   align-self: center;
   justify-self: center;
 
@@ -655,7 +652,7 @@ a:visited {
   z-index: 1;
 }
 
-.undo_btn:hover {
+.undo-btn:hover {
   cursor: pointer;
   text-decoration: none;
   text-align: center;
@@ -664,7 +661,7 @@ a:visited {
   transform: scale(1.1, 1.1);
   opacity: 0.7;
 }
-.undo_btn {
+.undo-btn {
   font-size: 25px;
   position: relative;
   margin: 0 auto 0;
@@ -679,7 +676,7 @@ a:visited {
   background: rgba(255, 255, 255, 0);
   transform: rotate(45deg);
 }
-.undo_btn::before {
+.undo-btn::before {
   content: "";
   position: absolute;
   top: 0.02em;
@@ -692,7 +689,7 @@ a:visited {
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
-#redoButton {
+#redo-button {
   align-self: center;
   justify-self: center;
 
@@ -702,7 +699,7 @@ a:visited {
   z-index: 1;
 }
 
-.redo_btn:hover {
+.redo-btn:hover {
   cursor: pointer;
   text-decoration: none;
   text-align: center;
@@ -711,7 +708,7 @@ a:visited {
   transform: scale(1.1, 1.1);
   opacity: 0.7;
 }
-.redo_btn {
+.redo-btn {
   font-size: 25px;
   position: relative;
   margin: 0 auto 0;
@@ -726,7 +723,7 @@ a:visited {
   background: rgba(255, 255, 255, 0);
   transform: rotate(-45deg);
 }
-.redo_btn::before {
+.redo-btn::before {
   content: "";
   position: absolute;
   top: 0.02em;
@@ -740,7 +737,7 @@ a:visited {
   transform: rotate(45deg);
 }
 
-#eraseButton {
+#erase-button {
   align-self: center;
   justify-self: center;
   vertical-align: middle;
@@ -954,27 +951,27 @@ li#title {
   text-align: center;
 }
 
-.buttonText {
+.button-text {
   line-height: 0em;
 }
 
 canvas {
   image-rendering: pixelated;
 }
-.blocklyButtonText {
+.blockly-button-text {
   font-size: 10px;
   line-height: 0em;
   transform: none;
 }
 
-.meterTitleText {
+.meter-title-text {
   font-weight: bold;
   font-size: 16px;
   text-align: center;
   margin: 0;
 }
 
-.headerButton {
+.header-button {
   width: fit-content;
   border: 1px solid rgba(0, 0, 0, 0.2);
   box-shadow: 1px 2px rgba(0, 0, 0, 0.2);
@@ -983,10 +980,10 @@ canvas {
   color: #fff;
   position: relative;
 }
-.headerButton a {
+.header-button a {
   color: #fff;
 }
-.headerButton:active {
+.header-button:active {
   left: 1px;
   top: 2px;
   box-shadow: none;

@@ -21,7 +21,7 @@ var config = {
   type: Phaser.AUTO,
   width: 30 * 16,
   height: 30 * 20,
-  parent: "phaserDiv",
+  parent: "phaser-div",
   physics: {
     default: "arcade",
     arcade: {

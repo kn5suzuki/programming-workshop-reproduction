@@ -1,24 +1,24 @@
-$bg_color: rgb(255, 255, 255);
+$bg-color: rgb(255, 255, 255);
 // $bg_color: rgb(255, 255, 255);
-$bg_color2: rgb(0, 0, 0);
+$bg-color2: rgb(0, 0, 0);
 // $bg_color2: rgb(62, 62, 62);
 $easy: rgb(50, 90, 180);
-$easy_hover: rgb(31, 54, 109);
+$easy-hover: rgb(31, 54, 109);
 $normal: rgb(120, 190, 40);
-$normal_hover: rgb(64, 101, 21);
+$normal-hover: rgb(64, 101, 21);
 $hard: rgb(240, 70, 20);
-$hard_hover: rgb(111, 33, 9);
+$hard-hover: rgb(111, 33, 9);
 
 body {
-  background-color: $bg_color;
+  background-color: $bg-color;
   // color: black;
-  color: $bg_color2;
+  color: $bg-color2;
   font-size: 1.4rem;
 }
 
 body.commentary {
-  background-color: $bg_color2;
-  color: $bg_color;
+  background-color: $bg-color2;
+  color: $bg-color;
 }
 
 h1 {
@@ -53,7 +53,7 @@ h2 {
       margin-left: 1rem;
 
       a {
-        color: $bg_color;
+        color: $bg-color;
         padding: 0.5rem;
         border-radius: 1rem 1rem;
         margin: 0;
@@ -67,7 +67,7 @@ h2 {
         }
 
         @at-root .commentary & {
-          color: $bg_color2;
+          color: $bg-color2;
           box-shadow: 2px 3px rgba(255, 255, 255, 0.4);
         }
       }
@@ -128,7 +128,7 @@ h2 {
   background-color: $easy;
 
   &:hover {
-    background-color: $easy_hover;
+    background-color: $easy-hover;
   }
 }
 
@@ -136,7 +136,7 @@ h2 {
   background-color: $normal;
 
   &:hover {
-    background-color: $normal_hover;
+    background-color: $normal-hover;
   }
 }
 
@@ -144,7 +144,7 @@ h2 {
   background-color: $hard;
 
   &:hover {
-    background-color: $hard_hover;
+    background-color: $hard-hover;
   }
 }
 
@@ -216,15 +216,15 @@ body .record-delete {
   display: none;
 }
 
-$btn_color: black;
-$btn_color2: white;
+$btn-color: black;
+$btn-color2: white;
 .btn {
   // aの中のdivに対して適用する。ボタンの中をdivで囲うことで、中で改行が起こっても変にならないようにする
   padding: 1rem;
-  background-color: $btn_color2;
+  background-color: $btn-color2;
   border-radius: 1rem 1rem;
-  color: $btn_color;
-  border-color: $btn_color;
+  color: $btn-color;
+  border-color: $btn-color;
   border-style: solid;
   // line-height: 5rem;
   display: inline-block;
@@ -232,38 +232,38 @@ $btn_color2: white;
   cursor: pointer;
 
   &:hover {
-    background-color: $btn_color;
-    color: $bg_color;
+    background-color: $btn-color;
+    color: $bg-color;
   }
 
   @at-root .commentary & {
-    color: $btn_color2;
-    border-color: $btn_color2;
-    background-color: $btn_color;
+    color: $btn-color2;
+    border-color: $btn-color2;
+    background-color: $btn-color;
     &:hover {
-      background-color: $btn_color2;
-      color: $bg_color2;
+      background-color: $btn-color2;
+      color: $bg-color2;
     }
   }
 }
 
 #tab1 {
-  background-color: $bg_color;
+  background-color: $bg-color;
   color: rgb(0, 0, 0);
 }
 #tab2 {
-  background-color: $bg_color2;
+  background-color: $bg-color2;
   color: rgb(255, 255, 255);
 }
 
-#hideHard {
+#hide-hard {
   display: none;
 }
 #hard.hidden {
   position: relative;
   width: 100%;
   height: fit-content;
-  #hideHard {
+  #hide-hard {
     display: block;
     position: absolute;
     width: 100%;

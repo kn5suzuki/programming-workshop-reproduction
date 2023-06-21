@@ -12,7 +12,7 @@ let mode = 0;
 
 const setClass = {
   0: () => {
-    main.className = "buildMap";
+    main.className = "build-map";
     if (mode == 2) destroy();
     mode = 0;
   },
@@ -20,7 +20,7 @@ const setClass = {
     if (mode == 0 && !checkMap()) {
       return;
     }
-    main.className = "selectBlockly";
+    main.className = "select-blockly";
     if (mode == 2) destroy();
     mode = 1;
   },
@@ -28,8 +28,8 @@ const setClass = {
     if (mode == 0 && !checkMap()) {
       return;
     }
-    main.className = "testPlay";
-    document.getElementById("gameClear_next").style.display = "none";
+    main.className = "test-play";
+    document.getElementById("game-clear-next").style.display = "none";
     startTestPlay();
     mode = 2;
   },
@@ -37,8 +37,8 @@ const setClass = {
     if (mode == 0 && !checkMap()) {
       return;
     }
-    main.className = "postStage";
-    document.getElementById("postStageConfirm").style.display = "none";
+    main.className = "post-stage";
+    document.getElementById("post-stage-confirm").style.display = "none";
     if (mode == 2) destroy();
     mode = 3;
   },
@@ -80,26 +80,26 @@ const setClassAndNav = [
 ];
 
 document
-  .getElementById("buildMap_next")
+  .getElementById("build-map-next")
   .addEventListener("click", setClassAndNav[1]);
 document
-  .getElementById("selectBlockly_prev")
+  .getElementById("select-blockly-prev")
   .addEventListener("click", setClassAndNav[0]);
 document
-  .getElementById("selectBlockly_next")
+  .getElementById("select-blockly-next")
   .addEventListener("click", setClassAndNav[2]);
 document
-  .getElementById("testPlay_prev")
+  .getElementById("test-play-prev")
   .addEventListener("click", setClassAndNav[1]);
 document
-  .getElementById("testPlay_prev2")
+  .getElementById("test-play-prev2")
   .addEventListener("click", setClassAndNav[1]);
 document
-  .getElementById("testPlay_prev3")
+  .getElementById("test-play-prev3")
   .addEventListener("click", setClassAndNav[1]);
 document
-  .getElementById("testPlay_next")
+  .getElementById("test-play-next")
   .addEventListener("click", setClassAndNav[3]);
 document
-  .getElementById("postStage_prev")
+  .getElementById("post-stage-prev")
   .addEventListener("click", setClassAndNav[2]);
