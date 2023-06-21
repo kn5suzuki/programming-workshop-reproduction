@@ -22,7 +22,7 @@ request.addEventListener("load", () => {
         imgAndDesc: document.createElement("div"),
         thumbnail: document.createElement("div"),
         thumbnailImg: document.createElement("canvas"),
-        descAndSubm: document.createElement("div"),
+        descAndSubmit: document.createElement("div"),
         description: document.createElement("div"),
         submitter: document.createElement("div"),
         detail: document.createElement("div"),
@@ -33,7 +33,7 @@ request.addEventListener("load", () => {
         clearAndLike: document.createElement("div"),
         context: undefined,
       };
-      const containerelem = document.getElementById("container");
+      const containerElem = document.getElementById("container");
       cons[i].imgAndDesc.classList.add("imgAndDesc");
       cons[i].thumbnail.classList.add("thumbnail");
       cons[i].thumbnailImg.setAttribute("width", "480");
@@ -41,14 +41,14 @@ request.addEventListener("load", () => {
       cons[i].context = cons[i].thumbnailImg.getContext("2d");
       cons[i].imgAndDesc.appendChild(cons[i].thumbnail);
       cons[i].thumbnail.appendChild(cons[i].thumbnailImg);
-      cons[i].descAndSubm.classList.add("descAndSubm");
-      cons[i].imgAndDesc.appendChild(cons[i].descAndSubm);
+      cons[i].descAndSubmit.classList.add("descAndSubmit");
+      cons[i].imgAndDesc.appendChild(cons[i].descAndSubmit);
       cons[i].name.classList.add("name");
-      cons[i].descAndSubm.appendChild(cons[i].name);
+      cons[i].descAndSubmit.appendChild(cons[i].name);
       cons[i].submitter.classList.add("submitter");
-      cons[i].descAndSubm.appendChild(cons[i].submitter);
+      cons[i].descAndSubmit.appendChild(cons[i].submitter);
       cons[i].description.classList.add("description");
-      cons[i].descAndSubm.appendChild(cons[i].description);
+      cons[i].descAndSubmit.appendChild(cons[i].description);
       cons[i].container.appendChild(cons[i].imgAndDesc);
       cons[i].detail.classList.add("detail");
       cons[i].shortest.classList.add("shortest");
@@ -65,7 +65,7 @@ request.addEventListener("load", () => {
       cons[i].a.appendChild(cons[i].container);
       cons[i].a.classList.add("a");
       cons[i].a.appendChild(cons[i].aLink);
-      containerelem.appendChild(cons[i].a);
+      containerElem.appendChild(cons[i].a);
     }
 
     function drawStage(context, map) {
@@ -129,32 +129,32 @@ request.addEventListener("load", () => {
         }
 
         if (isCleared) {
-          cons[i].container.className = "bigstar";
+          cons[i].container.className = "bigStar";
           const fastest = stage.fastest;
           const shortest = stage.shortest;
           const fastClear = clearPostedStage[index].fast;
           const shortClear = clearPostedStage[index].short;
 
           if (fastest.steps > fastClear.steps) {
-            cons[i].fastest.classList.add("smallstar");
+            cons[i].fastest.classList.add("smallStar");
           } else if (
             fastest.steps === fastClear.steps &&
             fastest.blocks >= fastClear.blocks
           ) {
-            cons[i].fastest.classList.add("smallstar");
+            cons[i].fastest.classList.add("smallStar");
           }
           if (shortest.blocks > shortClear.blocks) {
-            cons[i].shortest.classList.add("smallstar");
+            cons[i].shortest.classList.add("smallStar");
           } else if (
             shortest.blocks === shortClear.blocks &&
             shortest.steps >= shortClear.steps
           ) {
-            cons[i].shortest.classList.add("smallstar");
+            cons[i].shortest.classList.add("smallStar");
           }
         } else {
           cons[i].container.className = "";
-          cons[i].shortest.classList.remove("smallstar");
-          cons[i].fastest.classList.remove("smallstar");
+          cons[i].shortest.classList.remove("smallStar");
+          cons[i].fastest.classList.remove("smallStar");
         }
       } catch (e) {
         document
@@ -219,12 +219,12 @@ request.addEventListener("load", () => {
       else cons[i].like.classList.remove("liked");
     }
     let stages = new Array();
-    const stageinfo = request.response;
-    Object.keys(stageinfo["stages"]).forEach((index) => {
-      if (stageinfo["stages"][index] && !stageinfo["stages"][index].deleted)
+    const stageInfo = request.response;
+    Object.keys(stageInfo["stages"]).forEach((index) => {
+      if (stageInfo["stages"][index] && !stageInfo["stages"][index].deleted)
         stages.push({
           index: index,
-          stage: stageinfo["stages"][index],
+          stage: stageInfo["stages"][index],
         });
     });
     const count = stages.length;
@@ -256,7 +256,7 @@ request.addEventListener("load", () => {
 
     let order = randomOrder;
 
-    const pagenum = Math.ceil(count / 6);
+    const pageNum = Math.ceil(count / 6);
     let page = 0;
     const to_prev = document.getElementById("to_prev");
     const to_next = document.getElementById("to_next");
@@ -267,8 +267,8 @@ request.addEventListener("load", () => {
         page = 0;
         to_prev.classList.remove("enable");
       }
-      if (page >= pagenum - 1) {
-        page = pagenum - 1;
+      if (page >= pageNum - 1) {
+        page = pageNum - 1;
         to_next.classList.remove("enable");
       }
       if (page <= 0) {
@@ -284,7 +284,7 @@ request.addEventListener("load", () => {
         }
       }
       const to_next_page = document.getElementById("to_next_page");
-      to_next_page.innerText = `${page + 1}/${pagenum}`;
+      to_next_page.innerText = `${page + 1}/${pageNum}`;
     }
     to_prev.addEventListener("click", () => {
       page -= 1;

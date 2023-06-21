@@ -23,7 +23,7 @@ Blockly.Blocks["move"] = {
   },
 };
 
-Blockly.Blocks["moveforward"] = {
+Blockly.Blocks["moveForward"] = {
   init: function () {
     this.appendDummyInput().appendField("１マスすすむ");
     this.setNextStatement(true);
@@ -84,7 +84,7 @@ Blockly.Blocks["if"] = {
     this.appendDummyInput().appendField("もし");
     this.appendValueInput("condition").setCheck(null);
     this.appendDummyInput().appendField("なら");
-    this.appendStatementInput("iftrue");
+    this.appendStatementInput("ifTrue");
     this.setNextStatement(true);
     this.setPreviousStatement(true);
     this.setColour(120);
@@ -98,9 +98,9 @@ Blockly.Blocks["ifelse"] = {
     this.appendDummyInput().appendField("もし");
     this.appendValueInput("condition").setCheck(null);
     this.appendDummyInput().appendField("なら");
-    this.appendStatementInput("iftrue");
+    this.appendStatementInput("ifTrue");
     this.appendDummyInput().appendField("そうでないなら");
-    this.appendStatementInput("iffalse");
+    this.appendStatementInput("ifFalse");
     this.setNextStatement(true);
     this.setPreviousStatement(true);
     this.setColour(120);
@@ -210,7 +210,7 @@ Blockly.Blocks["grouping"] = {
   },
 };
 
-Blockly.Blocks["callgroup"] = {
+Blockly.Blocks["callGroup"] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldTextInput("かんすう1"), "group_name")
@@ -270,11 +270,11 @@ Blockly.Blocks['if_and'] = {
         .setCheck(null);
     this.appendDummyInput()
         .appendField("なら");
-    this.appendStatementInput("iftrue")
+    this.appendStatementInput("ifTrue")
         .setCheck(null);
     this.appendDummyInput()
         .appendField("そうでないなら");
-    this.appendStatementInput("iffalse")
+    this.appendStatementInput("ifFalse")
         .setCheck(null);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -296,11 +296,11 @@ Blockly.Blocks['if_or'] = {
         .setCheck(null);
     this.appendDummyInput()
         .appendField("なら");
-    this.appendStatementInput("iftrue")
+    this.appendStatementInput("ifTrue")
         .setCheck(null);
     this.appendDummyInput()
         .appendField("そうでないなら");
-    this.appendStatementInput("iffalse")
+    this.appendStatementInput("ifFalse")
         .setCheck(null);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -392,7 +392,7 @@ Blockly.Blocks["check3"] = {
   },
 };
 
-Blockly.Blocks["pickupnumber"] = {
+Blockly.Blocks["pickUpNumber"] = {
   init: function () {
     this.appendDummyInput().appendField("数字をひろう");
     this.setPreviousStatement(true, null);
@@ -403,7 +403,7 @@ Blockly.Blocks["pickupnumber"] = {
   },
 };
 
-Blockly.Blocks["dropnumber"] = {
+Blockly.Blocks["dropNumber"] = {
   init: function () {
     this.appendDummyInput().appendField("数字をおく");
     this.setPreviousStatement(true, null);
@@ -414,7 +414,7 @@ Blockly.Blocks["dropnumber"] = {
   },
 };
 
-Blockly.Blocks["replacenumber"] = {
+Blockly.Blocks["replaceNumber"] = {
   init: function () {
     this.appendDummyInput().appendField("数字を持ちかえる");
     this.setPreviousStatement(true, null);
@@ -425,7 +425,7 @@ Blockly.Blocks["replacenumber"] = {
   },
 };
 
-Blockly.Blocks["checkfeet"] = {
+Blockly.Blocks["checkFeet"] = {
   init: function () {
     this.appendDummyInput()
       .appendField("足元が")
@@ -445,7 +445,7 @@ Blockly.Blocks["checkfeet"] = {
   },
 };
 
-Blockly.Blocks["putnumber"] = {
+Blockly.Blocks["putNumber"] = {
   init: function () {
     this.appendDummyInput()
       .appendField(

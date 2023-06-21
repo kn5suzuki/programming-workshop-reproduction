@@ -10,9 +10,9 @@ require("./blocks.js");
 let url = new URL(window.location.href);
 let params = url.searchParams;
 let mode = params.get("mode");
-let stage_num = params.get("stage");
+let stageNum = params.get("stage");
 if (!mode) {
-  if (stage_num.length >= 3) mode = "posted";
+  if (stageNum.length >= 3) mode = "posted";
   else mode = "default";
 }
 
@@ -40,11 +40,11 @@ var config = {
 
 async function load() {
   if (mode == "default") {
-    const res1 = await fetch("/defalt_stage_info");
-    const stageinfo = await res1.json();
+    const res1 = await fetch("/default_stage_info");
+    const stageInfo = await res1.json();
 
     const queryString = new URLSearchParams({
-      filename: stageinfo.stages[stage_num].filename,
+      filename: stageInfo.stages[stageNum].filename,
     }).toString();
     const res2 = await fetch("/default_stage?" + queryString);
     const mapData = await res2.json();
@@ -54,12 +54,12 @@ async function load() {
     var game = new Phaser.Game(config);
     game.scene.start("game", {
       mode: mode,
-      stage_num: stage_num,
-      stageinfo: stageinfo,
+      stageNum: stageNum,
+      stageInfo: stageInfo,
       mapData: mapData,
     });
   } else {
-    const mapDataURL = `/posted_stage?filename=${stage_num}.json`;
+    const mapDataURL = `/posted_stage?filename=${stageNum}.json`;
     const res2 = await fetch(mapDataURL);
     const mapData = await res2.json();
 
@@ -72,13 +72,13 @@ async function load() {
     var game = new Phaser.Game(config);
     game.scene.start("game", {
       mode: mode,
-      stage_num: stage_num,
-      stageinfo: {},
+      stageNum: stageNum,
+      stageInfo: {},
       mapData: mapData,
       gameClearCallBack: (blocks, steps, blockNum, stageName, submitter) => {
         //console.log(blocks,steps,blockNum, stageName, submitter);
         ClearPostedStage(
-          stage_num,
+          stageNum,
           blocks,
           steps,
           blockNum,

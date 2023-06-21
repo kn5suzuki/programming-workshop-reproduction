@@ -163,7 +163,7 @@ body {
   visibility: hidden;
 }
 
-#resetbutton {
+#resetButton {
   /* padding: 10px; */
   grid-column: 4;
   grid-row: 1;
@@ -269,7 +269,7 @@ body {
 .meterChildBox > div {
   text-align: center;
 }
-#numenergy {
+#numEnergy {
   /* grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 1;
@@ -335,7 +335,7 @@ p#alert {
   grid-row: 1;
   z-index: 1;
 }
-.speedup_toggle-input {
+.speedupToggle-input {
   position: absolute;
   left: 0;
   top: 0;
@@ -346,7 +346,7 @@ p#alert {
   cursor: pointer;
 }
 
-.speedup_toggle-label {
+.speedupToggle-label {
   width: 75px;
   height: 42px;
   background: #ccc;
@@ -357,10 +357,10 @@ p#alert {
   box-sizing: border-box;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22) inset;
 }
-.speedup_toggle-label:hover {
+.speedupToggle-label:hover {
   cursor: pointer;
 }
-.speedup_toggle-label:after {
+.speedupToggle-label:after {
   content: "";
   position: absolute;
   width: 42px;
@@ -374,14 +374,14 @@ p#alert {
   transition: 0.4s;
 }
 
-.speedup_toggle-input:checked + .speedup_toggle-label {
+.speedupToggle-input:checked + .speedupToggle-label {
   background-color: #4bd865;
 }
-.speedup_toggle-input:checked + .speedup_toggle-label:after {
+.speedupToggle-input:checked + .speedupToggle-label:after {
   left: 40px;
 }
 
-.speedup_toggle-switch {
+.speedupToggle-switch {
   position: relative;
   width: 75px;
   height: 42px;
@@ -613,7 +613,7 @@ a:visited {
     grid-row: 3;
   }
 
-  #resetbutton {
+  #resetButton {
     grid-column: 1;
     grid-row: 4;
   }
@@ -646,7 +646,7 @@ a:visited {
     grid-row: 2;
   }
 }
-#undobutton {
+#undoButton {
   align-self: center;
   justify-self: center;
 
@@ -692,7 +692,7 @@ a:visited {
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
-#redobutton {
+#redoButton {
   align-self: center;
   justify-self: center;
 
@@ -740,7 +740,7 @@ a:visited {
   transform: rotate(45deg);
 }
 
-#erasebutton {
+#eraseButton {
   align-self: center;
   justify-self: center;
   vertical-align: middle;

@@ -80,12 +80,12 @@ export let mapData = {
   width: 16,
   height: 20,
   map: stage_data,
-  playerx: player.x,
-  playery: player.y,
-  playerdirection: { d: 0, l: 1, r: 2, u: 3 }[player.dir],
-  teleportx: [],
-  teleporty: [],
-  teleportid: [],
+  playerX: player.x,
+  playerY: player.y,
+  playerDirection: { d: 0, l: 1, r: 2, u: 3 }[player.dir],
+  teleportX: [],
+  teleportY: [],
+  teleportId: [],
   blocks: selectedBlocks,
 };
 export function startTestPlay() {
@@ -93,24 +93,24 @@ export function startTestPlay() {
     width: 16,
     height: 20,
     map: stage_data,
-    playerx: player.x,
-    playery: player.y,
-    playerdirection: { d: 0, l: 1, r: 2, u: 3 }[player.dir],
-    teleportx: [],
-    teleporty: [],
-    teleportid: [],
+    playerX: player.x,
+    playerY: player.y,
+    playerDirection: { d: 0, l: 1, r: 2, u: 3 }[player.dir],
+    teleportX: [],
+    teleportY: [],
+    teleportId: [],
     blocks: selectedBlocks,
   };
 
   teleport_black.forEach((t, i) => {
-    mapData.teleportx.push(t.x);
-    mapData.teleporty.push(t.y);
-    mapData.teleportid.push((i + 1) % teleport_black.length);
+    mapData.teleportX.push(t.x);
+    mapData.teleportY.push(t.y);
+    mapData.teleportId.push((i + 1) % teleport_black.length);
   });
   teleport_white.forEach((t, i) => {
-    mapData.teleportx.push(t.x);
-    mapData.teleporty.push(t.y);
-    mapData.teleportid.push(
+    mapData.teleportX.push(t.x);
+    mapData.teleportY.push(t.y);
+    mapData.teleportId.push(
       teleport_black.length + ((i + 1) % teleport_white.length)
     );
   });
@@ -119,7 +119,7 @@ export function startTestPlay() {
   game.scene.start("game", {
     mode: "testPlay",
     stage_num: -1,
-    stageinfo: {},
+    stageInfo: {},
     mapData: mapData,
     gameClearCallBack: gameClear,
   });

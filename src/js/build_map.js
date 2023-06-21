@@ -1,6 +1,6 @@
 const buildMapCanvas = document.getElementById("buildMapCanvas");
 const selectTileDiv = document.getElementById("selectTile");
-const gridsize = 30;
+const gridSize = 30;
 const WIDTH = 16;
 const HEIGHT = 20;
 const context = buildMapCanvas.getContext("2d");
@@ -15,7 +15,7 @@ export let teleport_white = new Array();
 let selectedTileElem = document.getElementById("player");
 let selectedTile = "player";
 
-const tilesetImage = require("../img/web/post_stage/tileset.png");
+const tileSetImage = require("../img/web/post_stage/tileset.png");
 const playerImageL = require("../img/web/post_stage/playerTile_l.png");
 const playerImageR = require("../img/web/post_stage/playerTile_r.png");
 const playerImageU = require("../img/web/post_stage/playerTile_u.png");
@@ -39,7 +39,7 @@ const loadImage = (img, src) => {
 };
 
 Promise.all([
-  loadImage(tileImage, tilesetImage),
+  loadImage(tileImage, tileSetImage),
   loadImage(playerImages.l, playerImageL),
   loadImage(playerImages.r, playerImageR),
   loadImage(playerImages.u, playerImageU),
@@ -55,11 +55,11 @@ Promise.all([
     }
     selectTile(selectedTileElem);
 
-    const elems = document.querySelectorAll(".selectTile>div");
-    elems.forEach((elem) => {
+    const elements = document.querySelectorAll(".selectTile>div");
+    elements.forEach((elem) => {
       elem.onclick = () => selectTile(elem);
     });
-    document.getElementById("player_rotate").onclick = () => rotetePlayer();
+    document.getElementById("player_rotate").onclick = () => rotatePlayer();
 
     let mouseDrag = false;
 
@@ -158,10 +158,10 @@ function updateStage(x, y, stageData) {
   if (x == player.x && y == player.y) {
     context.drawImage(
       playerImages[player.dir],
-      x * gridsize,
-      y * gridsize,
-      gridsize,
-      gridsize
+      x * gridSize,
+      y * gridSize,
+      gridSize,
+      gridSize
     );
     stage_data[y][x] = "path";
     return;
@@ -208,10 +208,10 @@ function updateStage(x, y, stageData) {
       Math.floor(i / 10) * 30,
       30,
       30,
-      x * gridsize,
-      y * gridsize,
-      gridsize,
-      gridsize
+      x * gridSize,
+      y * gridSize,
+      gridSize,
+      gridSize
     );
   }
 }
@@ -223,7 +223,7 @@ function selectTile(tileElem) {
   selectedTile = tileElem.id;
 }
 
-function rotetePlayer() {
+function rotatePlayer() {
   const next_dir = {
     r: "u",
     u: "l",

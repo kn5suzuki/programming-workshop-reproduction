@@ -4,11 +4,11 @@ class SceneGame {
   init(data, t) {
     this.mode = data.mode;
     this.stageNum = data.stage_num;
-    this.stageinfo = data.stageinfo;
+    this.stageInfo = data.stageInfo;
     this.mapData = data.mapData;
     this.gameClearCallBack = data.gameClearCallBack;
     //ブラウザにステージ番号を記憶させる
-    if (typeof window !== "undefined") window.savenum = this.stageNum;
+    if (typeof window !== "undefined") window.saveNum = this.stageNum;
 
     this.load = t.load;
     this.add = t.add;
@@ -35,12 +35,12 @@ class SceneGame {
     this.cmdDelta = 45;
     this.tick = 0;
     this.isRunning = false;
-    this.ismoving = false;
+    this.isMoving = false;
     this.commandGenerator = undefined;
     this.funcs = {};
-    this.tilesets;
-    this.teleportindex;
-    this.getkey = 0; //キーを何個取得したか
+    this.tileSets;
+    this.teleportIndex;
+    this.getKey = 0; //キーを何個取得したか
     this.isGameOver = false; //ゲームオーバーなら、１ステップ待ってゲームオーバー画面に移動
 
     this.tileName = {
@@ -136,10 +136,10 @@ class SceneGame {
       }
     }
 
-    if (!this.mapData.keycnt || this.mapData.keycnt == 0) {
-      this.keycnt = keyCount;
+    if (!this.mapData.keyCount || this.mapData.keyCount == 0) {
+      this.keyCount = keyCount;
     } else {
-      this.keycnt = this.mapData.keycnt;
+      this.keyCount = this.mapData.keyCount;
     }
   }
 
@@ -215,7 +215,7 @@ class SceneGame {
     var blocklyDiv = document.getElementById("blocklyDiv");
     this.workspace = this.Blockly.inject("blocklyDiv", options);
 
-    this.teleportindex = this.mapData.teleportid;
+    this.teleportIndex = this.mapData.teleportId;
 
     if (this.mode == "default") {
       //ステージ番号・タイトル
@@ -230,8 +230,8 @@ class SceneGame {
         alert.innerHTML = this.mapData.alert;
       }
       //クリアレベルの記載
-      const clearlevel1 = document.getElementById("level1");
-      const clearlevel2 = document.getElementById("level2");
+      const clearLevel1 = document.getElementById("level1");
+      const clearLevel2 = document.getElementById("level2");
       const limToStr = (lim) => {
         if (!lim || (!lim.block && !lim.step)) return "制限なし";
         let s = "";
@@ -240,15 +240,15 @@ class SceneGame {
         if (lim.step) s += `${lim.step}ステップ`;
         return s + "以内";
       };
-      clearlevel1.innerHTML = "★★：" + limToStr(this.mapData.clearlevel.star2);
-      clearlevel2.innerHTML = "★★★：" + limToStr(this.mapData.clearlevel.star3);
+      clearLevel1.innerHTML = "★★：" + limToStr(this.mapData.clearLevel.star2);
+      clearLevel2.innerHTML = "★★★：" + limToStr(this.mapData.clearLevel.star3);
     } else if (this.mode == "posted") {
       //タイトル
       this.title = document.getElementById("title");
       this.title.innerHTML = `ステージ『 ${this.stage_title} 』`;
     }
     //体力・ブロック数制限を記載
-    this.numEnergy = document.getElementById("numenergy");
+    this.numEnergy = document.getElementById("numEnergy");
     this.numFrame = document.getElementById("numFrame");
     this.updateScoreBoard();
 
@@ -263,36 +263,36 @@ class SceneGame {
 
     //実行ボタンの設定
     const executeButton = document.getElementById("executeButton");
-    executeButton.onclick = this.LoadBlocksandGenerateCommand.bind(this);
+    executeButton.onclick = this.LoadBlocksAndGenerateCommand.bind(this);
 
     //プレイヤー変更ボタンの設定
     const playerChangeButton = document.getElementById("playerChangeButton");
     playerChangeButton.onclick = this.playerChange.bind(this);
 
     //リセットボタンの設定
-    const resetbutton = document.getElementById("resetbutton");
-    resetbutton.onclick = this.resetCommand.bind(this);
+    const resetButton = document.getElementById("resetButton");
+    resetButton.onclick = this.resetCommand.bind(this);
 
     if (this.mode == "default") {
       //タイトルボタンの設定
-      const titlebutton = document.getElementById("titlebutton");
+      const titleButton = document.getElementById("titleButton");
       const titleLink = "./default_stage.html";
-      titlebutton.setAttribute("href", titleLink);
+      titleButton.setAttribute("href", titleLink);
     }
 
     //全消去ボタンの設定
-    const erasebutton = document.getElementById("erasebutton");
-    erasebutton.onclick = this.eraseCommand.bind(this);
+    const eraseButton = document.getElementById("eraseButton");
+    eraseButton.onclick = this.eraseCommand.bind(this);
 
     //undo, redoボタンの設定
-    const undobutton = document.getElementById("undobutton");
-    undobutton.onclick = this.undoCommand.bind(this);
+    const undoButton = document.getElementById("undoButton");
+    undoButton.onclick = this.undoCommand.bind(this);
 
-    const redobutton = document.getElementById("redobutton");
-    redobutton.onclick = this.redoCommand.bind(this);
+    const redoButton = document.getElementById("redoButton");
+    redoButton.onclick = this.redoCommand.bind(this);
 
     //早送りボタンの設定
-    const speedupButton = document.getElementById("speedup_toggle");
+    const speedupButton = document.getElementById("speedupToggle");
     speedupButton.onclick = () => {
       this.toggleFastForward(speedupButton.checked);
     };
@@ -313,7 +313,7 @@ class SceneGame {
       let previous_stage_num = Number(this.stageNum) - 1;
       if (previous_stage_num >= 0) {
         let previous_stage_title =
-          this.stageinfo.stages[previous_stage_num].description;
+          this.stageInfo.stages[previous_stage_num].description;
         const previousStageButton = document.getElementById(
           "previousStageButton"
         );
@@ -333,10 +333,10 @@ class SceneGame {
 
       //次のステージボタンの設定
       let next_stage_num = Number(this.stageNum) + 1;
-      if (next_stage_num < this.stageinfo.stages.length) {
+      if (next_stage_num < this.stageInfo.stages.length) {
         let hardStage;
-        for (let i = 0; i < this.stageinfo.stages.length; ++i) {
-          if (this.stageinfo.stages.level == "hard") {
+        for (let i = 0; i < this.stageInfo.stages.length; ++i) {
+          if (this.stageInfo.stages.level == "hard") {
             hardStage = i;
             break;
           }
@@ -344,10 +344,10 @@ class SceneGame {
         if (this.stageNum == hardStage - 1) {
           let i;
           try {
-            const clearleveljson = localStorage.getItem("clearlevel");
-            const clearlevels = JSON.parse(clearleveljson);
+            const clearLevelJson = localStorage.getItem("clearLevel");
+            const clearLevels = JSON.parse(clearLevelJson);
             for (i = 0; i < hardStage; ++i) {
-              if (clearlevels[i] == -1) {
+              if (clearLevels[i] == -1) {
                 break;
               }
             }
@@ -358,7 +358,7 @@ class SceneGame {
 
           if (i == hardStage - 1) {
             let next_stage_title =
-              this.stageinfo.stages[next_stage_num].description;
+              this.stageInfo.stages[next_stage_num].description;
             const nextStageButton = document.getElementById("nextStageButton");
             nextStageButton.setAttribute(
               "href",
@@ -368,7 +368,7 @@ class SceneGame {
           }
         } else {
           let next_stage_title =
-            this.stageinfo.stages[next_stage_num].description;
+            this.stageInfo.stages[next_stage_num].description;
           const nextStageButton = document.getElementById("nextStageButton");
           nextStageButton.setAttribute(
             "href",
@@ -516,7 +516,7 @@ class SceneGame {
       }
       if (this.player.setFrame)
         this.player.setFrame(this.player.direction * 3 + 1);
-      let keyCheck = this.getkey == this.keycnt;
+      let keyCheck = this.getKey == this.keyCount;
       let numberCheck = true;
 
       if (this.ansArray) {
@@ -638,10 +638,10 @@ class SceneGame {
       this.gameOver("足元に数字はありません。");
       return;
     }
-    const tilenum = tile - this.tileName["num0"];
+    const tileNum = tile - this.tileName["num0"];
     this.updateMap(x, y, this.tileName["path"]);
-    this.player.number = tilenum;
-    this.changeInventoryNumber(tilenum);
+    this.player.number = tileNum;
+    this.changeInventoryNumber(tileNum);
   }
   // 持っている数を足元に置く（足元に数がある場合は置き換える）
   dropNumber() {
@@ -681,10 +681,10 @@ class SceneGame {
       this.gameOver("足元に数字はありません。");
       return;
     }
-    const tilenum = tile - this.tileName["num0"];
+    const tileNum = tile - this.tileName["num0"];
     this.updateMap(x, y, this.tileName["num0"] + this.player.number);
-    this.player.number = tilenum;
-    this.changeInventoryNumber(tilenum);
+    this.player.number = tileNum;
+    this.changeInventoryNumber(tileNum);
   }
   // 新しく数字を置く
   putNumber(num) {
@@ -707,7 +707,7 @@ class SceneGame {
   }
   tryMove(player, dir) {
     // ここはこれでいいの？ってなるけど
-    this.ismoving = true;
+    this.isMoving = true;
     const dx = [1, -1, 0, 0];
     const dy = [0, 0, -1, 1];
     const nextGX = player.gridX + dx[dir];
@@ -730,10 +730,10 @@ class SceneGame {
       return; //壁または障害物には進めない
     }
     if (tile == this.tileName["key"]) {
-      this.getkey += 1;
+      this.getKey += 1;
       this.updateMap(nextGX, nextGY, this.tileName["path"]);
       if (this.inventory) {
-        const keySprite = this.inventory.list[this.getkey]; //インベントリ:[左端, 鍵, ... ]
+        const keySprite = this.inventory.list[this.getKey]; //インベントリ:[左端, 鍵, ... ]
         //console.log(this.inventory.list, keySprite);
         if (keySprite) keySprite.setFrame(2); // インベントリの対応する位置の鍵を取った状態にする
       }
@@ -850,7 +850,7 @@ class SceneGame {
   }
   clearGame_default() {
     //console.log(this.stageNum);
-    window.savenum = -1;
+    window.saveNum = -1;
     //console.log("goal");
     this.endRunning();
 
@@ -861,20 +861,20 @@ class SceneGame {
 
     let level = 2; // 2:星３、1:星２、0:星１
     const checkStar2 =
-      (!this.mapData.clearlevel.star2 ||
-        !this.mapData.clearlevel.star2.step ||
-        this.mapData.clearlevel.star2.step >= this.steps) &&
-      (!this.mapData.clearlevel.star2 ||
-        !this.mapData.clearlevel.star2.block ||
-        this.mapData.clearlevel.star2.block >= blockNum);
+      (!this.mapData.clearLevel.star2 ||
+        !this.mapData.clearLevel.star2.step ||
+        this.mapData.clearLevel.star2.step >= this.steps) &&
+      (!this.mapData.clearLevel.star2 ||
+        !this.mapData.clearLevel.star2.block ||
+        this.mapData.clearLevel.star2.block >= blockNum);
 
     const checkStar3 =
-      (!this.mapData.clearlevel.star3 ||
-        !this.mapData.clearlevel.star3.step ||
-        this.mapData.clearlevel.star3.step >= this.steps) &&
-      (!this.mapData.clearlevel.star3 ||
-        !this.mapData.clearlevel.star3.block ||
-        this.mapData.clearlevel.star3.block >= blockNum);
+      (!this.mapData.clearLevel.star3 ||
+        !this.mapData.clearLevel.star3.step ||
+        this.mapData.clearLevel.star3.step >= this.steps) &&
+      (!this.mapData.clearLevel.star3 ||
+        !this.mapData.clearLevel.star3.block ||
+        this.mapData.clearLevel.star3.block >= blockNum);
 
     if (checkStar3) level = 2;
     else if (checkStar2) level = 1;
@@ -892,20 +892,20 @@ class SceneGame {
     }
 
     try {
-      let clearleveljson = localStorage.getItem("clearlevel");
-      if (clearleveljson === null) {
-        clearleveljson = new Object();
-        for (let i = 0; i < this.stageinfo.stages.length; i++) {
-          clearleveljson[i] = -1;
+      let clearLevelJson = localStorage.getItem("clearLevel");
+      if (clearLevelJson === null) {
+        clearLevelJson = new Object();
+        for (let i = 0; i < this.stageInfo.stages.length; i++) {
+          clearLevelJson[i] = -1;
         }
-        clearleveljson[this.stageNum] = level;
+        clearLevelJson[this.stageNum] = level;
       } else {
-        clearleveljson = JSON.parse(clearleveljson);
-        if (clearleveljson[this.stageNum] < level) {
-          clearleveljson[this.stageNum] = level;
+        clearLevelJson = JSON.parse(clearLevelJson);
+        if (clearLevelJson[this.stageNum] < level) {
+          clearLevelJson[this.stageNum] = level;
         }
       }
-      localStorage.setItem("clearlevel", JSON.stringify(clearleveljson));
+      localStorage.setItem("clearLevel", JSON.stringify(clearLevelJson));
     } catch (e) {
       // console.log(e);
     }
@@ -934,8 +934,8 @@ class SceneGame {
     const nextStageButton2 = document.getElementById("nextStageButton2");
     const nextStageButton3 = document.getElementById("nextStageButton3");
     //次のステージボタンの設定
-    if (Number(this.stageNum) + 1 < this.stageinfo.stages.length) {
-      window.savenum = Number(this.stageNum) + 1;
+    if (Number(this.stageNum) + 1 < this.stageInfo.stages.length) {
+      window.saveNum = Number(this.stageNum) + 1;
       const URL = `./game_default.html?stage=${Number(this.stageNum) + 1}`;
       nextStageButton2.setAttribute("href", URL);
       nextStageButton2.style.display = "inline";
@@ -1045,10 +1045,10 @@ class SceneGame {
       this.player.setFrame(this.player.direction * 3 + 1);
     this.isRunning = false;
     this.isGameOver = false;
-    this.ismoving = false;
+    this.isMoving = false;
     this.tick = 0;
   }
-  LoadBlocksandGenerateCommand() {
+  LoadBlocksAndGenerateCommand() {
     //ボタンを押すと発火
     this.resetRunning(); //多分player位置の初期化など
     this.blocks = this.Blockly.serialization.workspaces.save(this.workspace);
@@ -1101,18 +1101,18 @@ class SceneGame {
     this.mapArray = cloneDeep(this.mapArrayDefault);
     //console.log(this.mapArray);
 
-    let playerX = this.mapData.playerx;
-    let playerY = this.mapData.playery;
+    let playerX = this.mapData.playerX;
+    let playerY = this.mapData.playerY;
     this.player.gridX = playerX;
     this.player.gridY = playerY;
-    this.player.direction = this.mapData.playerdirection;
+    this.player.direction = this.mapData.playerDirection;
 
     this.funcs = {}; //funcsの初期化
-    this.getkey = false;
+    this.getKey = false;
 
     this.player.number = null; //持っている数
-    const countblock = this.countBlocks();
-    if (countblock) this.blockCount = countblock;
+    const countBlocks = this.countBlocks();
+    if (countBlocks) this.blockCount = countBlocks;
     this.steps = 0;
   }
   // クライアント側でのみ行う
@@ -1147,19 +1147,19 @@ class SceneGame {
       this.tileHeight * this.player.gridY * this.map2Img;
 
     this.inventory = this.add.container(0, 0);
-    const addinventory = (n, i) => {
+    const addInventory = (n, i) => {
       const s = this.add.sprite(12 * i, 4, "inventory", n);
       s.setOrigin(0, 0);
       this.inventory.add(s);
     };
     let count = 0;
-    addinventory(0, count++); // 左端
-    for (let i = 0; i < this.keycnt; ++i) addinventory(1, count++); //まだとれていない鍵
+    addInventory(0, count++); // 左端
+    for (let i = 0; i < this.keyCount; ++i) addInventory(1, count++); //まだとれていない鍵
     if (this.numberStage) {
-      addinventory(3, count++);
-      addinventory(4, count++); //数字
+      addInventory(3, count++);
+      addInventory(4, count++); //数字
     }
-    addinventory(25, count++); //右端
+    addInventory(25, count++); //右端
     if (count == 2) {
       this.inventory.setVisible(false);
     }
@@ -1177,7 +1177,7 @@ class SceneGame {
     if (gameOverDiv) gameOverDiv.style.display = "none";
 
     // 早送りボタン
-    const speedupButton = document.getElementById("speedup_toggle");
+    const speedupButton = document.getElementById("speedupToggle");
     this.toggleFastForward(speedupButton.checked);
   }
   playerChange() {
@@ -1190,7 +1190,7 @@ class SceneGame {
       this.player.setTexture("player");
     }
     this.player.setFrame(num);
-    if (this.ismoving) {
+    if (this.isMoving) {
       let dir = this.getDirection(this.player);
       this.player.anims.play("move" + dir + "-" + this.player.texture.key);
     }
@@ -1233,9 +1233,9 @@ class SceneGame {
     let x = this.player.gridX;
     let y = this.player.gridY;
     let index = -1;
-    for (let i = 0; i < this.mapData.teleportid.length; ++i) {
-      if (this.mapData.teleportx[i] == x && this.mapData.teleporty[i] == y) {
-        index = this.mapData.teleportid[i];
+    for (let i = 0; i < this.mapData.teleportId.length; ++i) {
+      if (this.mapData.teleportX[i] == x && this.mapData.teleportY[i] == y) {
+        index = this.mapData.teleportId[i];
         break;
       }
     }
@@ -1244,8 +1244,8 @@ class SceneGame {
       this.gameOver("何もない場所でワープしようとしました");
       return;
     }
-    this.player.gridX = this.mapData.teleportx[index];
-    this.player.gridY = this.mapData.teleporty[index];
+    this.player.gridX = this.mapData.teleportX[index];
+    this.player.gridY = this.mapData.teleportY[index];
     this.player.targetX = this.player.x =
       this.tileWidth * this.player.gridX * this.map2Img;
     this.player.targetY = this.player.y =
@@ -1330,7 +1330,7 @@ class SceneGame {
           result = this.check3Helper(operation);
           yield block.id;
           break;
-        case "checkfeet":
+        case "checkFeet":
           yield block.id;
           result = this.checkIf(this.player, 4, thing);
           break;
@@ -1343,10 +1343,10 @@ class SceneGame {
       block.inputs && block.inputs.child && block.inputs.child.block;
     const condition =
       block.inputs && block.inputs.condition && block.inputs.condition.block;
-    const iftrue =
-      block.inputs && block.inputs.iftrue && block.inputs.iftrue.block;
-    const iffalse =
-      block.inputs && block.inputs.iffalse && block.inputs.iffalse.block;
+    const ifTrue =
+      block.inputs && block.inputs.ifTrue && block.inputs.ifTrue.block;
+    const ifFalse =
+      block.inputs && block.inputs.ifFalse && block.inputs.ifFalse.block;
     const group_name = block.fields && block.fields.group_name;
     const cond1 =
       block.inputs && block.inputs.cond1 && block.inputs.cond1.block;
@@ -1358,12 +1358,12 @@ class SceneGame {
       case "move":
         this.tryMove(this.player, direction);
         yield block.id;
-        this.ismoving = false;
+        this.isMoving = false;
         break;
-      case "moveforward":
+      case "moveForward":
         this.tryMove(this.player, this.getDirection(this.player));
         yield block.id;
-        this.ismoving = false;
+        this.isMoving = false;
         break;
       case "turn":
         this.changeDirection(this.player, direction);
@@ -1385,7 +1385,7 @@ class SceneGame {
           yield* checkBlock.bind(this, condition)();
         }
         if (result) {
-          if (iftrue) yield* this.execute_block(iftrue);
+          if (ifTrue) yield* this.execute_block(ifTrue);
         }
         break;
       case "ifelse":
@@ -1394,16 +1394,16 @@ class SceneGame {
           yield* checkBlock.bind(this, condition)();
         }
         if (result) {
-          if (iftrue) yield* this.execute_block(iftrue);
+          if (ifTrue) yield* this.execute_block(ifTrue);
         } else {
-          if (iffalse) yield* this.execute_block(iffalse);
+          if (ifFalse) yield* this.execute_block(ifFalse);
         }
         break;
       case "grouping":
         yield block.id;
         this.funcs[group_name] = block;
         break;
-      case "callgroup":
+      case "callGroup":
         yield block.id;
         if (!this.funcs[group_name]) {
           this.gameOver(
@@ -1432,9 +1432,9 @@ class SceneGame {
           yield* checkBlock.bind(this, cond2)();
         }
         if (result) {
-          if (iftrue) yield* this.execute_block(iftrue);
+          if (ifTrue) yield* this.execute_block(ifTrue);
         } else {
-          if (iffalse) yield* this.execute_block(iffalse);
+          if (ifFalse) yield* this.execute_block(ifFalse);
         }
         break;
       case "if_or":
@@ -1446,9 +1446,9 @@ class SceneGame {
           yield* checkBlock.bind(this, cond2)();
         }
         if (result) {
-          if (iftrue) yield* this.execute_block(iftrue);
+          if (ifTrue) yield* this.execute_block(ifTrue);
         } else {
-          if (iffalse) yield* this.execute_block(iffalse);
+          if (ifFalse) yield* this.execute_block(ifFalse);
         }
         break;
       case "teleportation":
@@ -1470,19 +1470,19 @@ class SceneGame {
         }
         break;
 
-      case "pickupnumber":
+      case "pickUpNumber":
         this.pickUpNumber();
         yield block.id;
         break;
-      case "dropnumber":
+      case "dropNumber":
         this.dropNumber();
         yield block.id;
         break;
-      case "replacenumber":
+      case "replaceNumber":
         this.replaceNumber();
         yield block.id;
         break;
-      case "putnumber":
+      case "putNumber":
         if (thing) this.putNumber(thing);
         yield block.id;
         break;
@@ -1549,8 +1549,8 @@ class SceneGame {
     return result == "clear" && this.steps == steps;
   }
 
-  // mapdataにないブロックを使っていないかチェック
-  checkblocks() {
+  // mapDataにないブロックを使っていないかチェック
+  checkBlocks() {
     if (!this.mapData.blocks) return false;
     let blocklist;
     if (this.mapData.blocks.split) {
@@ -1558,13 +1558,13 @@ class SceneGame {
     } else {
       blocklist = this.mapData.blocks;
     }
-    function checkblock(block) {
+    function checkBlock(block) {
       for (let k in block) {
         if (typeof block[k] === "object") {
-          checkblock(block[k]);
+          checkBlock(block[k]);
         } else if (k == "type") {
-          const blocktype = block[k];
-          if (!blocklist.find((v) => v == blocktype)) {
+          const blockType = block[k];
+          if (!blocklist.find((v) => v == blockType)) {
             return false;
           }
         }
@@ -1575,7 +1575,7 @@ class SceneGame {
       return false;
     let count = 0;
     for (let i = 0; i < this.blocks.blocks.blocks.length; ++i)
-      if (!checkblock(this.blocks.blocks.blocks[i])) return false;
+      if (!checkBlock(this.blocks.blocks.blocks[i])) return false;
     return true;
   }
 }

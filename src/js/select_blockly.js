@@ -1,15 +1,15 @@
 import * as Blockly from "blockly/core";
 require("./blocks.js");
 const AllBlocks = [
-  "moveforward",
+  "moveForward",
   "turn",
   "remove",
   "teleportation",
-  "callgroup",
-  "pickupnumber",
-  "dropnumber",
-  "replacenumber",
-  "putnumber",
+  "callGroup",
+  "pickUpNumber",
+  "dropNumber",
+  "replaceNumber",
+  "putNumber",
   "check",
   "check_path",
   "check_front",
@@ -18,7 +18,7 @@ const AllBlocks = [
   "not",
   "can_teleport",
   "check3",
-  "checkfeet",
+  "checkFeet",
   "while",
   "while_if",
   "if",
@@ -94,7 +94,7 @@ workspace.addChangeListener(function (event) {
     selectedBlocksList.innerHTML = "";
     selectedBlocks.forEach((b) => {
       const AllBlocksToName = {
-        moveforward: "１マスすすむ",
+        moveForward: "１マスすすむ",
         turn: "向く",
         while: "繰り返し",
         remove: "岩をのける",
@@ -107,7 +107,7 @@ workspace.addChangeListener(function (event) {
         check_front:
           "前が「道」「草」「岩」「数字」「土の道」「石の道」「木の道」かどうか",
         grouping: "ていぎ",
-        callgroup: "実行",
+        callGroup: "実行",
         and: "かつ",
         or: "または",
         //"if_and": "もし〜かつ～なら",
@@ -117,11 +117,11 @@ workspace.addChangeListener(function (event) {
         teleportation: "ワープする",
         while_if: "～であるかぎり",
         check3: "足元の数字と持っている数字をくらべる",
-        pickupnumber: "数字をひろう",
-        dropnumber: "数字をおく",
-        replacenumber: "数字を持ちかえる",
-        checkfeet: "足元をかくにん",
-        putnumber: "数字をおく",
+        pickUpNumber: "数字をひろう",
+        dropNumber: "数字をおく",
+        replaceNumber: "数字を持ちかえる",
+        checkFeet: "足元をかくにん",
+        putNumber: "数字をおく",
       };
       const newLi = document.createElement("li");
       newLi.innerText = AllBlocksToName[b];

@@ -98,8 +98,8 @@ body {
       left: 0;
       right: 0;
     }
-    .bigstar::before {
-      content: url(../img/web/bigstar.svg);
+    .bigStar::before {
+      content: url(../img/web/bigStar.svg);
       position: absolute;
       top: 0;
       left: 0;
@@ -133,7 +133,7 @@ body {
           }
         }
 
-        .descAndSubm {
+        .descAndSubmit {
           width: calc(100% - 1rem);
           margin-left: 1rem;
           font-size: 0.8rem;
@@ -206,8 +206,8 @@ body {
           }
         }
 
-        .smallstar::before {
-          content: url(../img/web/smallstar.svg);
+        .smallStar::before {
+          content: url(../img/web/smallStar.svg);
           transform: scale(1);
           float: left;
         }
@@ -226,7 +226,7 @@ body .record-delete {
 .record-delete-hide {
   display: none;
 }
-// 以下、mystage用
+// 以下、my_stage用
 #noStage {
   align-items: center;
   height: 70%;

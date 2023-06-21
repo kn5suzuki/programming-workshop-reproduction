@@ -35,7 +35,7 @@ request.addEventListener("load", () => {
         imgAndDesc: document.createElement("div"),
         thumbnail: document.createElement("div"),
         thumbnailImg: document.createElement("canvas"),
-        descAndSubm: document.createElement("div"),
+        descAndSubmit: document.createElement("div"),
         description: document.createElement("div"),
         submitter: document.createElement("div"),
         detail: document.createElement("div"),
@@ -47,7 +47,7 @@ request.addEventListener("load", () => {
         deleteButton: document.createElement("div"),
         context: undefined,
       };
-      const containerelem = document.getElementById("container");
+      const containerElement = document.getElementById("container");
       cons[i].imgAndDesc.classList.add("imgAndDesc");
       cons[i].thumbnail.classList.add("thumbnail");
       cons[i].thumbnailImg.setAttribute("width", "480");
@@ -55,19 +55,19 @@ request.addEventListener("load", () => {
       cons[i].context = cons[i].thumbnailImg.getContext("2d");
       cons[i].imgAndDesc.appendChild(cons[i].thumbnail);
       cons[i].thumbnail.appendChild(cons[i].thumbnailImg);
-      cons[i].descAndSubm.classList.add("descAndSubm");
-      cons[i].imgAndDesc.appendChild(cons[i].descAndSubm);
+      cons[i].descAndSubmit.classList.add("descAndSubmit");
+      cons[i].imgAndDesc.appendChild(cons[i].descAndSubmit);
       cons[i].deleteButton.classList.add("deleteButton");
       cons[i].deleteButton.id = `deleteButton${i}`;
       cons[i].deleteButton.innerHTML = `<div>削除する</div>`;
       cons[i].deleteButton.onclick = () => {};
-      cons[i].descAndSubm.appendChild(cons[i].deleteButton);
+      cons[i].descAndSubmit.appendChild(cons[i].deleteButton);
       cons[i].name.classList.add("name");
-      cons[i].descAndSubm.appendChild(cons[i].name);
+      cons[i].descAndSubmit.appendChild(cons[i].name);
       cons[i].submitter.classList.add("submitter");
-      cons[i].descAndSubm.appendChild(cons[i].submitter);
+      cons[i].descAndSubmit.appendChild(cons[i].submitter);
       cons[i].description.classList.add("description");
-      cons[i].descAndSubm.appendChild(cons[i].description);
+      cons[i].descAndSubmit.appendChild(cons[i].description);
       cons[i].container.appendChild(cons[i].imgAndDesc);
       cons[i].detail.classList.add("detail");
       cons[i].shortest.classList.add("shortest");
@@ -84,7 +84,7 @@ request.addEventListener("load", () => {
       cons[i].a.appendChild(cons[i].container);
       cons[i].a.classList.add("a");
       cons[i].a.appendChild(cons[i].aLink);
-      containerelem.appendChild(cons[i].a);
+      containerElement.appendChild(cons[i].a);
     }
 
     function drawStage(context, map) {
@@ -194,13 +194,13 @@ request.addEventListener("load", () => {
       };
     }
     let stages = new Array();
-    const stageinfo = request.response;
-    Object.keys(stageinfo["stages"]).forEach((index) => {
+    const stageInfo = request.response;
+    Object.keys(stageInfo["stages"]).forEach((index) => {
       if (
         MyStageIds.hasOwnProperty(index) &&
-        !stageinfo["stages"][index].deleted
+        !stageInfo["stages"][index].deleted
       )
-        stages.push({ index: index, stage: stageinfo["stages"][index] });
+        stages.push({ index: index, stage: stageInfo["stages"][index] });
     });
     const count = stages.length;
 
@@ -236,7 +236,7 @@ request.addEventListener("load", () => {
 
     let order = randomOrder;
 
-    const pagenum = Math.ceil(count / 6);
+    const pageNum = Math.ceil(count / 6);
     let page = 0;
     const to_prev = document.getElementById("to_prev");
     const to_next = document.getElementById("to_next");
@@ -247,8 +247,8 @@ request.addEventListener("load", () => {
         page = 0;
         to_prev.classList.remove("enable");
       }
-      if (page >= pagenum - 1) {
-        page = pagenum - 1;
+      if (page >= pageNum - 1) {
+        page = pageNum - 1;
         to_next.classList.remove("enable");
       }
       if (page <= 0) {
@@ -264,7 +264,7 @@ request.addEventListener("load", () => {
         }
       }
       const to_next_page = document.getElementById("to_next_page");
-      to_next_page.innerText = `${page + 1}/${pagenum}`;
+      to_next_page.innerText = `${page + 1}/${pageNum}`;
     }
     to_prev.addEventListener("click", () => {
       page -= 1;
@@ -309,9 +309,9 @@ request.addEventListener("load", () => {
         return;
       }
       try {
-        const deletestageURL = "./deletestage";
+        const deleteStageURL = "./delete_stage";
         let request = new XMLHttpRequest();
-        request.open("POST", deletestageURL, true);
+        request.open("POST", deleteStageURL, true);
         request.setRequestHeader("Content-type", "text/plain");
         const deleteData = {
           stageId: deleteId,

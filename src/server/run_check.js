@@ -9,21 +9,21 @@ class runCheck {
       {
         mode: "runCheck",
         stage_num: 0,
-        stageinfo: { stages: [] },
+        stageInfo: { stages: [] },
         mapData: mapData,
       },
       {}
     );
   }
-  check(leftenergy) {
-    return this.game.run_check(this.blocks, leftenergy);
+  check(leftEnergy) {
+    return this.game.run_check(this.blocks, leftEnergy);
   }
   getBlockNum() {
     return this.game.countBlocks();
   }
 
-  checkblocks() {
-    return this.game.checkblocks();
+  checkBlocks() {
+    return this.game.checkBlocks();
   }
 }
 
