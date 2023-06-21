@@ -1,0 +1,256 @@
+h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 1rem;
+  min-height: 600px;
+}
+
+.order {
+  width: fit-content;
+  margin-left: auto;
+  font-size: 1rem;
+}
+
+#main {
+  display: grid;
+  align-items: center;
+  height: 70%;
+  width: 100%;
+  margin: auto;
+  grid-template-columns: 4rem calc(100% - 8rem) 4rem;
+  grid-template-rows: 100%;
+  box-sizing: border-box;
+}
+
+#to_prev,
+#to_next {
+  box-sizing: border-box;
+  text-align: center;
+
+  svg {
+    width: 1.5rem;
+  }
+
+  .arrow {
+    fill: rgb(193, 193, 193);
+  }
+
+  &.enable {
+    cursor: pointer;
+
+    .arrow {
+      fill: rgb(0, 0, 0);
+    }
+    svg {
+      filter: drop-shadow(2px 4px 0px rgba(0, 0, 0, 0.3));
+      position: relative;
+      left: -2px;
+      top: -4px;
+      &:active {
+        filter: none;
+        position: relative;
+        left: 0;
+        top: 0;
+      }
+    }
+  }
+}
+
+#container {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 33.3% 33.3% 33.3%;
+  grid-template-rows: 50% 50%;
+
+  @media screen and (orientation: portrait) {
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 33.3% 33.3% 33.3%;
+  }
+
+  justify-content: space-between;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+
+  > .a {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 1rem;
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
+
+    a {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    .bigstar::before {
+      content: url(../img/web/bigstar.svg);
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: scale(1);
+    }
+
+    > div {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0.6rem;
+      width: 100%;
+      height: 100%;
+      display: block;
+      background-color: rgb(240, 240, 240);
+
+      .imgAndDesc {
+        height: calc(100% - 5rem);
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: 100%;
+
+        .thumbnail {
+          height: 100%;
+          vertical-align: top;
+
+          canvas {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
+          }
+        }
+
+        .descAndSubm {
+          width: calc(100% - 1rem);
+          margin-left: 1rem;
+          font-size: 0.8rem;
+          height: 100%;
+          overflow: hidden;
+
+          .name {
+            width: 100%;
+            max-width: 100%;
+            font-size: 1rem;
+            font-weight: bold;
+            //overflow: hidden;
+            //height:1.5rem;
+            //white-space: nowrap;
+            //text-overflow: ellipsis;
+          }
+
+          .submitter:before {
+            content: "投稿者：";
+          }
+
+          .description {
+            overflow: hidden;
+          }
+        }
+      }
+
+      .detail {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 2rem 2rem 1rem;
+        width: 100%;
+        //overflow: hidden;
+        font-size: 0.7rem;
+        overflow-x: scroll;
+        color: rgb(61, 68, 73);
+        font-weight: 400;
+
+        &::-webkit-scrollbar {
+          height: 5px;
+        }
+
+        .shortest,
+        .fastest,
+        .clear {
+          //width: 100%;
+          //overflow: hidden;
+          //white-space: nowrap;
+          //text-overflow: ellipsis;
+          -webkit-line-clamp: 2;
+        }
+
+        .clear,
+        .like {
+          display: inline;
+        }
+        .like {
+          margin-left: 1rem;
+
+          &::before {
+            content: url("data:image/svg+xml; utf8, %3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%220.8rem%22%20height%3D%220.8rem%22%20viewBox%3D%22-0.5%20-0.5%207%207%22%3E%3Cpath%20d%3D%22M%203%201%20C%204%20-1%206%200%206%202%20C%206%203%205%205%203%206%20C%201%205%200%203%200%202%20C%200%200%202%20-1%203%201Z%22%20fill%3D%22none%22%20stroke%3D%22%2340484d%22%20stroke-width%3D%220.4%22%2F%3E%3C%2Fsvg%3E");
+            vertical-align: middle;
+            margin-right: 0.1rem;
+          }
+
+          &.liked::before {
+            content: url("data:image/svg+xml; utf8, %3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%220.8rem%22%20height%3D%220.8rem%22%20viewBox%3D%22-0.5%20-0.5%207%207%22%3E%3Cpath%20d%3D%22M%203%201%20C%204%20-1%206%200%206%202%20C%206%203%205%205%203%206%20C%201%205%200%203%200%202%20C%200%200%202%20-1%203%201Z%22%20fill%3D%22%23f01071%22%20stroke%3D%22%23f01071%22%20stroke-width%3D%220.4%22%2F%3E%3C%2Fsvg%3E");
+            vertical-align: middle;
+            margin-right: 0.1rem;
+          }
+        }
+
+        .smallstar::before {
+          content: url(../img/web/smallstar.svg);
+          transform: scale(1);
+          float: left;
+        }
+      }
+    }
+  }
+}
+
+body .record-delete {
+  text-align: right;
+  position: relative;
+  right: -1.5rem;
+  bottom: -1rem;
+}
+
+.record-delete-hide {
+  display: none;
+}
+// 以下、mystage用
+#noStage {
+  align-items: center;
+  height: 70%;
+  width: 100%;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+.deleteButton {
+  float: right;
+
+  width: fit-content;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 2px rgba(0, 0, 0, 0.2);
+  padding: 0.2rem;
+  background: rgb(111, 136, 194);
+  color: #fff;
+  position: relative;
+  z-index: 3;
+  cursor: pointer;
+
+  &:active {
+    left: 1px;
+    top: 2px;
+    box-shadow: none;
+  }
+}

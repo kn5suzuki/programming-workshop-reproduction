@@ -1,255 +1,63 @@
 <!DOCTYPE html>
 <html lang="ja">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=1300">
-    <link rel="stylesheet" href="./css/common.min.css" />
-    <link rel="stylesheet" href="./css/post_stage.min.css" />
-    <link rel="stylesheet" href="./css/game.css" />
-
+    <meta name="viewport" content="width=1300" />
     <title>プログラミング教室2022</title>
-    <!-- <link rel="stylesheet" href="./css/common.min.css" /> -->
-</head>
+  </head>
 
-<body class="buildMap">
-    <header>
-        <h1>
-            <a href="/">EEIC プログラミング教室</a>
-        </h1>
-        <nav class="navi" id="navi">
-            <div class="buildMap">マップを作る</div>
-            <div class="selectBlockly">ブロックを選ぶ</div>
-            <div class="testPlay">テストプレイ</div>
-            <div class="postStage">投稿</div>
-        </nav>
-        <div class="headerButton">
-            <a href="./instruction.html#ステージ投稿" target="_blank"><div>あそびかた</div></a>
-        </div>
-    </header>
-    <div id="main">
-        <div id="buildMap">
-            <div id="buildMapCanvasDiv">
-                <canvas id="buildMapCanvas" width="480" height="600"></canvas>
-            </div>
-            <div id="mapMenu">
-                <h3>マスを選ぶ</h3>
-                <div class="selectTile">
-                    <div id="player" class="player_r">
-                        <img src="./web-img/post_stage/playerTile_l.png" id="player_l" />
-                        <img src="./web-img/post_stage/playerTile_r.png" id="player_r" />
-                        <img src="./web-img/post_stage/playerTile_u.png" id="player_u" />
-                        <img src="./web-img/post_stage/playerTile_d.png" id="player_d" />
-                    </div>
-                    <div id="grass"><img src="./web-img/post_stage/grass.png" /></div>
-                    <div id="path"><img src="./web-img/post_stage/path.png" /></div>
-                    <div id="goal"><img src="./web-img/post_stage/goal.png" /></div>
-                    <div id="key"><img src="./web-img/post_stage/key.png" /></div>
-                    <div id="teleport1"><img src="./web-img/post_stage/mahojin_b.png" /></div>
-                    <div id="teleport2"><img src="./web-img/post_stage/mahojin_w.png" /></div>
-                    <div id="rock"><img src="./web-img/post_stage/rock.png" /></div>
-                    <div id="stone"><img src="./web-img/post_stage/stone.png" /></div>
-                    <div id="wood"><img src="./web-img/post_stage/wood.png" /></div>
-                </div>
-                <h4>数字</h4>
-                <div class="selectTile">
-                    <div id="num0"><img src="./web-img/post_stage/0.png" /></div>
-                    <div id="num1"><img src="./web-img/post_stage/1.png" /></div>
-                    <div id="num2"><img src="./web-img/post_stage/2.png" /></div>
-                    <div id="num3"><img src="./web-img/post_stage/3.png" /></div>
-                    <div id="num4"><img src="./web-img/post_stage/4.png" /></div>
-                    <div id="num5"><img src="./web-img/post_stage/5.png" /></div>
-                    <div id="num6"><img src="./web-img/post_stage/6.png" /></div>
-                    <div id="num7"><img src="./web-img/post_stage/7.png" /></div>
-                    <div id="num8"><img src="./web-img/post_stage/8.png" /></div>
-                    <div id="num9"><img src="./web-img/post_stage/9.png" /></div>
-                </div>
-                <h4>数字の答え</h4>
-                <div class="selectTile">
-                    <div id="ans0"><img src="./web-img/post_stage/ans0.png" /></div>
-                    <div id="ans1"><img src="./web-img/post_stage/ans1.png" /></div>
-                    <div id="ans2"><img src="./web-img/post_stage/ans2.png" /></div>
-                    <div id="ans3"><img src="./web-img/post_stage/ans3.png" /></div>
-                    <div id="ans4"><img src="./web-img/post_stage/ans4.png" /></div>
-                    <div id="ans5"><img src="./web-img/post_stage/ans5.png" /></div>
-                    <div id="ans6"><img src="./web-img/post_stage/ans6.png" /></div>
-                    <div id="ans7"><img src="./web-img/post_stage/ans7.png" /></div>
-                    <div id="ans8"><img src="./web-img/post_stage/ans8.png" /></div>
-                    <div id="ans9"><img src="./web-img/post_stage/ans9.png" /></div>
-                </div>
-                <h3>キャラクターの向き</h3>
-                <div class="selectTile">
-                    <div id="player_rotate">回転<img src="./web-img/post_stage/arrow.png" />
-                    </div>
-                </div>
-                <div class="buttonAndError">
-                    <a id="resetMap">
-                        <div class="std_btn">リセット</div>
-                    </a>
-                    <a id="buildMap_next">
-                        <div class="std_btn">ブロック選択に進む</div>
-                    </a>
-                    <div id="buildMapError" class="errorMessage" style="display:none"></div>
-                </div>
-            </div>
-        </div>
-        <div id="selectBlockly">
-            <!-- blockly workspace -->
-            <div id="selectBlocklyDiv"></div>
-            <div id="selectBlocklyMenu">
-                <div id="selectedBlocks">
-                    <h3>選んだブロック</h3>
-                    <ul id="selectedBlocksList"></ul>
-                </div>
-                <div>
-                    <a id="selectBlockly_prev">
-                        <div class="std_btn">マップ作成に戻る</div>
-                    </a>
-                    <a id="selectBlockly_next">
-                        <div class="std_btn">テストプレイへ</div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div id="testPlay">
-            <div id="gameWrapper">
-                <div id="phaserDiv"></div>
-                <!-- blockly workspace -->
-                <div id="blocklyDiv"></div>
-                <div id="meterBox">
-                    <div>
-                        <a id="testPlay_prev2">
-                            <div class="std_btn">ブロック選択に戻る</div>
-                        </a>
-                    </div>
-                    <div id="meter" class="meterChildBox">
-                        <p class="meterTitleText">スコア</p>
-                        <div id="numFrame" class="numFrame"></div>
-                        <div id="numenergy" class="numenergy"></div>
-                    </div>
-                </div>
-                <div id="ButtonDiv">
-                    <div id="playerChangeButton" class="playerChange_btn"></div>
-                    <div id="executeButton">
-                        <div class="execute"></div>
-                        <p class="buttonText">実行</p>
-                    </div>
-                    <div id="resetbutton">
-                        <div class="reset"></div>
-                        <p class="buttonText">やり直し</p>
-                    </div>
-                    <div id="speedupButton" class="speedup_btn">
-                        <input id="speedup_toggle" class="speedup_toggle-input" type='checkbox'></input>
-                        <label for="speedup_toggle" class="speedup_toggle-label"></label>
-                        <p class="buttonText">早送り</p>
-                    </div>
-                </div>
-                <div id="ButtonDiv2">
-                    <div id="undobutton" class="undo_btn" title="元にもどす"></div>
-                    <div id="redobutton" class="redo_btn" title="やり直し"></div>
-                    <div id="erasebutton" class="erase" title="すべて消す">
-                        ×
-                    </div>
-                </div>
-                <div id="gameOverDiv">
-                    <div id="gameOverWrapper">
-                        <div id="gameOverTitle">ゲーム<br/>オーバー</div>
-                        <div id="gameOverReasonWrapper">
-                            <div id="gameOverReason"></div>
-                        </div>
-                        <div id="gameoverButtons">
-                            <div><a id="tryAgainButton2" class="button"><div>もう一度</div></a></div>
-                            <div><a id="testPlay_prev3" class="button"><div>ブロック選択にもどる</div></a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="gameClear_next" style="display:none">
-                <h2>ゲームクリア</h2>
-                <div>
-                    <a id="testPlay_prev">
-                        <div class="std_btn">ブロック選択に戻る</div>
-                    </a>
-                    <a id="testPlay_next">
-                        <div class="std_btn">投稿画面へ</div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div id="postStage">
-            <div id="postStageDiv">
-                <h2>ステージを投稿する</h2>
-                <div class="input_box">
-                    <div class="input_inner">
-                        <input id="input_stage_name" class="input_text" type="input" placeholder="ステージ名" />
-                    </div>
-                </div>
-                <div class="input_box">
-                    <div class="input_inner">
-                        <input id="input_user_name" class="input_text" type="input" placeholder="投稿者の名前" />
-                    </div>
-                </div>
-                <div class="input_box">
-                    <div class="input_inner">
-                        <input id="input_description" class="input_text" type="input" placeholder="せつめい" />
-                    </div>
-                </div>
-                <div>
-                    <a id="postStage_prev">
-                        <div class="std_btn">テストプレイにもどる</div>
-                    </a>
-                    <a id="postStage_check">
-                        <div class="std_btn">投稿</div>
-                    </a>
-                    <div id="postStageError" class="errorMessage" style="display:none"></div>
-                </div>
-            </div>
-            <div id="postStageConfirm" style="display:none">
-                <div id="postStageConfirmDiv">
-                    <h2>この内容で投稿します。</h2>
-                    <div>
-                        <div>ステージ名：</div>
-                        <div id="postStageConfirm_stage_name"></div>
-                    </div>
-                    <div>
-                        <div>投稿者名：</div>
-                        <div id="postStageConfirm_user_name"></div>
-                    </div>
-                    <div>
-                        <div>ステージの説明：</div>
-                        <div id="postStageConfirm_description"></div>
-                    </div>
-                    <div id="postStageConfirmButtonDiv">
-                        <a id="postStage_back">
-                            <div class="std_btn">もどる</div>
-                        </a>
-                        <a id="postStage_post">
-                            <div class="std_btn">投稿</div>
-                        </a>
-                    </div>
-                    <div id="postStage_state" style="display:none"></div>
-                    <div id="postEnd" style="display:none">
-                        <a href="./index.html">
-                            <div class="std_btn">トップページにもどる</div>
-                        </a>
-                        <a id="playMyStage">
-                            <div class="std_btn">自分のステージで遊ぶ</div>
-                        </a>
-                        <div id="shareTwitter"><a id="shareTwitterA" target="_blank"><div><svg version="1.1" id="Logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 248 204" style="enable-background:new 0 0 248 204;" xml:space="preserve"><style type="text/css">.st0{fill:#FFFFFF;}</style><g id="Logo_1_"><path id="white_background" class="st0" d="M221.95,51.29c0.15,2.17,0.15,4.34,0.15,6.53c0,66.73-50.8,143.69-143.69,143.69v-0.04C50.97,201.51,24.1,193.65,1,178.83c3.99,0.48,8,0.72,12.02,0.73c22.74,0.02,44.83-7.61,62.72-21.66c-21.61-0.41-40.56-14.5-47.18-35.07c7.57,1.46,15.37,1.16,22.8-0.87C27.8,117.2,10.85,96.5,10.85,72.46c0-0.22,0-0.43,0-0.64c7.02,3.91,14.88,6.08,22.92,6.32C11.58,63.31,4.74,33.79,18.14,10.71c25.64,31.55,63.47,50.73,104.08,52.76c-4.07-17.54,1.49-35.92,14.61-48.25c20.34-19.12,52.33-18.14,71.45,2.19c11.31-2.23,22.15-6.38,32.07-12.26c-3.77,11.69-11.66,21.62-22.2,27.93c10.01-1.18,19.79-3.86,29-7.95C240.37,35.29,231.83,44.14,221.95,51.29z"/></g></svg>ツイート</div></a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="selectBlocklyToolbox" style="display: none"></div>
-        <div id="selectBlocklyToolboxDemo" style="display: none"></div>
-        <div id="toolbox" style="display: none"></div>
+  <body class="stage-select">
+    <h1>みんなのステージ</h1>
+
+    <div class="order">
+      並び替え：
+      <select id="order">
+        <option>ランダム</option>
+        <option>古い順</option>
+        <option>新しい順</option>
+        <option>クリア人数が多い順</option>
+        <option>クリア人数が少ない順</option>
+        <option>いいねが多い順</option>
+      </select>
     </div>
-</body>
-<!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-
-<script type="text/javascript" src="./js/global.js"></script>
-    <script type="text/javascript" src="./js/game.js"></script>
-<script type="text/javascript" src="./html/post_stage/js/server_connect.js"></script>-->
-
+    <div id="main">
+      <div id="to_prev">
+        <a>
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 2">
+              <path d="M1 0V2L0 1Z" fill="black" strke="none" class="arrow" />
+            </svg>
+          </div>
+          <br />
+          前へ
+        </a>
+      </div>
+      <div id="container"></div>
+      <div id="to_next">
+        <a>
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 2">
+              <path d="M0 0L1 1L0 2Z" fill="black" strke="none" class="arrow" />
+            </svg>
+          </div>
+          <br />
+          <p id="to_next_page">/</p>
+        </a>
+      </div>
+    </div>
+    <div class="center">
+      <a href="./my_stage.html">
+        <div class="std_btn">自分のステージ</div>
+      </a>
+      <a href="./index.html">
+        <div class="std_btn">トップページにもどる</div>
+      </a>
+    </div>
+    <div class="record-delete">
+      <a id="delete-btn">
+        <div class="std_btn">クリアデータを削除する</div>
+      </a>
+    </div>
+  </body>
 </html>

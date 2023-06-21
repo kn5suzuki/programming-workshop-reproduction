@@ -45,9 +45,9 @@ function send(stage_name, user_name, description) {
           const res = JSON.parse(xhr.responseText);
           if (res.state == "OK") {
             postStage_state.innerText = "投稿完了！";
-            const url = `./gamePosted.html?stage=${res.filename}`;
+            const url = `./game_posted.html?stage=${res.filename}`;
             const shareURL = encodeURIComponent(
-              `https://2022.eeic.jp/gamePosted.html?stage=${res.filename}`
+              `https://2022.eeic.jp/game_posted.html?stage=${res.filename}`
             );
             const tweet = encodeURIComponent(
               `eeicプログラミング教室　ステージ「${stage_name}」を作成しました。`

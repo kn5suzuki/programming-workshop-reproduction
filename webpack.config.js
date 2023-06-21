@@ -5,9 +5,12 @@ module.exports = {
   entry: {
     index: "./src/js/index.js",
     game: "./src/js/game.js",
+    game_posted: "./src/js/game_posted.js",
     instruction: "./src/js/instruction.js",
     default_stage: "./src/js/default_stage.js",
     post_stage: "./src/js/post_stage.js",
+    posted_stage: "./src/js/posted_stage.js",
+    my_stage: "./src/js/my_stage.js",
   },
   output: {
     path: path.join(__dirname, "dist"),
@@ -91,9 +94,14 @@ module.exports = {
       chunks: ["index"],
     }),
     new HtmlWebPackPlugin({
-      template: "./src/html/game.html",
-      filename: "./game.html",
+      template: "./src/html/game_default.html",
+      filename: "./game_default.html",
       chunks: ["game"],
+    }),
+    new HtmlWebPackPlugin({
+      template: "./src/html/game_posted.html",
+      filename: "./game_posted.html",
+      chunks: ["game", "game_posted"],
     }),
     new HtmlWebPackPlugin({
       template: "./src/html/instruction.html",
@@ -109,6 +117,16 @@ module.exports = {
       template: "./src/html/post_stage.html",
       filename: "./post_stage.html",
       chunks: ["post_stage"],
+    }),
+    new HtmlWebPackPlugin({
+      template: "./src/html/posted_stage.html",
+      filename: "./posted_stage.html",
+      chunks: ["posted_stage"],
+    }),
+    new HtmlWebPackPlugin({
+      template: "./src/html/my_stage.html",
+      filename: "./my_stage.html",
+      chunks: ["my_stage"],
     }),
   ],
 };

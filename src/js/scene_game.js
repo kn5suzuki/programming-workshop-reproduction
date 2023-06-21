@@ -319,7 +319,7 @@ class SceneGame {
         );
         previousStageButton.setAttribute(
           "href",
-          "game.html?stage=" + previous_stage_num
+          "game_default.html?stage=" + previous_stage_num
         );
         previousStageButton.innerHTML = `前のステージ『 ${previous_stage_title} 』`;
       } else {
@@ -362,7 +362,7 @@ class SceneGame {
             const nextStageButton = document.getElementById("nextStageButton");
             nextStageButton.setAttribute(
               "href",
-              "game.html?stage=" + next_stage_num
+              "game_default.html?stage=" + next_stage_num
             );
             nextStageButton.innerHTML = `次のステージ『 ${next_stage_title} 』`;
           }
@@ -372,7 +372,7 @@ class SceneGame {
           const nextStageButton = document.getElementById("nextStageButton");
           nextStageButton.setAttribute(
             "href",
-            "game.html?stage=" + next_stage_num
+            "game_default.html?stage=" + next_stage_num
           );
           nextStageButton.innerHTML = `次のステージ『 ${next_stage_title} 』`;
         }
@@ -911,7 +911,7 @@ class SceneGame {
     }
 
     const shareURL = encodeURIComponent(
-      "https://2022.eeic.jp/game.html?stage=" + this.stageNum
+      "https://2022.eeic.jp/game_default.html?stage=" + this.stageNum
     );
     const tweet = encodeURIComponent(
       `eeicプログラミング教室　ステージ${this.stageNum}「${
@@ -936,7 +936,7 @@ class SceneGame {
     //次のステージボタンの設定
     if (Number(this.stageNum) + 1 < this.stageinfo.stages.length) {
       window.savenum = Number(this.stageNum) + 1;
-      const URL = `./game.html?stage=${Number(this.stageNum) + 1}`;
+      const URL = `./game_default.html?stage=${Number(this.stageNum) + 1}`;
       nextStageButton2.setAttribute("href", URL);
       nextStageButton2.style.display = "inline";
       nextStageButton3.style.display = "none";

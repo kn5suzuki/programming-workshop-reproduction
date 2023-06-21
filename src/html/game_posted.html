@@ -1,114 +1,172 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=1300px">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1300px" />
     <title>プログラミング教室2022</title>
-    <script src="./bundle.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="./css/game.css">
-    <link rel="stylesheet" href="./css/common.min.css">
-    <link rel="stylesheet" href="./css/post_stage.min.css" />
-    <link rel="stylesheet" href="./css/gamePosted.min.css" />
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+      integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI="
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
     <div id="gameWrapper">
-        <header id="header" class=header>
-            <h1>
-                <a href="/">EEIC プログラミング教室</a>
-            </h1>
-            <nav class="header-nav">
-                <ul>
-                    <li id="title"></li>
-                </ul>
-            </nav>
-            <nav class="header-nav">
-                <ul>
-                    <li class="headerButton"><a id="titlebutton" href="./posted_stage.html"><div>他のステージ</div></a></li>
-                    <!--<li><a id="commentaryButton" href="#" type="hidden">解答</a></li>-->
-                    <li class="headerButton"><a href="instruction.html"><div>あそびかた</div></a></li>
-                </ul>
-            </nav>
-        </header>
-        <div id="phaserDiv"></div>
-        <!-- blockly workspace -->
-        <div id="blocklyDiv"></div>
-        <div id="meterBox">
-            <div id="meter" class="meterChildBox">
-                <p class="meterTitleText">スコア</p>
-                <div id="numFrame" class="numFrame"></div>
-                <div id="numenergy" class="numenergy"></div>
-            </div>
+      <header id="header" class="header">
+        <h1>
+          <a href="/">EEIC プログラミング教室</a>
+        </h1>
+        <nav class="header-nav">
+          <ul>
+            <li id="title"></li>
+          </ul>
+        </nav>
+        <nav class="header-nav">
+          <ul>
+            <li class="headerButton">
+              <a id="titlebutton" href="./posted_stage.html"
+                ><div>他のステージ</div></a
+              >
+            </li>
+            <!--<li><a id="commentaryButton" href="#" type="hidden">解答</a></li>-->
+            <li class="headerButton">
+              <a href="instruction.html"><div>あそびかた</div></a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <div id="phaserDiv"></div>
+      <!-- blockly workspace -->
+      <div id="blocklyDiv"></div>
+      <div id="meterBox">
+        <div id="meter" class="meterChildBox">
+          <p class="meterTitleText">スコア</p>
+          <div id="numFrame" class="numFrame"></div>
+          <div id="numenergy" class="numenergy"></div>
         </div>
-        <div id="ButtonDiv">
-            <div id="playerChangeButton" class="playerChange_btn" ></div>
-            <div id="executeButton"> 
-                <div class="execute" ></div>
-                <p class="buttonText">実行</p>
-            </div> 
-            <div id="resetbutton">
-                <div class="reset"></div>
-                <p class="buttonText">やり直し</p>
-            </div>
-            <div id="speedupButton" class="speedup_btn">
-                <input id="speedup_toggle" class="speedup_toggle-input" type='checkbox'></input>
-                <label for="speedup_toggle" class="speedup_toggle-label"></label>
-                <p class="buttonText">早送り</p>
-            </div>
+      </div>
+      <div id="ButtonDiv">
+        <div id="playerChangeButton" class="playerChange_btn"></div>
+        <div id="executeButton">
+          <div class="execute"></div>
+          <p class="buttonText">実行</p>
         </div>
-        <div id="ButtonDiv2">
-            <div id="undobutton" class="undo_btn" title="元にもどす"></div>
-            <div id="redobutton" class="redo_btn" title="やり直し"></div>
-            <div id="erasebutton" class="erase" title="すべて消す">
-                ×
-            </div>
+        <div id="resetbutton">
+          <div class="reset"></div>
+          <p class="buttonText">やり直し</p>
         </div>
-        <div id="gameOverDiv">
-            <div id="gameOverWrapper">
-                <div id="gameOverTitle">ゲーム<br/>オーバー</div>
-                <div id="gameOverReasonWrapper">
-                    <div id="gameOverReason"></div>
-                </div>
-                <div id="gameoverButtons">
-                    <div><a id="tryAgainButton2" class="button"><div>もう一度</div></a></div>
-                    <div><a class="button" target="_blank" href="./posted_stage.html"><div>他のステージであそぶ</div></a></div>
-                </div>
-            </div>
+        <div id="speedupButton" class="speedup_btn">
+          <input
+            id="speedup_toggle"
+            class="speedup_toggle-input"
+            type="checkbox"
+          />
+          <label for="speedup_toggle" class="speedup_toggle-label"></label>
+          <p class="buttonText">早送り</p>
         </div>
+      </div>
+      <div id="ButtonDiv2">
+        <div id="undobutton" class="undo_btn" title="元にもどす"></div>
+        <div id="redobutton" class="redo_btn" title="やり直し"></div>
+        <div id="erasebutton" class="erase" title="すべて消す">×</div>
+      </div>
+      <div id="gameOverDiv">
+        <div id="gameOverWrapper">
+          <div id="gameOverTitle">ゲーム<br />オーバー</div>
+          <div id="gameOverReasonWrapper">
+            <div id="gameOverReason"></div>
+          </div>
+          <div id="gameoverButtons">
+            <div>
+              <a id="tryAgainButton2" class="button"><div>もう一度</div></a>
+            </div>
+            <div>
+              <a class="button" target="_blank" href="./posted_stage.html"
+                ><div>他のステージであそぶ</div></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div id="toolbox" style="display: none"></div>
     <div id="GameClearMenu" style="display: none">
+      <div>
+        <h2>ゲームクリア！</h2>
+        <div id="detail"></div>
         <div>
-            <h2>ゲームクリア！</h2>
-            <div id="detail"></div>
-            <div>
-                <h3>名前</h3>
-                <div class="input_box">
-                    <div class="input_inner">
-                        <input id="input_user_name" class="input_text" type="input" placeholder="なまえ" />
-                    </div>
-                </div>
+          <h3>名前</h3>
+          <div class="input_box">
+            <div class="input_inner">
+              <input
+                id="input_user_name"
+                class="input_text"
+                type="input"
+                placeholder="なまえ"
+              />
             </div>
-            <div>
-                <a id="backToGameButton" class="std_btn"><div>ゲームにもどる</div></a>
-                <a id="postDataButton" class="std_btn"><div>クリアデータを送る</div></a>
-                <a id="likeButton" class="std_btn"><div>いいねを送る</div></a>
-                <div id="postStageError" class="errorMessage" style="display:none"></div>
-            </div>
-            <div id="postStage_state" style="display:none"></div>
-            <div id="postEnd" style="display:none">
-                <a class="std_btn" href="./posted_stage.html"><div>他のステージであそぶ</div></a>
-                <div id="shareTwitter"><a id="shareTwitterA" target="_blank"><div><svg version="1.1" id="Logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 248 204" style="enable-background:new 0 0 248 204;" xml:space="preserve"><style type="text/css">.st0{fill:#FFFFFF;}</style><g id="Logo_1_"><path id="white_background" class="st0" d="M221.95,51.29c0.15,2.17,0.15,4.34,0.15,6.53c0,66.73-50.8,143.69-143.69,143.69v-0.04C50.97,201.51,24.1,193.65,1,178.83c3.99,0.48,8,0.72,12.02,0.73c22.74,0.02,44.83-7.61,62.72-21.66c-21.61-0.41-40.56-14.5-47.18-35.07c7.57,1.46,15.37,1.16,22.8-0.87C27.8,117.2,10.85,96.5,10.85,72.46c0-0.22,0-0.43,0-0.64c7.02,3.91,14.88,6.08,22.92,6.32C11.58,63.31,4.74,33.79,18.14,10.71c25.64,31.55,63.47,50.73,104.08,52.76c-4.07-17.54,1.49-35.92,14.61-48.25c20.34-19.12,52.33-18.14,71.45,2.19c11.31-2.23,22.15-6.38,32.07-12.26c-3.77,11.69-11.66,21.62-22.2,27.93c10.01-1.18,19.79-3.86,29-7.95C240.37,35.29,231.83,44.14,221.95,51.29z"/></g></svg>ツイート</div></a></div>
-            </div>
+          </div>
         </div>
-    </div>
-    <div id="deleted" style="display:none">
         <div>
-            <h2>このステージは削除されました。</h2>
-            <div>
-                <a class="std_btn" href="./posted_stage.html"><div>他のステージであそぶ</div></a>
-            </div>
+          <a id="backToGameButton" class="std_btn"><div>ゲームにもどる</div></a>
+          <a id="postDataButton" class="std_btn"
+            ><div>クリアデータを送る</div></a
+          >
+          <a id="likeButton" class="std_btn"><div>いいねを送る</div></a>
+          <div
+            id="postStageError"
+            class="errorMessage"
+            style="display: none"
+          ></div>
         </div>
+        <div id="postStage_state" style="display: none"></div>
+        <div id="postEnd" style="display: none">
+          <a class="std_btn" href="./posted_stage.html"
+            ><div>他のステージであそぶ</div></a
+          >
+          <div id="shareTwitter">
+            <a id="shareTwitterA" target="_blank"
+              ><div>
+                <svg
+                  version="1.1"
+                  id="Logo"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  x="0px"
+                  y="0px"
+                  viewBox="0 0 248 204"
+                  style="enable-background: new 0 0 248 204"
+                  xml:space="preserve"
+                >
+                  <style type="text/css">
+                    .st0 {
+                      fill: #ffffff;
+                    }
+                  </style>
+                  <g id="Logo_1_">
+                    <path
+                      id="white_background"
+                      class="st0"
+                      d="M221.95,51.29c0.15,2.17,0.15,4.34,0.15,6.53c0,66.73-50.8,143.69-143.69,143.69v-0.04C50.97,201.51,24.1,193.65,1,178.83c3.99,0.48,8,0.72,12.02,0.73c22.74,0.02,44.83-7.61,62.72-21.66c-21.61-0.41-40.56-14.5-47.18-35.07c7.57,1.46,15.37,1.16,22.8-0.87C27.8,117.2,10.85,96.5,10.85,72.46c0-0.22,0-0.43,0-0.64c7.02,3.91,14.88,6.08,22.92,6.32C11.58,63.31,4.74,33.79,18.14,10.71c25.64,31.55,63.47,50.73,104.08,52.76c-4.07-17.54,1.49-35.92,14.61-48.25c20.34-19.12,52.33-18.14,71.45,2.19c11.31-2.23,22.15-6.38,32.07-12.26c-3.77,11.69-11.66,21.62-22.2,27.93c10.01-1.18,19.79-3.86,29-7.95C240.37,35.29,231.83,44.14,221.95,51.29z"
+                    />
+                  </g></svg
+                >ツイート
+              </div></a
+            >
+          </div>
+        </div>
+      </div>
     </div>
-</body>
+    <div id="deleted" style="display: none">
+      <div>
+        <h2>このステージは削除されました。</h2>
+        <div>
+          <a class="std_btn" href="./posted_stage.html"
+            ><div>他のステージであそぶ</div></a
+          >
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

@@ -1,62 +1,59 @@
 <!DOCTYPE html>
 
 <html lang="ja">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="mobile-web-app-capable" content="yes">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <title>プログラミング教室2022 ステージ7「「かんすう」を使おう」</title>
 
     <link rel="stylesheet" href="/css/common.min.css" />
     <link rel="stylesheet" href="/css/commentaryBlockly.min.css" />
     <link rel="stylesheet" href="/css/commentary.min.css" />
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>ステージ7「「かんすう」を使おう」</h1>
     <h2>ヒント</h2>
     <label for="label1">表示</label>
-    <input type="checkbox" id="label1"/>
+    <input type="checkbox" id="label1" />
     <div class="hide">
-        <p>
-            このステージでは、まずゴールまでの道を考え、その道のりを関数を使って簡略化できないか考えてみましょう。
-        </p>
+      <p>
+        このステージでは、まずゴールまでの道を考え、その道のりを関数を使って簡略化できないか考えてみましょう。
+      </p>
     </div>
     <h2>星２の想定解法</h2>
     <label for="label2">表示</label>
-    <input type="checkbox" id="label2"/>
+    <input type="checkbox" id="label2" />
     <div class="hide">
-        <p>
-            ゴールまでは、「５マスすすむ、右をむく、６マスすすむ、右を向く、５マスすすむ」という道のりなので、「５マスすすむ」の部分を関数でまとめます。「５マスすすむ」の部分を「関数を実行」で置き換え、「６マスすすむ」の部分は「関数を実行、１マスすすむ」で置き換えると、次のように１２ブロックでクリアできます。
-        </p>
-        <img src="solutions/stage7_2.png">
+      <p>
+        ゴールまでは、「５マスすすむ、右をむく、６マスすすむ、右を向く、５マスすすむ」という道のりなので、「５マスすすむ」の部分を関数でまとめます。「５マスすすむ」の部分を「関数を実行」で置き換え、「６マスすすむ」の部分は「関数を実行、１マスすすむ」で置き換えると、次のように１２ブロックでクリアできます。
+      </p>
+      <img src="solutions/stage7_2.png" />
     </div>
     <h2>星３の想定解法</h2>
     <label for="label3">表示</label>
-    <input type="checkbox" id="label3"/>
+    <input type="checkbox" id="label3" />
     <div class="hide">
-        <p>
-            次のように、右を向く動作まで関数を使ってまとめると、星3を取ることができます。このように、プログラミングをする時は、何度も使う操作は関数にまとめておくことがよくあります。コードが読みやすくなり、間違いがあった時に修正するべき箇所がわかりやすくなります。
-        </p>
-        <img src="solutions/stage7_3.png" alt="">
+      <p>
+        次のように、右を向く動作まで関数を使ってまとめると、星3を取ることができます。このように、プログラミングをする時は、何度も使う操作は関数にまとめておくことがよくあります。コードが読みやすくなり、間違いがあった時に修正するべき箇所がわかりやすくなります。
+      </p>
+      <img src="solutions/stage7_3.png" alt="" />
     </div>
-    
-    <div class="button">
-        <a href="/index.html">
-            <div class="std_btn">
-                トップページにもどる
-            </div>
-        </a>
-        <a href="/game.html?stage=7">
-            <div class="std_btn">
-                ゲーム画面にもどる
-            </div>
-        </a>
-    </div>
-</body>
 
+    <div class="button">
+      <a href="/index.html">
+        <div class="std_btn">トップページにもどる</div>
+      </a>
+      <a href="/game_default.html?stage=7">
+        <div class="std_btn">ゲーム画面にもどる</div>
+      </a>
+    </div>
+  </body>
 </html>

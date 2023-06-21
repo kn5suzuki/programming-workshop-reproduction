@@ -36,7 +36,7 @@ function postData(
         }
 
         const shareURL = encodeURIComponent(
-          `https://2022.eeic.jp/gamePosted.html?stage=${stageId}`
+          `https://2022.eeic.jp/game_posted.html?stage=${stageId}`
         );
         const tweet = encodeURIComponent(
           `eeicプログラミング教室　${submitter}さんのステージ「${stageName}」を${blockNum}ブロック、${steps}ステップでクリアしました。`

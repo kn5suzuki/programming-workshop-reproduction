@@ -1,156 +1,1850 @@
 <!DOCTYPE html>
 
 <html lang="ja">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="mobile-web-app-capable" content="yes">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <title>プログラミング教室2022 ステージ16「ジグザグザグ その2」</title>
 
     <link rel="stylesheet" href="/css/common.min.css" />
     <link rel="stylesheet" href="/css/commentaryBlockly.min.css" />
     <link rel="stylesheet" href="/css/commentary.min.css" />
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>ステージ16「ジグザグザグ その2」</h1>
     <h2>ヒント</h2>
     <label for="label1">表示</label>
-    <input type="checkbox" id="label1"/>
+    <input type="checkbox" id="label1" />
     <div class="hide">
-        <p>どう進めばゴールできるか考えましょう。共通する操作は関数にしましょう。ワープのマスにいる時はワープしましょう。</p>
+      <p>
+        どう進めばゴールできるか考えましょう。共通する操作は関数にしましょう。ワープのマスにいる時はワープしましょう。
+      </p>
     </div>
     <h2>星２の想定解法</h2>
     <label for="label2">表示</label>
-    <input type="checkbox" id="label2"/>
+    <input type="checkbox" id="label2" />
     <div class="hide">
-        <p>
-            「前に２歩すすむ、右をむく、前に２歩すすむ、左をむく」の部分をまとめると、次のように19ブロックでクリアできます。
-        </p>
-        <div class="BlocklySvg">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="blocklySvg" tabindex="0" width="492px" height="700px"><defs><pattern id="blocklyGridPattern8616406076430119" patternUnits="userSpaceOnUse" width="20" height="20" x="179.69256591796875" y="-1.1141114982578415"><line stroke="#888" stroke-width="1" x1="10" y1="10.5" x2="11" y2="10.5"></line></pattern></defs><g class="blocklyWorkspace"><rect height="100%" width="100%" class="blocklyMainBackground" style="fill: url(&quot;#blocklyGridPattern8616406076430119&quot;);"></rect><g class="blocklyTrash" style="opacity: 0.44;" transform="translate(400,495)"><clipPath id="blocklyTrashBodyClipPath2358859165167606"><rect width="47" height="44" y="16"></rect></clipPath><image width="96" x="0" height="124" y="-32" clip-path="url(#blocklyTrashBodyClipPath2358859165167606)" xlink:href="https://blockly-demo.appspot.com/static/media/sprites.png"></image><clipPath id="blocklyTrashLidClipPath2358859165167606"><rect width="47" height="16"></rect></clipPath><image width="96" x="0" height="124" y="-32" clip-path="url(#blocklyTrashLidClipPath2358859165167606)" xlink:href="https://blockly-demo.appspot.com/static/media/sprites.png" transform="rotate(4.5,43,14)"></image></g><g class="blocklyBlockCanvas" transform="translate(180,-1) scale(1)"><g class="blocklyCursor"><g width="100" height="5"><rect width="100" height="5" style="display: none"><animate attributeType="XML" attributeName="fill" dur="1s" values="#cc0a0a;transparent;transparent;" repeatCount="indefinite"></animate></rect><rect class="blocklyVerticalMarker" rx="10" ry="10" style="display: none"></rect><path transform="" style="display: none"><animate attributeType="XML" attributeName="fill" dur="1s" values="#cc0a0a;transparent;transparent;" repeatCount="indefinite"></animate></path><path transform="" style="display: none" fill="none" stroke-width="4"><animate attributeType="XML" attributeName="stroke" dur="1s" values="#cc0a0a;transparent;transparent;" repeatCount="indefinite"></animate></path></g></g><g data-id="9hlTqC3:z^TSJN^wQ/~U" class="blocklyDraggable" transform="translate(10.1148681640625,10.5)"><path class="blocklyPathDark" transform="translate(1,1)" fill="#498449" d=" m 0,0  m 0,8 a 8 8 0 0,1 8,-8  h 7  l 6,4  3,0  6,-4  h 126.3851318359375  v 5  H 156.3851318359375  V 5  H 156.3851318359375  V 27  H 156.3851318359375  V 31  H 50  l -6,4  -3,0  -6,-4  h -7 a 8 8 0 0,0 -8,8  v 179 a 8 8 0 0,0 8,8  H 156.3851318359375  H 156.3851318359375  V 226  V 236  h -126.8851318359375  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-"></path><path class="blocklyPath" stroke="none" fill="#5ba55b" d=" m 0,0  m 0,8 a 8 8 0 0,1 8,-8  h 7  l 6,4  3,0  6,-4  h 126.3851318359375  v 5  H 156.3851318359375  V 5  H 156.3851318359375  V 27  H 156.3851318359375  V 31  H 50  l -6,4  -3,0  -6,-4  h -7 a 8 8 0 0,0 -8,8  v 179 a 8 8 0 0,0 8,8  H 156.3851318359375  H 156.3851318359375  V 226  V 236  h -126.8851318359375  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-" filter="none"></path><path class="blocklyPathLight" stroke="#8cc08c" d=" m 0,0  m 0.5,8 a 7.5 7.5 0 0,1 8,-7.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 155.8851318359375  H 155.8851318359375  M 20,226  m 1.9895923599143455,-1.9895923599143455 a 8.5 8.5 0 0,0 6.0104076400856545,2.4895923599143455  l 127.8851318359375,0  H 155.8851318359375  M 0.5,235.5  V 8 
-" style="display: inline;"></path><g class="blocklyEditableText" transform="translate(5,5)" style="cursor: text;"><rect rx="4" ry="4" x="0" y="0" height="22" width="77.74517822265625" class="blocklyFieldRect"></rect><text class="blocklyText" x="5" y="16">かんすう1</text></g><g transform="translate(87.74517822265625,5)"><text class="blocklyText" x="0" y="16">をていぎ</text></g><g data-id="5OZu4f/N0:Fh{8A`s7vk" class="blocklyDraggable" transform="translate(21,32)" style="display: block;"><path class="blocklyPathDark" transform="translate(1,1)" fill="#664984" d=" m 0,0  m 0,8 a 8 8 0 0,1 8,-8  h 7  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-"></path><path class="blocklyPath" stroke="none" fill="#805ba5" d=" m 0,0  m 0,8 a 8 8 0 0,1 8,-8  h 7  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-" filter="none"></path><path class="blocklyPathLight" stroke="#a68cc0" d=" m 0,0  m 0.5,8 a 7.5 7.5 0 0,1 8,-7.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 107.45993041992188  H 107.45993041992188  M 0.5,30.5  V 8 
-" style="display: inline;"></path><g transform="translate(10,5)"><text class="blocklyText" x="0" y="16">１マスすすむ</text></g><g data-id="rJ3QyYInurs_Y];LS=iH" class="blocklyDraggable" transform="translate(0,32)"><path class="blocklyPathDark" transform="translate(1,1)" fill="#664984" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-"></path><path class="blocklyPath" stroke="none" fill="#805ba5" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-" filter="none"></path><path class="blocklyPathLight" stroke="#a68cc0" d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 107.45993041992188  H 107.45993041992188  M 0.5,30.5  V 0.5 
-" style="display: inline;"></path><g transform="translate(10,5)"><text class="blocklyText" x="0" y="16">１マスすすむ</text></g><g data-id="#2rUB(`ZDQj}wWBE;g=W" class="blocklyDraggable" transform="translate(0,32)"><path class="blocklyPathDark" transform="translate(1,1)" fill="#664984" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 90.21476745605469  v 5  H 120.21476745605469  V 5  H 120.21476745605469  V 27  H 120.21476745605469  V 27  V 31  h -90.71476745605469  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-"></path><path class="blocklyPath" stroke="none" fill="#805ba5" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 90.21476745605469  v 5  H 120.21476745605469  V 5  H 120.21476745605469  V 27  H 120.21476745605469  V 27  V 31  h -90.71476745605469  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-" filter="none"></path><path class="blocklyPathLight" stroke="#a68cc0" d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 119.71476745605469  H 119.71476745605469  M 0.5,30.5  V 0.5 
-" style="display: inline;"></path><g class="blocklyEditableText" transform="translate(5,5)" style="cursor: default;"><rect rx="4" ry="4" x="0" y="0" height="22" width="56.23480224609375" class="blocklyFieldRect blocklyDropdownRect" stroke="#a68cc0" fill="transparent"></rect><text class="blocklyText blocklyDropdownText" text-anchor="start" x="5" y="16">右⟳<tspan style="fill: rgb(128, 91, 165);"> ▾</tspan></text><image style="display: none;"></image></g><g transform="translate(66.23480224609375,5)"><text class="blocklyText" x="0" y="16">をむく</text></g><g data-id="}?d){VYdfWcilACG-D,`" class="blocklyDraggable" transform="translate(0,32)"><path class="blocklyPathDark" transform="translate(1,1)" fill="#664984" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-"></path><path class="blocklyPath" stroke="none" fill="#805ba5" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-" filter="none"></path><path class="blocklyPathLight" stroke="#a68cc0" d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 107.45993041992188  H 107.45993041992188  M 0.5,30.5  V 0.5 
-" style="display: inline;"></path><g transform="translate(10,5)"><text class="blocklyText" x="0" y="16">１マスすすむ</text></g><g data-id="_z6,sb]|H{+AT|f%!c2X" class="blocklyDraggable" transform="translate(0,32)" style="display: block;"><path class="blocklyPathDark" transform="translate(1,1)" fill="#664984" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-"></path><path class="blocklyPath" stroke="none" fill="#805ba5" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-" filter="none"></path><path class="blocklyPathLight" stroke="#a68cc0" d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 107.45993041992188  H 107.45993041992188  M 0.5,30.5  V 0.5 
-" style="display: inline;"></path><g transform="translate(10,5)"><text class="blocklyText" x="0" y="16">１マスすすむ</text></g><g data-id="9?MgOAK=F@`!kF.Bhx?=" class="blocklyDraggable" transform="translate(0,32)"><path class="blocklyPathDark" transform="translate(1,1)" fill="#664984" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 90.21476745605469  v 5  H 120.21476745605469  V 5  H 120.21476745605469  V 27  H 120.21476745605469  V 27  V 31  h -90.71476745605469  l -6,4  -3,0  -6,-4  h -6.5 a 8 8 0 0,1 -8,-8 z
-"></path><path class="blocklyPath" stroke="none" fill="#805ba5" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 90.21476745605469  v 5  H 120.21476745605469  V 5  H 120.21476745605469  V 27  H 120.21476745605469  V 27  V 31  h -90.71476745605469  l -6,4  -3,0  -6,-4  h -6.5 a 8 8 0 0,1 -8,-8 z
-" filter="none"></path><path class="blocklyPathLight" stroke="#a68cc0" d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 119.71476745605469  H 119.71476745605469  M 0,31  m 2.6966991411008934,-2.6966991411008934 a 7.5 7.5 0 0,1 -2.1966991411008934,-5.303300858899107  V 0.5 
-" style="display: inline;"></path><g class="blocklyEditableText" transform="translate(5,5)" style="cursor: default;"><rect rx="4" ry="4" x="0" y="0" height="22" width="56.23480224609375" class="blocklyFieldRect blocklyDropdownRect" stroke="#a68cc0" fill="transparent"></rect><text class="blocklyText blocklyDropdownText" text-anchor="start" x="5" y="16">左⟲<tspan style="fill: rgb(128, 91, 165);"> ▾</tspan></text><image style="display: none;"></image></g><g transform="translate(66.23480224609375,5)"><text class="blocklyText" x="0" y="16">をむく</text></g></g></g></g></g></g></g><g data-id="GII[]sq{:HVd`D[EbLJZ" class="blocklyDraggable" transform="translate(0,237)"><path class="blocklyPathDark" transform="translate(1,1)" fill="#664984" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-"></path><path class="blocklyPath" stroke="none" fill="#805ba5" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-" filter="none"></path><path class="blocklyPathLight" stroke="#a68cc0" d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 141.2251434326172  H 141.2251434326172  M 0.5,30.5  V 0.5 
-" style="display: inline;"></path><g class="blocklyEditableText" transform="translate(5,5)" style="cursor: text;"><rect rx="4" ry="4" x="0" y="0" height="22" width="77.74517822265625" class="blocklyFieldRect"></rect><text class="blocklyText" x="5" y="16">かんすう1</text></g><g transform="translate(87.74517822265625,5)"><text class="blocklyText" x="0" y="16">を実行</text></g><g data-id=".IB_pzz_1u*I.6}2MC5~" class="blocklyDraggable" transform="translate(0,32)"><path class="blocklyPathDark" transform="translate(1,1)" fill="#664984" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-"></path><path class="blocklyPath" stroke="none" fill="#805ba5" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-" filter="none"></path><path class="blocklyPathLight" stroke="#a68cc0" d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 141.2251434326172  H 141.2251434326172  M 0.5,30.5  V 0.5 
-" style=""></path><g class="blocklyEditableText" transform="translate(5,5)" style="cursor: text;"><rect rx="4" ry="4" x="0" y="0" height="22" width="77.74517822265625" class="blocklyFieldRect"></rect><text class="blocklyText" x="5" y="16">かんすう1</text></g><g transform="translate(87.74517822265625,5)"><text class="blocklyText" x="0" y="16">を実行</text></g><g data-id="Hp#C0OE,6]cMa-BDOiXH" class="blocklyDraggable" transform="translate(0,32)" style="display: block;"><path class="blocklyPathDark" transform="translate(1,1)" fill="#664984" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-"></path><path class="blocklyPath" stroke="none" fill="#805ba5" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-" filter="none"></path><path class="blocklyPathLight" stroke="#a68cc0" d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 141.2251434326172  H 141.2251434326172  M 0.5,30.5  V 0.5 
-" style=""></path><g class="blocklyEditableText" transform="translate(5,5)" style="cursor: text;"><rect rx="4" ry="4" x="0" y="0" height="22" width="77.74517822265625" class="blocklyFieldRect"></rect><text class="blocklyText" x="5" y="16">かんすう1</text></g><g transform="translate(87.74517822265625,5)"><text class="blocklyText" x="0" y="16">を実行</text></g><g data-id="cha]b3B=Rh;;*=x2W,Jc" class="blocklyDraggable" transform="translate(0,32)"><path class="blocklyPathDark" transform="translate(1,1)" fill="#664984" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 90.21476745605469  v 5  H 120.21476745605469  V 5  H 120.21476745605469  V 27  H 120.21476745605469  V 27  V 31  h -90.71476745605469  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-"></path><path class="blocklyPath" stroke="none" fill="#805ba5" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 90.21476745605469  v 5  H 120.21476745605469  V 5  H 120.21476745605469  V 27  H 120.21476745605469  V 27  V 31  h -90.71476745605469  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-" filter="none"></path><path class="blocklyPathLight" stroke="#a68cc0" d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 119.71476745605469  H 119.71476745605469  M 0.5,30.5  V 0.5 
-" style=""></path><g class="blocklyEditableText" transform="translate(5,5)" style="cursor: default;"><rect rx="4" ry="4" x="0" y="0" height="22" width="56.23480224609375" class="blocklyFieldRect blocklyDropdownRect" stroke="#a68cc0" fill="transparent"></rect><text class="blocklyText blocklyDropdownText" text-anchor="start" x="5" y="16">右⟳<tspan style="fill: rgb(128, 91, 165);"> ▾</tspan></text><image style="display: none;"></image></g><g transform="translate(66.23480224609375,5)"><text class="blocklyText" x="0" y="16">をむく</text></g><g data-id="hU5GlVElu~FJ]*|b}J{a" class="blocklyDraggable" transform="translate(0,32)"><path class="blocklyPathDark" transform="translate(1,1)" fill="#664984" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-"></path><path class="blocklyPath" stroke="none" fill="#805ba5" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-" filter="none"></path><path class="blocklyPathLight" stroke="#a68cc0" d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 141.2251434326172  H 141.2251434326172  M 0.5,30.5  V 0.5 
-" style=""></path><g class="blocklyEditableText" transform="translate(5,5)" style="cursor: text;"><rect rx="4" ry="4" x="0" y="0" height="22" width="77.74517822265625" class="blocklyFieldRect"></rect><text class="blocklyText" x="5" y="16">かんすう1</text></g><g transform="translate(87.74517822265625,5)"><text class="blocklyText" x="0" y="16">を実行</text></g><g data-id="7Dg+7aV5O.*N|{Ya1`eR" class="blocklyDraggable" transform="translate(0,32)" style="display: block;"><path class="blocklyPathDark" transform="translate(1,1)" fill="#664984" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-"></path><path class="blocklyPath" stroke="none" fill="#805ba5" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-" filter="none"></path><path class="blocklyPathLight" stroke="#a68cc0" d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 141.2251434326172  H 141.2251434326172  M 0.5,30.5  V 0.5 
-" style=""></path><g class="blocklyEditableText" transform="translate(5,5)" style="cursor: text;"><rect rx="4" ry="4" x="0" y="0" height="22" width="77.74517822265625" class="blocklyFieldRect"></rect><text class="blocklyText" x="5" y="16">かんすう1</text></g><g transform="translate(87.74517822265625,5)"><text class="blocklyText" x="0" y="16">を実行</text></g><g data-id="7%p7whKP|DSDLq#ePg,D" class="blocklyDraggable" transform="translate(0,32)"><path class="blocklyPathDark" transform="translate(1,1)" fill="#664984" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-"></path><path class="blocklyPath" stroke="none" fill="#805ba5" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-" filter="none"></path><path class="blocklyPathLight" stroke="#a68cc0" d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 141.2251434326172  H 141.2251434326172  M 0.5,30.5  V 0.5 
-" style=""></path><g class="blocklyEditableText" transform="translate(5,5)" style="cursor: text;"><rect rx="4" ry="4" x="0" y="0" height="22" width="77.74517822265625" class="blocklyFieldRect"></rect><text class="blocklyText" x="5" y="16">かんすう1</text></g><g transform="translate(87.74517822265625,5)"><text class="blocklyText" x="0" y="16">を実行</text></g><g data-id="yVs260=_yv)}V}^x#79f" class="blocklyDraggable" transform="translate(0,32)" style="display: block;"><path class="blocklyPathDark" transform="translate(1,1)" fill="#664984" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-"></path><path class="blocklyPath" stroke="none" fill="#805ba5" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-" filter="none"></path><path class="blocklyPathLight" stroke="#a68cc0" d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 141.2251434326172  H 141.2251434326172  M 0.5,30.5  V 0.5 
-" style=""></path><g class="blocklyEditableText" transform="translate(5,5)" style="cursor: text;"><rect rx="4" ry="4" x="0" y="0" height="22" width="77.74517822265625" class="blocklyFieldRect"></rect><text class="blocklyText" x="5" y="16">かんすう1</text></g><g transform="translate(87.74517822265625,5)"><text class="blocklyText" x="0" y="16">を実行</text></g><g data-id="te?l*%tSb~}:2p!/xvT*" class="blocklyDraggable" transform="translate(0,32)" style="display: block;"><path class="blocklyPathDark" transform="translate(1,1)" fill="#664984" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 63.29994201660156  v 5  H 93.29994201660156  V 5  H 93.29994201660156  V 27  H 93.29994201660156  V 27  V 31  h -63.79994201660156  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-"></path><path class="blocklyPath" stroke="none" fill="#805ba5" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 63.29994201660156  v 5  H 93.29994201660156  V 5  H 93.29994201660156  V 27  H 93.29994201660156  V 27  V 31  h -63.79994201660156  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-" filter="none"></path><path class="blocklyPathLight" stroke="#a68cc0" d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 92.79994201660156  H 92.79994201660156  M 0.5,30.5  V 0.5 
-" style=""></path><g transform="translate(10,5)"><text class="blocklyText" x="0" y="16">ワープする</text></g><g data-id="5tRdoOxPJ/:}i=@_+haC" class="blocklyDraggable" transform="translate(0,32)" style="display: block;"><path class="blocklyPathDark" transform="translate(1,1)" fill="#664984" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-"></path><path class="blocklyPath" stroke="none" fill="#805ba5" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-" filter="none"></path><path class="blocklyPathLight" stroke="#a68cc0" d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 141.2251434326172  H 141.2251434326172  M 0.5,30.5  V 0.5 
-" style=""></path><g class="blocklyEditableText" transform="translate(5,5)" style="cursor: text;"><rect rx="4" ry="4" x="0" y="0" height="22" width="77.74517822265625" class="blocklyFieldRect"></rect><text class="blocklyText" x="5" y="16">かんすう1</text></g><g transform="translate(87.74517822265625,5)"><text class="blocklyText" x="0" y="16">を実行</text></g><g data-id="3awpc/r2;1Ox8tVeJVL!" class="blocklyDraggable" transform="translate(0,32)"><path class="blocklyPathDark" transform="translate(1,1)" fill="#664984" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-"></path><path class="blocklyPath" stroke="none" fill="#805ba5" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-"></path><path class="blocklyPathLight" stroke="#a68cc0" d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 107.45993041992188  H 107.45993041992188  M 0.5,30.5  V 0.5 
-"></path><g transform="translate(10,5)"><text class="blocklyText" x="0" y="16">１マスすすむ</text></g><g data-id="tUY2C):HO_{RYa]G0fG;" class="blocklyDraggable" transform="translate(0,32)"><path class="blocklyPathDark" transform="translate(1,1)" fill="#664984" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -6.5 a 8 8 0 0,1 -8,-8 z
-"></path><path class="blocklyPath" stroke="none" fill="#805ba5" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -6.5 a 8 8 0 0,1 -8,-8 z
-"></path><path class="blocklyPathLight" stroke="#a68cc0" d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 107.45993041992188  H 107.45993041992188  M 0,31  m 2.6966991411008934,-2.6966991411008934 a 7.5 7.5 0 0,1 -2.1966991411008934,-5.303300858899107  V 0.5 
-"></path><g transform="translate(10,5)"><text class="blocklyText" x="0" y="16">１マスすすむ</text></g></g></g></g></g></g></g></g></g></g></g></g></g></g></g><g class="blocklyBubbleCanvas" transform="translate(180,-1) scale(1)"></g><rect height="25" width="25" class="blocklyScrollbarBackground" x="466.5" y="574.5"></rect><defs><filter id="blocklyEmbossFilter19321707181298065"><feGaussianBlur in="SourceAlpha" stdDeviation="1" result="blur"></feGaussianBlur><feSpecularLighting in="blur" surfaceScale="1" specularConstant="0.5" specularExponent="10" lighting-color="white" result="specOut"><fePointLight x="-5000" y="-10000" z="20000"></fePointLight></feSpecularLighting><feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut"></feComposite><feComposite in="SourceGraphic" in2="specOut" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"></feComposite></filter><pattern id="blocklyDisabledPattern19321707181298065" patternUnits="userSpaceOnUse" width="10" height="10"><rect width="10" height="10" fill="#aaa"></rect><path d="M 0 0 L 10 10 M 10 0 L 0 10" stroke="#cc0"></path></pattern><filter id="blocklyDebugFilter19321707181298065" height="160%" width="180%" y="-30%" x="-40%"><feComponentTransfer result="outBlur"><feFuncA type="table" tableValues="0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1"></feFuncA></feComponentTransfer><feFlood flood-color="#ff0000" flood-opacity="0.5" result="outColor"></feFlood><feComposite in="outColor" in2="outBlur" operator="in" result="outGlow"></feComposite></filter></defs></g></svg>
-        </div>
+      <p>
+        「前に２歩すすむ、右をむく、前に２歩すすむ、左をむく」の部分をまとめると、次のように19ブロックでクリアできます。
+      </p>
+      <div class="BlocklySvg">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          version="1.1"
+          class="blocklySvg"
+          tabindex="0"
+          width="492px"
+          height="700px"
+        >
+          <defs>
+            <pattern
+              id="blocklyGridPattern8616406076430119"
+              patternUnits="userSpaceOnUse"
+              width="20"
+              height="20"
+              x="179.69256591796875"
+              y="-1.1141114982578415"
+            >
+              <line
+                stroke="#888"
+                stroke-width="1"
+                x1="10"
+                y1="10.5"
+                x2="11"
+                y2="10.5"
+              ></line>
+            </pattern>
+          </defs>
+          <g class="blocklyWorkspace">
+            <rect
+              height="100%"
+              width="100%"
+              class="blocklyMainBackground"
+              style="fill: url('#blocklyGridPattern8616406076430119')"
+            ></rect>
+            <g
+              class="blocklyTrash"
+              style="opacity: 0.44"
+              transform="translate(400,495)"
+            >
+              <clipPath id="blocklyTrashBodyClipPath2358859165167606">
+                <rect width="47" height="44" y="16"></rect>
+              </clipPath>
+              <image
+                width="96"
+                x="0"
+                height="124"
+                y="-32"
+                clip-path="url(#blocklyTrashBodyClipPath2358859165167606)"
+                xlink:href="https://blockly-demo.appspot.com/static/media/sprites.png"
+              ></image>
+              <clipPath id="blocklyTrashLidClipPath2358859165167606">
+                <rect width="47" height="16"></rect>
+              </clipPath>
+              <image
+                width="96"
+                x="0"
+                height="124"
+                y="-32"
+                clip-path="url(#blocklyTrashLidClipPath2358859165167606)"
+                xlink:href="https://blockly-demo.appspot.com/static/media/sprites.png"
+                transform="rotate(4.5,43,14)"
+              ></image>
+            </g>
+            <g
+              class="blocklyBlockCanvas"
+              transform="translate(180,-1) scale(1)"
+            >
+              <g class="blocklyCursor">
+                <g width="100" height="5">
+                  <rect width="100" height="5" style="display: none">
+                    <animate
+                      attributeType="XML"
+                      attributeName="fill"
+                      dur="1s"
+                      values="#cc0a0a;transparent;transparent;"
+                      repeatCount="indefinite"
+                    ></animate>
+                  </rect>
+                  <rect
+                    class="blocklyVerticalMarker"
+                    rx="10"
+                    ry="10"
+                    style="display: none"
+                  ></rect>
+                  <path transform="" style="display: none">
+                    <animate
+                      attributeType="XML"
+                      attributeName="fill"
+                      dur="1s"
+                      values="#cc0a0a;transparent;transparent;"
+                      repeatCount="indefinite"
+                    ></animate>
+                  </path>
+                  <path
+                    transform=""
+                    style="display: none"
+                    fill="none"
+                    stroke-width="4"
+                  >
+                    <animate
+                      attributeType="XML"
+                      attributeName="stroke"
+                      dur="1s"
+                      values="#cc0a0a;transparent;transparent;"
+                      repeatCount="indefinite"
+                    ></animate>
+                  </path>
+                </g>
+              </g>
+              <g
+                data-id="9hlTqC3:z^TSJN^wQ/~U"
+                class="blocklyDraggable"
+                transform="translate(10.1148681640625,10.5)"
+              >
+                <path
+                  class="blocklyPathDark"
+                  transform="translate(1,1)"
+                  fill="#498449"
+                  d=" m 0,0  m 0,8 a 8 8 0 0,1 8,-8  h 7  l 6,4  3,0  6,-4  h 126.3851318359375  v 5  H 156.3851318359375  V 5  H 156.3851318359375  V 27  H 156.3851318359375  V 31  H 50  l -6,4  -3,0  -6,-4  h -7 a 8 8 0 0,0 -8,8  v 179 a 8 8 0 0,0 8,8  H 156.3851318359375  H 156.3851318359375  V 226  V 236  h -126.8851318359375  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                ></path>
+                <path
+                  class="blocklyPath"
+                  stroke="none"
+                  fill="#5ba55b"
+                  d=" m 0,0  m 0,8 a 8 8 0 0,1 8,-8  h 7  l 6,4  3,0  6,-4  h 126.3851318359375  v 5  H 156.3851318359375  V 5  H 156.3851318359375  V 27  H 156.3851318359375  V 31  H 50  l -6,4  -3,0  -6,-4  h -7 a 8 8 0 0,0 -8,8  v 179 a 8 8 0 0,0 8,8  H 156.3851318359375  H 156.3851318359375  V 226  V 236  h -126.8851318359375  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                  filter="none"
+                ></path>
+                <path
+                  class="blocklyPathLight"
+                  stroke="#8cc08c"
+                  d=" m 0,0  m 0.5,8 a 7.5 7.5 0 0,1 8,-7.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 155.8851318359375  H 155.8851318359375  M 20,226  m 1.9895923599143455,-1.9895923599143455 a 8.5 8.5 0 0,0 6.0104076400856545,2.4895923599143455  l 127.8851318359375,0  H 155.8851318359375  M 0.5,235.5  V 8 
+"
+                  style="display: inline"
+                ></path>
+                <g
+                  class="blocklyEditableText"
+                  transform="translate(5,5)"
+                  style="cursor: text"
+                >
+                  <rect
+                    rx="4"
+                    ry="4"
+                    x="0"
+                    y="0"
+                    height="22"
+                    width="77.74517822265625"
+                    class="blocklyFieldRect"
+                  ></rect>
+                  <text class="blocklyText" x="5" y="16">かんすう1</text>
+                </g>
+                <g transform="translate(87.74517822265625,5)">
+                  <text class="blocklyText" x="0" y="16">をていぎ</text>
+                </g>
+                <g
+                  data-id="5OZu4f/N0:Fh{8A`s7vk"
+                  class="blocklyDraggable"
+                  transform="translate(21,32)"
+                  style="display: block"
+                >
+                  <path
+                    class="blocklyPathDark"
+                    transform="translate(1,1)"
+                    fill="#664984"
+                    d=" m 0,0  m 0,8 a 8 8 0 0,1 8,-8  h 7  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                  ></path>
+                  <path
+                    class="blocklyPath"
+                    stroke="none"
+                    fill="#805ba5"
+                    d=" m 0,0  m 0,8 a 8 8 0 0,1 8,-8  h 7  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                    filter="none"
+                  ></path>
+                  <path
+                    class="blocklyPathLight"
+                    stroke="#a68cc0"
+                    d=" m 0,0  m 0.5,8 a 7.5 7.5 0 0,1 8,-7.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 107.45993041992188  H 107.45993041992188  M 0.5,30.5  V 8 
+"
+                    style="display: inline"
+                  ></path>
+                  <g transform="translate(10,5)">
+                    <text class="blocklyText" x="0" y="16">１マスすすむ</text>
+                  </g>
+                  <g
+                    data-id="rJ3QyYInurs_Y];LS=iH"
+                    class="blocklyDraggable"
+                    transform="translate(0,32)"
+                  >
+                    <path
+                      class="blocklyPathDark"
+                      transform="translate(1,1)"
+                      fill="#664984"
+                      d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                    ></path>
+                    <path
+                      class="blocklyPath"
+                      stroke="none"
+                      fill="#805ba5"
+                      d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                      filter="none"
+                    ></path>
+                    <path
+                      class="blocklyPathLight"
+                      stroke="#a68cc0"
+                      d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 107.45993041992188  H 107.45993041992188  M 0.5,30.5  V 0.5 
+"
+                      style="display: inline"
+                    ></path>
+                    <g transform="translate(10,5)">
+                      <text class="blocklyText" x="0" y="16">１マスすすむ</text>
+                    </g>
+                    <g
+                      data-id="#2rUB(`ZDQj}wWBE;g=W"
+                      class="blocklyDraggable"
+                      transform="translate(0,32)"
+                    >
+                      <path
+                        class="blocklyPathDark"
+                        transform="translate(1,1)"
+                        fill="#664984"
+                        d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 90.21476745605469  v 5  H 120.21476745605469  V 5  H 120.21476745605469  V 27  H 120.21476745605469  V 27  V 31  h -90.71476745605469  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                      ></path>
+                      <path
+                        class="blocklyPath"
+                        stroke="none"
+                        fill="#805ba5"
+                        d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 90.21476745605469  v 5  H 120.21476745605469  V 5  H 120.21476745605469  V 27  H 120.21476745605469  V 27  V 31  h -90.71476745605469  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                        filter="none"
+                      ></path>
+                      <path
+                        class="blocklyPathLight"
+                        stroke="#a68cc0"
+                        d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 119.71476745605469  H 119.71476745605469  M 0.5,30.5  V 0.5 
+"
+                        style="display: inline"
+                      ></path>
+                      <g
+                        class="blocklyEditableText"
+                        transform="translate(5,5)"
+                        style="cursor: default"
+                      >
+                        <rect
+                          rx="4"
+                          ry="4"
+                          x="0"
+                          y="0"
+                          height="22"
+                          width="56.23480224609375"
+                          class="blocklyFieldRect blocklyDropdownRect"
+                          stroke="#a68cc0"
+                          fill="transparent"
+                        ></rect>
+                        <text
+                          class="blocklyText blocklyDropdownText"
+                          text-anchor="start"
+                          x="5"
+                          y="16"
+                        >
+                          右⟳
+                          <tspan style="fill: rgb(128, 91, 165)">▾</tspan>
+                        </text>
+                        <image style="display: none"></image>
+                      </g>
+                      <g transform="translate(66.23480224609375,5)">
+                        <text class="blocklyText" x="0" y="16">をむく</text>
+                      </g>
+                      <g
+                        data-id="}?d){VYdfWcilACG-D,`"
+                        class="blocklyDraggable"
+                        transform="translate(0,32)"
+                      >
+                        <path
+                          class="blocklyPathDark"
+                          transform="translate(1,1)"
+                          fill="#664984"
+                          d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                        ></path>
+                        <path
+                          class="blocklyPath"
+                          stroke="none"
+                          fill="#805ba5"
+                          d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                          filter="none"
+                        ></path>
+                        <path
+                          class="blocklyPathLight"
+                          stroke="#a68cc0"
+                          d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 107.45993041992188  H 107.45993041992188  M 0.5,30.5  V 0.5 
+"
+                          style="display: inline"
+                        ></path>
+                        <g transform="translate(10,5)">
+                          <text class="blocklyText" x="0" y="16">
+                            １マスすすむ
+                          </text>
+                        </g>
+                        <g
+                          data-id="_z6,sb]|H{+AT|f%!c2X"
+                          class="blocklyDraggable"
+                          transform="translate(0,32)"
+                          style="display: block"
+                        >
+                          <path
+                            class="blocklyPathDark"
+                            transform="translate(1,1)"
+                            fill="#664984"
+                            d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                          ></path>
+                          <path
+                            class="blocklyPath"
+                            stroke="none"
+                            fill="#805ba5"
+                            d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                            filter="none"
+                          ></path>
+                          <path
+                            class="blocklyPathLight"
+                            stroke="#a68cc0"
+                            d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 107.45993041992188  H 107.45993041992188  M 0.5,30.5  V 0.5 
+"
+                            style="display: inline"
+                          ></path>
+                          <g transform="translate(10,5)">
+                            <text class="blocklyText" x="0" y="16">
+                              １マスすすむ
+                            </text>
+                          </g>
+                          <g
+                            data-id="9?MgOAK=F@`!kF.Bhx?="
+                            class="blocklyDraggable"
+                            transform="translate(0,32)"
+                          >
+                            <path
+                              class="blocklyPathDark"
+                              transform="translate(1,1)"
+                              fill="#664984"
+                              d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 90.21476745605469  v 5  H 120.21476745605469  V 5  H 120.21476745605469  V 27  H 120.21476745605469  V 27  V 31  h -90.71476745605469  l -6,4  -3,0  -6,-4  h -6.5 a 8 8 0 0,1 -8,-8 z
+"
+                            ></path>
+                            <path
+                              class="blocklyPath"
+                              stroke="none"
+                              fill="#805ba5"
+                              d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 90.21476745605469  v 5  H 120.21476745605469  V 5  H 120.21476745605469  V 27  H 120.21476745605469  V 27  V 31  h -90.71476745605469  l -6,4  -3,0  -6,-4  h -6.5 a 8 8 0 0,1 -8,-8 z
+"
+                              filter="none"
+                            ></path>
+                            <path
+                              class="blocklyPathLight"
+                              stroke="#a68cc0"
+                              d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 119.71476745605469  H 119.71476745605469  M 0,31  m 2.6966991411008934,-2.6966991411008934 a 7.5 7.5 0 0,1 -2.1966991411008934,-5.303300858899107  V 0.5 
+"
+                              style="display: inline"
+                            ></path>
+                            <g
+                              class="blocklyEditableText"
+                              transform="translate(5,5)"
+                              style="cursor: default"
+                            >
+                              <rect
+                                rx="4"
+                                ry="4"
+                                x="0"
+                                y="0"
+                                height="22"
+                                width="56.23480224609375"
+                                class="blocklyFieldRect blocklyDropdownRect"
+                                stroke="#a68cc0"
+                                fill="transparent"
+                              ></rect>
+                              <text
+                                class="blocklyText blocklyDropdownText"
+                                text-anchor="start"
+                                x="5"
+                                y="16"
+                              >
+                                左⟲
+                                <tspan style="fill: rgb(128, 91, 165)">▾</tspan>
+                              </text>
+                              <image style="display: none"></image>
+                            </g>
+                            <g transform="translate(66.23480224609375,5)">
+                              <text class="blocklyText" x="0" y="16">
+                                をむく
+                              </text>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+                <g
+                  data-id="GII[]sq{:HVd`D[EbLJZ"
+                  class="blocklyDraggable"
+                  transform="translate(0,237)"
+                >
+                  <path
+                    class="blocklyPathDark"
+                    transform="translate(1,1)"
+                    fill="#664984"
+                    d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                  ></path>
+                  <path
+                    class="blocklyPath"
+                    stroke="none"
+                    fill="#805ba5"
+                    d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                    filter="none"
+                  ></path>
+                  <path
+                    class="blocklyPathLight"
+                    stroke="#a68cc0"
+                    d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 141.2251434326172  H 141.2251434326172  M 0.5,30.5  V 0.5 
+"
+                    style="display: inline"
+                  ></path>
+                  <g
+                    class="blocklyEditableText"
+                    transform="translate(5,5)"
+                    style="cursor: text"
+                  >
+                    <rect
+                      rx="4"
+                      ry="4"
+                      x="0"
+                      y="0"
+                      height="22"
+                      width="77.74517822265625"
+                      class="blocklyFieldRect"
+                    ></rect>
+                    <text class="blocklyText" x="5" y="16">かんすう1</text>
+                  </g>
+                  <g transform="translate(87.74517822265625,5)">
+                    <text class="blocklyText" x="0" y="16">を実行</text>
+                  </g>
+                  <g
+                    data-id=".IB_pzz_1u*I.6}2MC5~"
+                    class="blocklyDraggable"
+                    transform="translate(0,32)"
+                  >
+                    <path
+                      class="blocklyPathDark"
+                      transform="translate(1,1)"
+                      fill="#664984"
+                      d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                    ></path>
+                    <path
+                      class="blocklyPath"
+                      stroke="none"
+                      fill="#805ba5"
+                      d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                      filter="none"
+                    ></path>
+                    <path
+                      class="blocklyPathLight"
+                      stroke="#a68cc0"
+                      d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 141.2251434326172  H 141.2251434326172  M 0.5,30.5  V 0.5 
+"
+                      style=""
+                    ></path>
+                    <g
+                      class="blocklyEditableText"
+                      transform="translate(5,5)"
+                      style="cursor: text"
+                    >
+                      <rect
+                        rx="4"
+                        ry="4"
+                        x="0"
+                        y="0"
+                        height="22"
+                        width="77.74517822265625"
+                        class="blocklyFieldRect"
+                      ></rect>
+                      <text class="blocklyText" x="5" y="16">かんすう1</text>
+                    </g>
+                    <g transform="translate(87.74517822265625,5)">
+                      <text class="blocklyText" x="0" y="16">を実行</text>
+                    </g>
+                    <g
+                      data-id="Hp#C0OE,6]cMa-BDOiXH"
+                      class="blocklyDraggable"
+                      transform="translate(0,32)"
+                      style="display: block"
+                    >
+                      <path
+                        class="blocklyPathDark"
+                        transform="translate(1,1)"
+                        fill="#664984"
+                        d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                      ></path>
+                      <path
+                        class="blocklyPath"
+                        stroke="none"
+                        fill="#805ba5"
+                        d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                        filter="none"
+                      ></path>
+                      <path
+                        class="blocklyPathLight"
+                        stroke="#a68cc0"
+                        d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 141.2251434326172  H 141.2251434326172  M 0.5,30.5  V 0.5 
+"
+                        style=""
+                      ></path>
+                      <g
+                        class="blocklyEditableText"
+                        transform="translate(5,5)"
+                        style="cursor: text"
+                      >
+                        <rect
+                          rx="4"
+                          ry="4"
+                          x="0"
+                          y="0"
+                          height="22"
+                          width="77.74517822265625"
+                          class="blocklyFieldRect"
+                        ></rect>
+                        <text class="blocklyText" x="5" y="16">かんすう1</text>
+                      </g>
+                      <g transform="translate(87.74517822265625,5)">
+                        <text class="blocklyText" x="0" y="16">を実行</text>
+                      </g>
+                      <g
+                        data-id="cha]b3B=Rh;;*=x2W,Jc"
+                        class="blocklyDraggable"
+                        transform="translate(0,32)"
+                      >
+                        <path
+                          class="blocklyPathDark"
+                          transform="translate(1,1)"
+                          fill="#664984"
+                          d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 90.21476745605469  v 5  H 120.21476745605469  V 5  H 120.21476745605469  V 27  H 120.21476745605469  V 27  V 31  h -90.71476745605469  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                        ></path>
+                        <path
+                          class="blocklyPath"
+                          stroke="none"
+                          fill="#805ba5"
+                          d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 90.21476745605469  v 5  H 120.21476745605469  V 5  H 120.21476745605469  V 27  H 120.21476745605469  V 27  V 31  h -90.71476745605469  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                          filter="none"
+                        ></path>
+                        <path
+                          class="blocklyPathLight"
+                          stroke="#a68cc0"
+                          d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 119.71476745605469  H 119.71476745605469  M 0.5,30.5  V 0.5 
+"
+                          style=""
+                        ></path>
+                        <g
+                          class="blocklyEditableText"
+                          transform="translate(5,5)"
+                          style="cursor: default"
+                        >
+                          <rect
+                            rx="4"
+                            ry="4"
+                            x="0"
+                            y="0"
+                            height="22"
+                            width="56.23480224609375"
+                            class="blocklyFieldRect blocklyDropdownRect"
+                            stroke="#a68cc0"
+                            fill="transparent"
+                          ></rect>
+                          <text
+                            class="blocklyText blocklyDropdownText"
+                            text-anchor="start"
+                            x="5"
+                            y="16"
+                          >
+                            右⟳
+                            <tspan style="fill: rgb(128, 91, 165)">▾</tspan>
+                          </text>
+                          <image style="display: none"></image>
+                        </g>
+                        <g transform="translate(66.23480224609375,5)">
+                          <text class="blocklyText" x="0" y="16">をむく</text>
+                        </g>
+                        <g
+                          data-id="hU5GlVElu~FJ]*|b}J{a"
+                          class="blocklyDraggable"
+                          transform="translate(0,32)"
+                        >
+                          <path
+                            class="blocklyPathDark"
+                            transform="translate(1,1)"
+                            fill="#664984"
+                            d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                          ></path>
+                          <path
+                            class="blocklyPath"
+                            stroke="none"
+                            fill="#805ba5"
+                            d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                            filter="none"
+                          ></path>
+                          <path
+                            class="blocklyPathLight"
+                            stroke="#a68cc0"
+                            d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 141.2251434326172  H 141.2251434326172  M 0.5,30.5  V 0.5 
+"
+                            style=""
+                          ></path>
+                          <g
+                            class="blocklyEditableText"
+                            transform="translate(5,5)"
+                            style="cursor: text"
+                          >
+                            <rect
+                              rx="4"
+                              ry="4"
+                              x="0"
+                              y="0"
+                              height="22"
+                              width="77.74517822265625"
+                              class="blocklyFieldRect"
+                            ></rect>
+                            <text class="blocklyText" x="5" y="16">
+                              かんすう1
+                            </text>
+                          </g>
+                          <g transform="translate(87.74517822265625,5)">
+                            <text class="blocklyText" x="0" y="16">を実行</text>
+                          </g>
+                          <g
+                            data-id="7Dg+7aV5O.*N|{Ya1`eR"
+                            class="blocklyDraggable"
+                            transform="translate(0,32)"
+                            style="display: block"
+                          >
+                            <path
+                              class="blocklyPathDark"
+                              transform="translate(1,1)"
+                              fill="#664984"
+                              d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                            ></path>
+                            <path
+                              class="blocklyPath"
+                              stroke="none"
+                              fill="#805ba5"
+                              d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                              filter="none"
+                            ></path>
+                            <path
+                              class="blocklyPathLight"
+                              stroke="#a68cc0"
+                              d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 141.2251434326172  H 141.2251434326172  M 0.5,30.5  V 0.5 
+"
+                              style=""
+                            ></path>
+                            <g
+                              class="blocklyEditableText"
+                              transform="translate(5,5)"
+                              style="cursor: text"
+                            >
+                              <rect
+                                rx="4"
+                                ry="4"
+                                x="0"
+                                y="0"
+                                height="22"
+                                width="77.74517822265625"
+                                class="blocklyFieldRect"
+                              ></rect>
+                              <text class="blocklyText" x="5" y="16">
+                                かんすう1
+                              </text>
+                            </g>
+                            <g transform="translate(87.74517822265625,5)">
+                              <text class="blocklyText" x="0" y="16">
+                                を実行
+                              </text>
+                            </g>
+                            <g
+                              data-id="7%p7whKP|DSDLq#ePg,D"
+                              class="blocklyDraggable"
+                              transform="translate(0,32)"
+                            >
+                              <path
+                                class="blocklyPathDark"
+                                transform="translate(1,1)"
+                                fill="#664984"
+                                d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                              ></path>
+                              <path
+                                class="blocklyPath"
+                                stroke="none"
+                                fill="#805ba5"
+                                d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                                filter="none"
+                              ></path>
+                              <path
+                                class="blocklyPathLight"
+                                stroke="#a68cc0"
+                                d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 141.2251434326172  H 141.2251434326172  M 0.5,30.5  V 0.5 
+"
+                                style=""
+                              ></path>
+                              <g
+                                class="blocklyEditableText"
+                                transform="translate(5,5)"
+                                style="cursor: text"
+                              >
+                                <rect
+                                  rx="4"
+                                  ry="4"
+                                  x="0"
+                                  y="0"
+                                  height="22"
+                                  width="77.74517822265625"
+                                  class="blocklyFieldRect"
+                                ></rect>
+                                <text class="blocklyText" x="5" y="16">
+                                  かんすう1
+                                </text>
+                              </g>
+                              <g transform="translate(87.74517822265625,5)">
+                                <text class="blocklyText" x="0" y="16">
+                                  を実行
+                                </text>
+                              </g>
+                              <g
+                                data-id="yVs260=_yv)}V}^x#79f"
+                                class="blocklyDraggable"
+                                transform="translate(0,32)"
+                                style="display: block"
+                              >
+                                <path
+                                  class="blocklyPathDark"
+                                  transform="translate(1,1)"
+                                  fill="#664984"
+                                  d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                                ></path>
+                                <path
+                                  class="blocklyPath"
+                                  stroke="none"
+                                  fill="#805ba5"
+                                  d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                                  filter="none"
+                                ></path>
+                                <path
+                                  class="blocklyPathLight"
+                                  stroke="#a68cc0"
+                                  d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 141.2251434326172  H 141.2251434326172  M 0.5,30.5  V 0.5 
+"
+                                  style=""
+                                ></path>
+                                <g
+                                  class="blocklyEditableText"
+                                  transform="translate(5,5)"
+                                  style="cursor: text"
+                                >
+                                  <rect
+                                    rx="4"
+                                    ry="4"
+                                    x="0"
+                                    y="0"
+                                    height="22"
+                                    width="77.74517822265625"
+                                    class="blocklyFieldRect"
+                                  ></rect>
+                                  <text class="blocklyText" x="5" y="16">
+                                    かんすう1
+                                  </text>
+                                </g>
+                                <g transform="translate(87.74517822265625,5)">
+                                  <text class="blocklyText" x="0" y="16">
+                                    を実行
+                                  </text>
+                                </g>
+                                <g
+                                  data-id="te?l*%tSb~}:2p!/xvT*"
+                                  class="blocklyDraggable"
+                                  transform="translate(0,32)"
+                                  style="display: block"
+                                >
+                                  <path
+                                    class="blocklyPathDark"
+                                    transform="translate(1,1)"
+                                    fill="#664984"
+                                    d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 63.29994201660156  v 5  H 93.29994201660156  V 5  H 93.29994201660156  V 27  H 93.29994201660156  V 27  V 31  h -63.79994201660156  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                                  ></path>
+                                  <path
+                                    class="blocklyPath"
+                                    stroke="none"
+                                    fill="#805ba5"
+                                    d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 63.29994201660156  v 5  H 93.29994201660156  V 5  H 93.29994201660156  V 27  H 93.29994201660156  V 27  V 31  h -63.79994201660156  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                                    filter="none"
+                                  ></path>
+                                  <path
+                                    class="blocklyPathLight"
+                                    stroke="#a68cc0"
+                                    d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 92.79994201660156  H 92.79994201660156  M 0.5,30.5  V 0.5 
+"
+                                    style=""
+                                  ></path>
+                                  <g transform="translate(10,5)">
+                                    <text class="blocklyText" x="0" y="16">
+                                      ワープする
+                                    </text>
+                                  </g>
+                                  <g
+                                    data-id="5tRdoOxPJ/:}i=@_+haC"
+                                    class="blocklyDraggable"
+                                    transform="translate(0,32)"
+                                    style="display: block"
+                                  >
+                                    <path
+                                      class="blocklyPathDark"
+                                      transform="translate(1,1)"
+                                      fill="#664984"
+                                      d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                                    ></path>
+                                    <path
+                                      class="blocklyPath"
+                                      stroke="none"
+                                      fill="#805ba5"
+                                      d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 111.72514343261719  v 5  H 141.7251434326172  V 5  H 141.7251434326172  V 27  H 141.7251434326172  V 27  V 31  h -112.22514343261719  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                                      filter="none"
+                                    ></path>
+                                    <path
+                                      class="blocklyPathLight"
+                                      stroke="#a68cc0"
+                                      d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 141.2251434326172  H 141.2251434326172  M 0.5,30.5  V 0.5 
+"
+                                      style=""
+                                    ></path>
+                                    <g
+                                      class="blocklyEditableText"
+                                      transform="translate(5,5)"
+                                      style="cursor: text"
+                                    >
+                                      <rect
+                                        rx="4"
+                                        ry="4"
+                                        x="0"
+                                        y="0"
+                                        height="22"
+                                        width="77.74517822265625"
+                                        class="blocklyFieldRect"
+                                      ></rect>
+                                      <text class="blocklyText" x="5" y="16">
+                                        かんすう1
+                                      </text>
+                                    </g>
+                                    <g
+                                      transform="translate(87.74517822265625,5)"
+                                    >
+                                      <text class="blocklyText" x="0" y="16">
+                                        を実行
+                                      </text>
+                                    </g>
+                                    <g
+                                      data-id="3awpc/r2;1Ox8tVeJVL!"
+                                      class="blocklyDraggable"
+                                      transform="translate(0,32)"
+                                    >
+                                      <path
+                                        class="blocklyPathDark"
+                                        transform="translate(1,1)"
+                                        fill="#664984"
+                                        d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                                      ></path>
+                                      <path
+                                        class="blocklyPath"
+                                        stroke="none"
+                                        fill="#805ba5"
+                                        d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                                      ></path>
+                                      <path
+                                        class="blocklyPathLight"
+                                        stroke="#a68cc0"
+                                        d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 107.45993041992188  H 107.45993041992188  M 0.5,30.5  V 0.5 
+"
+                                      ></path>
+                                      <g transform="translate(10,5)">
+                                        <text class="blocklyText" x="0" y="16">
+                                          １マスすすむ
+                                        </text>
+                                      </g>
+                                      <g
+                                        data-id="tUY2C):HO_{RYa]G0fG;"
+                                        class="blocklyDraggable"
+                                        transform="translate(0,32)"
+                                      >
+                                        <path
+                                          class="blocklyPathDark"
+                                          transform="translate(1,1)"
+                                          fill="#664984"
+                                          d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -6.5 a 8 8 0 0,1 -8,-8 z
+"
+                                        ></path>
+                                        <path
+                                          class="blocklyPath"
+                                          stroke="none"
+                                          fill="#805ba5"
+                                          d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -6.5 a 8 8 0 0,1 -8,-8 z
+"
+                                        ></path>
+                                        <path
+                                          class="blocklyPathLight"
+                                          stroke="#a68cc0"
+                                          d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 107.45993041992188  H 107.45993041992188  M 0,31  m 2.6966991411008934,-2.6966991411008934 a 7.5 7.5 0 0,1 -2.1966991411008934,-5.303300858899107  V 0.5 
+"
+                                        ></path>
+                                        <g transform="translate(10,5)">
+                                          <text
+                                            class="blocklyText"
+                                            x="0"
+                                            y="16"
+                                          >
+                                            １マスすすむ
+                                          </text>
+                                        </g>
+                                      </g>
+                                    </g>
+                                  </g>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+            <g
+              class="blocklyBubbleCanvas"
+              transform="translate(180,-1) scale(1)"
+            ></g>
+            <rect
+              height="25"
+              width="25"
+              class="blocklyScrollbarBackground"
+              x="466.5"
+              y="574.5"
+            ></rect>
+            <defs>
+              <filter id="blocklyEmbossFilter19321707181298065">
+                <feGaussianBlur
+                  in="SourceAlpha"
+                  stdDeviation="1"
+                  result="blur"
+                ></feGaussianBlur>
+                <feSpecularLighting
+                  in="blur"
+                  surfaceScale="1"
+                  specularConstant="0.5"
+                  specularExponent="10"
+                  lighting-color="white"
+                  result="specOut"
+                >
+                  <fePointLight x="-5000" y="-10000" z="20000"></fePointLight>
+                </feSpecularLighting>
+                <feComposite
+                  in="specOut"
+                  in2="SourceAlpha"
+                  operator="in"
+                  result="specOut"
+                ></feComposite>
+                <feComposite
+                  in="SourceGraphic"
+                  in2="specOut"
+                  operator="arithmetic"
+                  k1="0"
+                  k2="1"
+                  k3="1"
+                  k4="0"
+                ></feComposite>
+              </filter>
+              <pattern
+                id="blocklyDisabledPattern19321707181298065"
+                patternUnits="userSpaceOnUse"
+                width="10"
+                height="10"
+              >
+                <rect width="10" height="10" fill="#aaa"></rect>
+                <path d="M 0 0 L 10 10 M 10 0 L 0 10" stroke="#cc0"></path>
+              </pattern>
+              <filter
+                id="blocklyDebugFilter19321707181298065"
+                height="160%"
+                width="180%"
+                y="-30%"
+                x="-40%"
+              >
+                <feComponentTransfer result="outBlur">
+                  <feFuncA
+                    type="table"
+                    tableValues="0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1"
+                  ></feFuncA>
+                </feComponentTransfer>
+                <feFlood
+                  flood-color="#ff0000"
+                  flood-opacity="0.5"
+                  result="outColor"
+                ></feFlood>
+                <feComposite
+                  in="outColor"
+                  in2="outBlur"
+                  operator="in"
+                  result="outGlow"
+                ></feComposite>
+              </filter>
+            </defs>
+          </g>
+        </svg>
+      </div>
     </div>
     <h2>星３の想定解法</h2>
     <label for="label3">表示</label>
-    <input type="checkbox" id="label3"/>
+    <input type="checkbox" id="label3" />
     <div class="hide">
-        <p>「前に２歩すすむ、右をむく、前に２歩すすむ、左をむく」の部分のうち、最後の「左をむく」の部分を左が道の場合のみ行うとすることで、ブロック数を減らすことができます。さらに、ワープする順番を工夫することで、次のように12ブロックでクリアできます。
-        </p>
-        <div class="BlocklySvg">
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="blocklySvg" tabindex="0" width="492px" height="450px"><defs><pattern id="blocklyGridPattern419392168073101" patternUnits="userSpaceOnUse" width="20" height="20" x="89.73945617675781" y="-16.285714285714107"><line stroke="#888" stroke-width="1" x1="10" y1="10.5" x2="11" y2="10.5"></line></pattern></defs><g class="blocklyWorkspace"><rect height="100%" width="100%" class="blocklyMainBackground" style="fill: url(&quot;#blocklyGridPattern419392168073101&quot;);"></rect><g class="blocklyTrash" style="opacity: 0.4;" transform="translate(400,495)"><clipPath id="blocklyTrashBodyClipPath4604521439127296"><rect width="47" height="44" y="16"></rect></clipPath><image width="96" x="0" height="124" y="-32" clip-path="url(#blocklyTrashBodyClipPath4604521439127296)" xlink:href="https://blockly-demo.appspot.com/static/media/sprites.png"></image><clipPath id="blocklyTrashLidClipPath4604521439127296"><rect width="47" height="16"></rect></clipPath><image width="96" x="0" height="124" y="-32" clip-path="url(#blocklyTrashLidClipPath4604521439127296)" xlink:href="https://blockly-demo.appspot.com/static/media/sprites.png" transform="rotate(0,43,14)"></image></g><g class="blocklyBlockCanvas" transform="translate(90,-16) scale(1)"><g class="blocklyCursor"><g width="100" height="5"><rect width="100" height="5" style="display: none"><animate attributeType="XML" attributeName="fill" dur="1s" values="#cc0a0a;transparent;transparent;" repeatCount="indefinite"></animate></rect><rect class="blocklyVerticalMarker" rx="10" ry="10" style="display: none"></rect><path transform="" style="display: none"><animate attributeType="XML" attributeName="fill" dur="1s" values="#cc0a0a;transparent;transparent;" repeatCount="indefinite"></animate></path><path transform="" style="display: none" fill="none" stroke-width="4"><animate attributeType="XML" attributeName="stroke" dur="1s" values="#cc0a0a;transparent;transparent;" repeatCount="indefinite"></animate></path></g></g><g data-id="{H3$-}YPbl=vTq#jFw!I" class="blocklyDraggable" transform="translate(9.6148681640625,30)"><path class="blocklyPathDark" transform="translate(1,1)" fill="#496684" d=" m 0,0  m 0,8 a 8 8 0 0,1 8,-8  h 7  l 6,4  3,0  6,-4  h 48.63995361328125  v 5  H 78.63995361328125  V 5  H 78.63995361328125  V 27  H 78.63995361328125  V 31  H 50  l -6,4  -3,0  -6,-4  h -7 a 8 8 0 0,0 -8,8  v 326 a 8 8 0 0,0 8,8  H 78.63995361328125  H 78.63995361328125  V 373  V 383  h -70.63995361328125 a 8 8 0 0,1 -8,-8 z
-"></path><path class="blocklyPath" stroke="none" fill="#5b80a5" d=" m 0,0  m 0,8 a 8 8 0 0,1 8,-8  h 7  l 6,4  3,0  6,-4  h 48.63995361328125  v 5  H 78.63995361328125  V 5  H 78.63995361328125  V 27  H 78.63995361328125  V 31  H 50  l -6,4  -3,0  -6,-4  h -7 a 8 8 0 0,0 -8,8  v 326 a 8 8 0 0,0 8,8  H 78.63995361328125  H 78.63995361328125  V 373  V 383  h -70.63995361328125 a 8 8 0 0,1 -8,-8 z
-" filter="none"></path><path class="blocklyPathLight" stroke="#8ca6c0" d=" m 0,0  m 0.5,8 a 7.5 7.5 0 0,1 8,-7.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 78.13995361328125  H 78.13995361328125  M 20,373  m 1.9895923599143455,-1.9895923599143455 a 8.5 8.5 0 0,0 6.0104076400856545,2.4895923599143455  l 50.13995361328125,0  H 78.13995361328125  M 0,383  m 2.6966991411008934,-2.6966991411008934 a 7.5 7.5 0 0,1 -2.1966991411008934,-5.303300858899107  V 8 
-" style="display: inline;"></path><g transform="translate(10,5)"><text class="blocklyText" x="0" y="16">くり返し</text></g><g data-id="NK=4~h7[/rICke;sEdvK" class="blocklyDraggable" transform="translate(21,32)" style="display: block;"><path class="blocklyPathDark" transform="translate(1,1)" fill="#664984" d=" m 0,0  m 0,8 a 8 8 0 0,1 8,-8  h 7  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-"></path><path class="blocklyPath" stroke="none" fill="#805ba5" d=" m 0,0  m 0,8 a 8 8 0 0,1 8,-8  h 7  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-" filter="none"></path><path class="blocklyPathLight" stroke="#a68cc0" d=" m 0,0  m 0.5,8 a 7.5 7.5 0 0,1 8,-7.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 107.45993041992188  H 107.45993041992188  M 0.5,30.5  V 8 
-" style="display: inline;"></path><g transform="translate(10,5)"><text class="blocklyText" x="0" y="16">１マスすすむ</text></g><g data-id="cixb-tDw8{01Xu08W*y3" class="blocklyDraggable" transform="translate(0,32)"><path class="blocklyPathDark" transform="translate(1,1)" fill="#664984" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-"></path><path class="blocklyPath" stroke="none" fill="#805ba5" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-" filter="none"></path><path class="blocklyPathLight" stroke="#a68cc0" d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 107.45993041992188  H 107.45993041992188  M 0.5,30.5  V 0.5 
-" style="display: inline;"></path><g transform="translate(10,5)"><text class="blocklyText" x="0" y="16">１マスすすむ</text></g><g data-id=")yOlsCKDLPM^wag08Hi*" class="blocklyDraggable" transform="translate(0,32)"><path class="blocklyPathDark" transform="translate(1,1)" fill="#664984" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 90.21476745605469  v 5  H 120.21476745605469  V 5  H 120.21476745605469  V 27  H 120.21476745605469  V 27  V 31  h -90.71476745605469  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-"></path><path class="blocklyPath" stroke="none" fill="#805ba5" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 90.21476745605469  v 5  H 120.21476745605469  V 5  H 120.21476745605469  V 27  H 120.21476745605469  V 27  V 31  h -90.71476745605469  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-" filter="none"></path><path class="blocklyPathLight" stroke="#a68cc0" d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 119.71476745605469  H 119.71476745605469  M 0.5,30.5  V 0.5 
-" style="display: inline;"></path><g class="blocklyEditableText" transform="translate(5,5)" style="cursor: default;"><rect rx="4" ry="4" x="0" y="0" height="22" width="56.23480224609375" class="blocklyFieldRect blocklyDropdownRect" stroke="#a68cc0" fill="transparent"></rect><text class="blocklyText blocklyDropdownText" text-anchor="start" x="5" y="16">右⟳<tspan style="fill: rgb(128, 91, 165);"> ▾</tspan></text><image style="display: none;"></image></g><g transform="translate(66.23480224609375,5)"><text class="blocklyText" x="0" y="16">をむく</text></g><g data-id="D6G,eCRmiU6(h^H_,`W7" class="blocklyDraggable" transform="translate(0,32)"><path class="blocklyPathDark" transform="translate(1,1)" fill="#664984" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-"></path><path class="blocklyPath" stroke="none" fill="#805ba5" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-" filter="none"></path><path class="blocklyPathLight" stroke="#a68cc0" d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 107.45993041992188  H 107.45993041992188  M 0.5,30.5  V 0.5 
-" style="display: inline;"></path><g transform="translate(10,5)"><text class="blocklyText" x="0" y="16">１マスすすむ</text></g><g data-id="hXMB3;FMAJk#+xXCpFI3" class="blocklyDraggable" transform="translate(0,32)"><path class="blocklyPathDark" transform="translate(1,1)" fill="#664984" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-"></path><path class="blocklyPath" stroke="none" fill="#805ba5" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
-" filter="none"></path><path class="blocklyPathLight" stroke="#a68cc0" d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 107.45993041992188  H 107.45993041992188  M 0.5,30.5  V 0.5 
-" style="display: inline;"></path><g transform="translate(10,5)"><text class="blocklyText" x="0" y="16">１マスすすむ</text></g><g data-id="[(x~[Lrn?6YrHwFpX~Q+" class="blocklyDraggable" style="display: block;" transform="translate(0,32)"><path class="blocklyPathDark" transform="translate(1,1)" fill="#498449" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 183.2290802001953  v 5  H 213.2290802001953  V 5  H 213.2290802001953  V 41  H 213.2290802001953  V 45  H 50  l -6,4  -3,0  -6,-4  h -7 a 8 8 0 0,0 -8,8  v 19 a 8 8 0 0,0 8,8  H 50  H 50  V 80  V 90  h -20.5  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
- M 55.319976806640625,5  v 5  c 0,10  -8,-8  -8,7.5  s 8,-2.5  8,7.5  v 16  h 108.58912658691406  v -36 z"></path><path class="blocklyPath" stroke="none" fill="#5ba55b" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 183.2290802001953  v 5  H 213.2290802001953  V 5  H 213.2290802001953  V 41  H 213.2290802001953  V 45  H 50  l -6,4  -3,0  -6,-4  h -7 a 8 8 0 0,0 -8,8  v 19 a 8 8 0 0,0 8,8  H 50  H 50  V 80  V 90  h -20.5  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
- M 55.319976806640625,5  v 5  c 0,10  -8,-8  -8,7.5  s 8,-2.5  8,7.5  v 16  h 108.58912658691406  v -36 z" filter="none"></path><path class="blocklyPathLight" stroke="#8cc08c" d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 212.7290802001953  H 212.7290802001953  M 20,80  m 1.9895923599143455,-1.9895923599143455 a 8.5 8.5 0 0,0 6.0104076400856545,2.4895923599143455  l 21.5,0  H 49.5  M 0.5,89.5  V 0.5 
- M 164.4091033935547,5.5  v 36  h -108.58912658691406  M 55.319976806640625,10  m -5,14.3  l 3.68,-2.1 " style="display: inline;"></path><g transform="translate(10,10)"><text class="blocklyText" x="0" y="16">もし</text></g><g transform="translate(173.9091033935547,10)"><text class="blocklyText" x="0" y="16">なら</text></g><g data-id="=-G@b%GhQ~.GldwC*xpI" class="blocklyDraggable" transform="translate(48.319976806640625,6)" style="display: block;"><path class="blocklyPathDark" transform="translate(1,1)" fill="#848449" d=" m 8,0  h 106.58912658691406  v 5  H 114.58912658691406  V 5  H 114.58912658691406  V 30  H 114.58912658691406  V 30  V 34  h -106.58912658691406  H 8  V 20  c 0,-10  -8,8  -8,-7.5  s 8,2.5  8,-7.5 z
-"></path><path class="blocklyPath" stroke="none" fill="#a5a55b" d=" m 8,0  h 106.58912658691406  v 5  H 114.58912658691406  V 5  H 114.58912658691406  V 30  H 114.58912658691406  V 30  V 34  h -106.58912658691406  H 8  V 20  c 0,-10  -8,8  -8,-7.5  s 8,2.5  8,-7.5 z
-" filter="none"></path><path class="blocklyPathLight" stroke="#c0c08c" d=" m 8,0  m 0.5,0.5  H 114.08912658691406  H 114.08912658691406  M 8.5,33.5  M 8.5,33.5  V 20  v -1.5  m -7.36,-0.5  q -1.52,-5.5  0,-11  m 7.36,1  V 0.5 
-" style="display: inline;"></path><g class="blocklyEditableText" transform="translate(13,5)" style="cursor: default;"><rect rx="4" ry="4" x="0" y="0" height="25" width="42.609161376953125" class="blocklyFieldRect blocklyDropdownRect" stroke="#c0c08c" fill="transparent"></rect><text class="blocklyText" text-anchor="end" x="37.609161376953125" y="17.5"><tspan style="fill: rgb(165, 165, 91);"> ▾</tspan></text><image xlink:href="../../a86e0ed8cfa9ad3dfdc4062b83a928ec.png" height="15" width="15" x="5" y="5" style=""></image></g><g transform="translate(60.609161376953125,5)"><text class="blocklyText" x="0" y="16">にいる</text></g></g><g data-id="gKx[{}C3WbBJjhV.m.ZS" class="blocklyDraggable" transform="translate(21,46)" style="display: block;"><path class="blocklyPathDark" transform="translate(1,1)" fill="#664984" d=" m 0,0  m 0,8 a 8 8 0 0,1 8,-8  h 7  l 6,4  3,0  6,-4  h 63.29994201660156  v 5  H 93.29994201660156  V 5  H 93.29994201660156  V 27  H 93.29994201660156  V 27  V 31  h -63.79994201660156  l -6,4  -3,0  -6,-4  h -6.5 a 8 8 0 0,1 -8,-8 z
-"></path><path class="blocklyPath" stroke="none" fill="#805ba5" d=" m 0,0  m 0,8 a 8 8 0 0,1 8,-8  h 7  l 6,4  3,0  6,-4  h 63.29994201660156  v 5  H 93.29994201660156  V 5  H 93.29994201660156  V 27  H 93.29994201660156  V 27  V 31  h -63.79994201660156  l -6,4  -3,0  -6,-4  h -6.5 a 8 8 0 0,1 -8,-8 z
-" filter="none"></path><path class="blocklyPathLight" stroke="#a68cc0" d=" m 0,0  m 0.5,8 a 7.5 7.5 0 0,1 8,-7.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 92.79994201660156  H 92.79994201660156  M 0,31  m 2.6966991411008934,-2.6966991411008934 a 7.5 7.5 0 0,1 -2.1966991411008934,-5.303300858899107  V 8 
-" style="display: inline;"></path><g transform="translate(10,5)"><text class="blocklyText" x="0" y="16">ワープする</text></g></g><g data-id="e330^*oEI]#qq?TmVlal" class="blocklyDraggable" transform="translate(0,91)" style="display: block;"><path class="blocklyPathDark" transform="translate(1,1)" fill="#498449" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 195.83824157714844  v 5  H 225.83824157714844  V 5  H 225.83824157714844  V 38  H 225.83824157714844  V 42  H 50  l -6,4  -3,0  -6,-4  h -7 a 8 8 0 0,0 -8,8  v 19 a 8 8 0 0,0 8,8  H 50  H 50  V 77  V 87  h -20.5  l -6,4  -3,0  -6,-4  h -6.5 a 8 8 0 0,1 -8,-8 z
- M 55.319976806640625,5  v 5  c 0,10  -8,-8  -8,7.5  s 8,-2.5  8,7.5  v 13  h 121.19828796386719  v -33 z"></path><path class="blocklyPath" stroke="none" fill="#5ba55b" d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 195.83824157714844  v 5  H 225.83824157714844  V 5  H 225.83824157714844  V 38  H 225.83824157714844  V 42  H 50  l -6,4  -3,0  -6,-4  h -7 a 8 8 0 0,0 -8,8  v 19 a 8 8 0 0,0 8,8  H 50  H 50  V 77  V 87  h -20.5  l -6,4  -3,0  -6,-4  h -6.5 a 8 8 0 0,1 -8,-8 z
- M 55.319976806640625,5  v 5  c 0,10  -8,-8  -8,7.5  s 8,-2.5  8,7.5  v 13  h 121.19828796386719  v -33 z" filter="none"></path><path class="blocklyPathLight" stroke="#8cc08c" d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 225.33824157714844  H 225.33824157714844  M 20,77  m 1.9895923599143455,-1.9895923599143455 a 8.5 8.5 0 0,0 6.0104076400856545,2.4895923599143455  l 21.5,0  H 49.5  M 0,87  m 2.6966991411008934,-2.6966991411008934 a 7.5 7.5 0 0,1 -2.1966991411008934,-5.303300858899107  V 0.5 
- M 177.0182647705078,5.5  v 33  h -121.19828796386719  M 55.319976806640625,10  m -5,14.3  l 3.68,-2.1 " style="display: inline;"></path><g transform="translate(10,10)"><text class="blocklyText" x="0" y="16">もし</text></g><g transform="translate(186.5182647705078,10)"><text class="blocklyText" x="0" y="16">なら</text></g><g data-id="f~FP6(A1EjwUK!tyi|[U" class="blocklyDraggable" transform="translate(48.319976806640625,6)" style="display: block;"><path class="blocklyPathDark" transform="translate(1,1)" fill="#848449" d=" m 8,0  h 119.19828796386719  v 5  H 127.19828796386719  V 5  H 127.19828796386719  V 27  H 127.19828796386719  V 27  V 31  h -119.19828796386719  H 8  V 20  c 0,-10  -8,8  -8,-7.5  s 8,2.5  8,-7.5 z
-"></path><path class="blocklyPath" stroke="none" fill="#a5a55b" d=" m 8,0  h 119.19828796386719  v 5  H 127.19828796386719  V 5  H 127.19828796386719  V 27  H 127.19828796386719  V 27  V 31  h -119.19828796386719  H 8  V 20  c 0,-10  -8,8  -8,-7.5  s 8,2.5  8,-7.5 z
-" filter="none"></path><path class="blocklyPathLight" stroke="#c0c08c" d=" m 8,0  m 0.5,0.5  H 126.69828796386719  H 126.69828796386719  M 8.5,30.5  M 8.5,30.5  V 20  v -1.5  m -7.36,-0.5  q -1.52,-5.5  0,-11  m 7.36,1  V 0.5 
-" style="display: inline;"></path><g class="blocklyEditableText" transform="translate(13,5)" style="cursor: default;"><rect rx="4" ry="4" x="0" y="0" height="22" width="42.26914978027344" class="blocklyFieldRect blocklyDropdownRect" stroke="#c0c08c" fill="transparent"></rect><text class="blocklyText blocklyDropdownText" text-anchor="start" x="5" y="16">左<tspan style="fill: rgb(165, 165, 91);"> ▾</tspan></text><image style="display: none;"></image></g><g transform="translate(60.26914978027344,5)"><text class="blocklyText" x="0" y="16">が</text></g><g class="blocklyEditableText" transform="translate(79.92913818359375,5)" style="cursor: default;"><rect rx="4" ry="4" x="0" y="0" height="22" width="42.26914978027344" class="blocklyFieldRect blocklyDropdownRect" stroke="#c0c08c" fill="transparent"></rect><text class="blocklyText blocklyDropdownText" text-anchor="start" x="5" y="16">道<tspan style="fill: rgb(165, 165, 91);"> ▾</tspan></text><image style="display: none;"></image></g></g><g data-id="Hp0Es)Qag:Hzbbb,8z`w" class="blocklyDraggable" transform="translate(21,43)" style="display: block;"><path class="blocklyPathDark" transform="translate(1,1)" fill="#664984" d=" m 0,0  m 0,8 a 8 8 0 0,1 8,-8  h 7  l 6,4  3,0  6,-4  h 90.21476745605469  v 5  H 120.21476745605469  V 5  H 120.21476745605469  V 27  H 120.21476745605469  V 27  V 31  h -90.71476745605469  l -6,4  -3,0  -6,-4  h -6.5 a 8 8 0 0,1 -8,-8 z
-"></path><path class="blocklyPath" stroke="none" fill="#805ba5" d=" m 0,0  m 0,8 a 8 8 0 0,1 8,-8  h 7  l 6,4  3,0  6,-4  h 90.21476745605469  v 5  H 120.21476745605469  V 5  H 120.21476745605469  V 27  H 120.21476745605469  V 27  V 31  h -90.71476745605469  l -6,4  -3,0  -6,-4  h -6.5 a 8 8 0 0,1 -8,-8 z
-" filter="none"></path><path class="blocklyPathLight" stroke="#a68cc0" d=" m 0,0  m 0.5,8 a 7.5 7.5 0 0,1 8,-7.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 119.71476745605469  H 119.71476745605469  M 0,31  m 2.6966991411008934,-2.6966991411008934 a 7.5 7.5 0 0,1 -2.1966991411008934,-5.303300858899107  V 8 
-" style="display: inline;"></path><g class="blocklyEditableText" transform="translate(5,5)" style="cursor: default;"><rect rx="4" ry="4" x="0" y="0" height="22" width="56.23480224609375" class="blocklyFieldRect blocklyDropdownRect" stroke="#a68cc0" fill="transparent"></rect><text class="blocklyText blocklyDropdownText" text-anchor="start" x="5" y="16">左⟲<tspan style="fill: rgb(128, 91, 165);"> ▾</tspan></text><image style="display: none;"></image></g><g transform="translate(66.23480224609375,5)"><text class="blocklyText" x="0" y="16">をむく</text></g></g></g></g></g></g></g></g></g></g></g><g class="blocklyBubbleCanvas" transform="translate(90,-16) scale(1)"></g><rect height="25" width="25" class="blocklyScrollbarBackground" x="466.5" y="574.5"></rect><defs><filter id="blocklyEmbossFilter7389230685373658"><feGaussianBlur in="SourceAlpha" stdDeviation="1" result="blur"></feGaussianBlur><feSpecularLighting in="blur" surfaceScale="1" specularConstant="0.5" specularExponent="10" lighting-color="white" result="specOut"><fePointLight x="-5000" y="-10000" z="20000"></fePointLight></feSpecularLighting><feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut"></feComposite><feComposite in="SourceGraphic" in2="specOut" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"></feComposite></filter><pattern id="blocklyDisabledPattern7389230685373658" patternUnits="userSpaceOnUse" width="10" height="10"><rect width="10" height="10" fill="#aaa"></rect><path d="M 0 0 L 10 10 M 10 0 L 0 10" stroke="#cc0"></path></pattern><filter id="blocklyDebugFilter7389230685373658" height="160%" width="180%" y="-30%" x="-40%"><feComponentTransfer result="outBlur"><feFuncA type="table" tableValues="0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1"></feFuncA></feComponentTransfer><feFlood flood-color="#ff0000" flood-opacity="0.5" result="outColor"></feFlood><feComposite in="outColor" in2="outBlur" operator="in" result="outGlow"></feComposite></filter></defs></g></svg>
-        </div>
+      <p>
+        「前に２歩すすむ、右をむく、前に２歩すすむ、左をむく」の部分のうち、最後の「左をむく」の部分を左が道の場合のみ行うとすることで、ブロック数を減らすことができます。さらに、ワープする順番を工夫することで、次のように12ブロックでクリアできます。
+      </p>
+      <div class="BlocklySvg">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          version="1.1"
+          class="blocklySvg"
+          tabindex="0"
+          width="492px"
+          height="450px"
+        >
+          <defs>
+            <pattern
+              id="blocklyGridPattern419392168073101"
+              patternUnits="userSpaceOnUse"
+              width="20"
+              height="20"
+              x="89.73945617675781"
+              y="-16.285714285714107"
+            >
+              <line
+                stroke="#888"
+                stroke-width="1"
+                x1="10"
+                y1="10.5"
+                x2="11"
+                y2="10.5"
+              ></line>
+            </pattern>
+          </defs>
+          <g class="blocklyWorkspace">
+            <rect
+              height="100%"
+              width="100%"
+              class="blocklyMainBackground"
+              style="fill: url('#blocklyGridPattern419392168073101')"
+            ></rect>
+            <g
+              class="blocklyTrash"
+              style="opacity: 0.4"
+              transform="translate(400,495)"
+            >
+              <clipPath id="blocklyTrashBodyClipPath4604521439127296">
+                <rect width="47" height="44" y="16"></rect>
+              </clipPath>
+              <image
+                width="96"
+                x="0"
+                height="124"
+                y="-32"
+                clip-path="url(#blocklyTrashBodyClipPath4604521439127296)"
+                xlink:href="https://blockly-demo.appspot.com/static/media/sprites.png"
+              ></image>
+              <clipPath id="blocklyTrashLidClipPath4604521439127296">
+                <rect width="47" height="16"></rect>
+              </clipPath>
+              <image
+                width="96"
+                x="0"
+                height="124"
+                y="-32"
+                clip-path="url(#blocklyTrashLidClipPath4604521439127296)"
+                xlink:href="https://blockly-demo.appspot.com/static/media/sprites.png"
+                transform="rotate(0,43,14)"
+              ></image>
+            </g>
+            <g
+              class="blocklyBlockCanvas"
+              transform="translate(90,-16) scale(1)"
+            >
+              <g class="blocklyCursor">
+                <g width="100" height="5">
+                  <rect width="100" height="5" style="display: none">
+                    <animate
+                      attributeType="XML"
+                      attributeName="fill"
+                      dur="1s"
+                      values="#cc0a0a;transparent;transparent;"
+                      repeatCount="indefinite"
+                    ></animate>
+                  </rect>
+                  <rect
+                    class="blocklyVerticalMarker"
+                    rx="10"
+                    ry="10"
+                    style="display: none"
+                  ></rect>
+                  <path transform="" style="display: none">
+                    <animate
+                      attributeType="XML"
+                      attributeName="fill"
+                      dur="1s"
+                      values="#cc0a0a;transparent;transparent;"
+                      repeatCount="indefinite"
+                    ></animate>
+                  </path>
+                  <path
+                    transform=""
+                    style="display: none"
+                    fill="none"
+                    stroke-width="4"
+                  >
+                    <animate
+                      attributeType="XML"
+                      attributeName="stroke"
+                      dur="1s"
+                      values="#cc0a0a;transparent;transparent;"
+                      repeatCount="indefinite"
+                    ></animate>
+                  </path>
+                </g>
+              </g>
+              <g
+                data-id="{H3$-}YPbl=vTq#jFw!I"
+                class="blocklyDraggable"
+                transform="translate(9.6148681640625,30)"
+              >
+                <path
+                  class="blocklyPathDark"
+                  transform="translate(1,1)"
+                  fill="#496684"
+                  d=" m 0,0  m 0,8 a 8 8 0 0,1 8,-8  h 7  l 6,4  3,0  6,-4  h 48.63995361328125  v 5  H 78.63995361328125  V 5  H 78.63995361328125  V 27  H 78.63995361328125  V 31  H 50  l -6,4  -3,0  -6,-4  h -7 a 8 8 0 0,0 -8,8  v 326 a 8 8 0 0,0 8,8  H 78.63995361328125  H 78.63995361328125  V 373  V 383  h -70.63995361328125 a 8 8 0 0,1 -8,-8 z
+"
+                ></path>
+                <path
+                  class="blocklyPath"
+                  stroke="none"
+                  fill="#5b80a5"
+                  d=" m 0,0  m 0,8 a 8 8 0 0,1 8,-8  h 7  l 6,4  3,0  6,-4  h 48.63995361328125  v 5  H 78.63995361328125  V 5  H 78.63995361328125  V 27  H 78.63995361328125  V 31  H 50  l -6,4  -3,0  -6,-4  h -7 a 8 8 0 0,0 -8,8  v 326 a 8 8 0 0,0 8,8  H 78.63995361328125  H 78.63995361328125  V 373  V 383  h -70.63995361328125 a 8 8 0 0,1 -8,-8 z
+"
+                  filter="none"
+                ></path>
+                <path
+                  class="blocklyPathLight"
+                  stroke="#8ca6c0"
+                  d=" m 0,0  m 0.5,8 a 7.5 7.5 0 0,1 8,-7.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 78.13995361328125  H 78.13995361328125  M 20,373  m 1.9895923599143455,-1.9895923599143455 a 8.5 8.5 0 0,0 6.0104076400856545,2.4895923599143455  l 50.13995361328125,0  H 78.13995361328125  M 0,383  m 2.6966991411008934,-2.6966991411008934 a 7.5 7.5 0 0,1 -2.1966991411008934,-5.303300858899107  V 8 
+"
+                  style="display: inline"
+                ></path>
+                <g transform="translate(10,5)">
+                  <text class="blocklyText" x="0" y="16">くり返し</text>
+                </g>
+                <g
+                  data-id="NK=4~h7[/rICke;sEdvK"
+                  class="blocklyDraggable"
+                  transform="translate(21,32)"
+                  style="display: block"
+                >
+                  <path
+                    class="blocklyPathDark"
+                    transform="translate(1,1)"
+                    fill="#664984"
+                    d=" m 0,0  m 0,8 a 8 8 0 0,1 8,-8  h 7  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                  ></path>
+                  <path
+                    class="blocklyPath"
+                    stroke="none"
+                    fill="#805ba5"
+                    d=" m 0,0  m 0,8 a 8 8 0 0,1 8,-8  h 7  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                    filter="none"
+                  ></path>
+                  <path
+                    class="blocklyPathLight"
+                    stroke="#a68cc0"
+                    d=" m 0,0  m 0.5,8 a 7.5 7.5 0 0,1 8,-7.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 107.45993041992188  H 107.45993041992188  M 0.5,30.5  V 8 
+"
+                    style="display: inline"
+                  ></path>
+                  <g transform="translate(10,5)">
+                    <text class="blocklyText" x="0" y="16">１マスすすむ</text>
+                  </g>
+                  <g
+                    data-id="cixb-tDw8{01Xu08W*y3"
+                    class="blocklyDraggable"
+                    transform="translate(0,32)"
+                  >
+                    <path
+                      class="blocklyPathDark"
+                      transform="translate(1,1)"
+                      fill="#664984"
+                      d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                    ></path>
+                    <path
+                      class="blocklyPath"
+                      stroke="none"
+                      fill="#805ba5"
+                      d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                      filter="none"
+                    ></path>
+                    <path
+                      class="blocklyPathLight"
+                      stroke="#a68cc0"
+                      d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 107.45993041992188  H 107.45993041992188  M 0.5,30.5  V 0.5 
+"
+                      style="display: inline"
+                    ></path>
+                    <g transform="translate(10,5)">
+                      <text class="blocklyText" x="0" y="16">１マスすすむ</text>
+                    </g>
+                    <g
+                      data-id=")yOlsCKDLPM^wag08Hi*"
+                      class="blocklyDraggable"
+                      transform="translate(0,32)"
+                    >
+                      <path
+                        class="blocklyPathDark"
+                        transform="translate(1,1)"
+                        fill="#664984"
+                        d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 90.21476745605469  v 5  H 120.21476745605469  V 5  H 120.21476745605469  V 27  H 120.21476745605469  V 27  V 31  h -90.71476745605469  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                      ></path>
+                      <path
+                        class="blocklyPath"
+                        stroke="none"
+                        fill="#805ba5"
+                        d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 90.21476745605469  v 5  H 120.21476745605469  V 5  H 120.21476745605469  V 27  H 120.21476745605469  V 27  V 31  h -90.71476745605469  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                        filter="none"
+                      ></path>
+                      <path
+                        class="blocklyPathLight"
+                        stroke="#a68cc0"
+                        d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 119.71476745605469  H 119.71476745605469  M 0.5,30.5  V 0.5 
+"
+                        style="display: inline"
+                      ></path>
+                      <g
+                        class="blocklyEditableText"
+                        transform="translate(5,5)"
+                        style="cursor: default"
+                      >
+                        <rect
+                          rx="4"
+                          ry="4"
+                          x="0"
+                          y="0"
+                          height="22"
+                          width="56.23480224609375"
+                          class="blocklyFieldRect blocklyDropdownRect"
+                          stroke="#a68cc0"
+                          fill="transparent"
+                        ></rect>
+                        <text
+                          class="blocklyText blocklyDropdownText"
+                          text-anchor="start"
+                          x="5"
+                          y="16"
+                        >
+                          右⟳
+                          <tspan style="fill: rgb(128, 91, 165)">▾</tspan>
+                        </text>
+                        <image style="display: none"></image>
+                      </g>
+                      <g transform="translate(66.23480224609375,5)">
+                        <text class="blocklyText" x="0" y="16">をむく</text>
+                      </g>
+                      <g
+                        data-id="D6G,eCRmiU6(h^H_,`W7"
+                        class="blocklyDraggable"
+                        transform="translate(0,32)"
+                      >
+                        <path
+                          class="blocklyPathDark"
+                          transform="translate(1,1)"
+                          fill="#664984"
+                          d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                        ></path>
+                        <path
+                          class="blocklyPath"
+                          stroke="none"
+                          fill="#805ba5"
+                          d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                          filter="none"
+                        ></path>
+                        <path
+                          class="blocklyPathLight"
+                          stroke="#a68cc0"
+                          d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 107.45993041992188  H 107.45993041992188  M 0.5,30.5  V 0.5 
+"
+                          style="display: inline"
+                        ></path>
+                        <g transform="translate(10,5)">
+                          <text class="blocklyText" x="0" y="16">
+                            １マスすすむ
+                          </text>
+                        </g>
+                        <g
+                          data-id="hXMB3;FMAJk#+xXCpFI3"
+                          class="blocklyDraggable"
+                          transform="translate(0,32)"
+                        >
+                          <path
+                            class="blocklyPathDark"
+                            transform="translate(1,1)"
+                            fill="#664984"
+                            d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                          ></path>
+                          <path
+                            class="blocklyPath"
+                            stroke="none"
+                            fill="#805ba5"
+                            d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 77.95993041992188  v 5  H 107.95993041992188  V 5  H 107.95993041992188  V 27  H 107.95993041992188  V 27  V 31  h -78.45993041992188  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+"
+                            filter="none"
+                          ></path>
+                          <path
+                            class="blocklyPathLight"
+                            stroke="#a68cc0"
+                            d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 107.45993041992188  H 107.45993041992188  M 0.5,30.5  V 0.5 
+"
+                            style="display: inline"
+                          ></path>
+                          <g transform="translate(10,5)">
+                            <text class="blocklyText" x="0" y="16">
+                              １マスすすむ
+                            </text>
+                          </g>
+                          <g
+                            data-id="[(x~[Lrn?6YrHwFpX~Q+"
+                            class="blocklyDraggable"
+                            style="display: block"
+                            transform="translate(0,32)"
+                          >
+                            <path
+                              class="blocklyPathDark"
+                              transform="translate(1,1)"
+                              fill="#498449"
+                              d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 183.2290802001953  v 5  H 213.2290802001953  V 5  H 213.2290802001953  V 41  H 213.2290802001953  V 45  H 50  l -6,4  -3,0  -6,-4  h -7 a 8 8 0 0,0 -8,8  v 19 a 8 8 0 0,0 8,8  H 50  H 50  V 80  V 90  h -20.5  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+ M 55.319976806640625,5  v 5  c 0,10  -8,-8  -8,7.5  s 8,-2.5  8,7.5  v 16  h 108.58912658691406  v -36 z"
+                            ></path>
+                            <path
+                              class="blocklyPath"
+                              stroke="none"
+                              fill="#5ba55b"
+                              d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 183.2290802001953  v 5  H 213.2290802001953  V 5  H 213.2290802001953  V 41  H 213.2290802001953  V 45  H 50  l -6,4  -3,0  -6,-4  h -7 a 8 8 0 0,0 -8,8  v 19 a 8 8 0 0,0 8,8  H 50  H 50  V 80  V 90  h -20.5  l -6,4  -3,0  -6,-4  h -14.5  H 0 z
+ M 55.319976806640625,5  v 5  c 0,10  -8,-8  -8,7.5  s 8,-2.5  8,7.5  v 16  h 108.58912658691406  v -36 z"
+                              filter="none"
+                            ></path>
+                            <path
+                              class="blocklyPathLight"
+                              stroke="#8cc08c"
+                              d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 212.7290802001953  H 212.7290802001953  M 20,80  m 1.9895923599143455,-1.9895923599143455 a 8.5 8.5 0 0,0 6.0104076400856545,2.4895923599143455  l 21.5,0  H 49.5  M 0.5,89.5  V 0.5 
+ M 164.4091033935547,5.5  v 36  h -108.58912658691406  M 55.319976806640625,10  m -5,14.3  l 3.68,-2.1 "
+                              style="display: inline"
+                            ></path>
+                            <g transform="translate(10,10)">
+                              <text class="blocklyText" x="0" y="16">もし</text>
+                            </g>
+                            <g transform="translate(173.9091033935547,10)">
+                              <text class="blocklyText" x="0" y="16">なら</text>
+                            </g>
+                            <g
+                              data-id="=-G@b%GhQ~.GldwC*xpI"
+                              class="blocklyDraggable"
+                              transform="translate(48.319976806640625,6)"
+                              style="display: block"
+                            >
+                              <path
+                                class="blocklyPathDark"
+                                transform="translate(1,1)"
+                                fill="#848449"
+                                d=" m 8,0  h 106.58912658691406  v 5  H 114.58912658691406  V 5  H 114.58912658691406  V 30  H 114.58912658691406  V 30  V 34  h -106.58912658691406  H 8  V 20  c 0,-10  -8,8  -8,-7.5  s 8,2.5  8,-7.5 z
+"
+                              ></path>
+                              <path
+                                class="blocklyPath"
+                                stroke="none"
+                                fill="#a5a55b"
+                                d=" m 8,0  h 106.58912658691406  v 5  H 114.58912658691406  V 5  H 114.58912658691406  V 30  H 114.58912658691406  V 30  V 34  h -106.58912658691406  H 8  V 20  c 0,-10  -8,8  -8,-7.5  s 8,2.5  8,-7.5 z
+"
+                                filter="none"
+                              ></path>
+                              <path
+                                class="blocklyPathLight"
+                                stroke="#c0c08c"
+                                d=" m 8,0  m 0.5,0.5  H 114.08912658691406  H 114.08912658691406  M 8.5,33.5  M 8.5,33.5  V 20  v -1.5  m -7.36,-0.5  q -1.52,-5.5  0,-11  m 7.36,1  V 0.5 
+"
+                                style="display: inline"
+                              ></path>
+                              <g
+                                class="blocklyEditableText"
+                                transform="translate(13,5)"
+                                style="cursor: default"
+                              >
+                                <rect
+                                  rx="4"
+                                  ry="4"
+                                  x="0"
+                                  y="0"
+                                  height="25"
+                                  width="42.609161376953125"
+                                  class="blocklyFieldRect blocklyDropdownRect"
+                                  stroke="#c0c08c"
+                                  fill="transparent"
+                                ></rect>
+                                <text
+                                  class="blocklyText"
+                                  text-anchor="end"
+                                  x="37.609161376953125"
+                                  y="17.5"
+                                >
+                                  <tspan style="fill: rgb(165, 165, 91)">
+                                    ▾
+                                  </tspan>
+                                </text>
+                                <image
+                                  xlink:href="../../a86e0ed8cfa9ad3dfdc4062b83a928ec.png"
+                                  height="15"
+                                  width="15"
+                                  x="5"
+                                  y="5"
+                                  style=""
+                                ></image>
+                              </g>
+                              <g transform="translate(60.609161376953125,5)">
+                                <text class="blocklyText" x="0" y="16">
+                                  にいる
+                                </text>
+                              </g>
+                            </g>
+                            <g
+                              data-id="gKx[{}C3WbBJjhV.m.ZS"
+                              class="blocklyDraggable"
+                              transform="translate(21,46)"
+                              style="display: block"
+                            >
+                              <path
+                                class="blocklyPathDark"
+                                transform="translate(1,1)"
+                                fill="#664984"
+                                d=" m 0,0  m 0,8 a 8 8 0 0,1 8,-8  h 7  l 6,4  3,0  6,-4  h 63.29994201660156  v 5  H 93.29994201660156  V 5  H 93.29994201660156  V 27  H 93.29994201660156  V 27  V 31  h -63.79994201660156  l -6,4  -3,0  -6,-4  h -6.5 a 8 8 0 0,1 -8,-8 z
+"
+                              ></path>
+                              <path
+                                class="blocklyPath"
+                                stroke="none"
+                                fill="#805ba5"
+                                d=" m 0,0  m 0,8 a 8 8 0 0,1 8,-8  h 7  l 6,4  3,0  6,-4  h 63.29994201660156  v 5  H 93.29994201660156  V 5  H 93.29994201660156  V 27  H 93.29994201660156  V 27  V 31  h -63.79994201660156  l -6,4  -3,0  -6,-4  h -6.5 a 8 8 0 0,1 -8,-8 z
+"
+                                filter="none"
+                              ></path>
+                              <path
+                                class="blocklyPathLight"
+                                stroke="#a68cc0"
+                                d=" m 0,0  m 0.5,8 a 7.5 7.5 0 0,1 8,-7.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 92.79994201660156  H 92.79994201660156  M 0,31  m 2.6966991411008934,-2.6966991411008934 a 7.5 7.5 0 0,1 -2.1966991411008934,-5.303300858899107  V 8 
+"
+                                style="display: inline"
+                              ></path>
+                              <g transform="translate(10,5)">
+                                <text class="blocklyText" x="0" y="16">
+                                  ワープする
+                                </text>
+                              </g>
+                            </g>
+                            <g
+                              data-id="e330^*oEI]#qq?TmVlal"
+                              class="blocklyDraggable"
+                              transform="translate(0,91)"
+                              style="display: block"
+                            >
+                              <path
+                                class="blocklyPathDark"
+                                transform="translate(1,1)"
+                                fill="#498449"
+                                d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 195.83824157714844  v 5  H 225.83824157714844  V 5  H 225.83824157714844  V 38  H 225.83824157714844  V 42  H 50  l -6,4  -3,0  -6,-4  h -7 a 8 8 0 0,0 -8,8  v 19 a 8 8 0 0,0 8,8  H 50  H 50  V 77  V 87  h -20.5  l -6,4  -3,0  -6,-4  h -6.5 a 8 8 0 0,1 -8,-8 z
+ M 55.319976806640625,5  v 5  c 0,10  -8,-8  -8,7.5  s 8,-2.5  8,7.5  v 13  h 121.19828796386719  v -33 z"
+                              ></path>
+                              <path
+                                class="blocklyPath"
+                                stroke="none"
+                                fill="#5ba55b"
+                                d=" m 0,0  h 15  l 6,4  3,0  6,-4  h 195.83824157714844  v 5  H 225.83824157714844  V 5  H 225.83824157714844  V 38  H 225.83824157714844  V 42  H 50  l -6,4  -3,0  -6,-4  h -7 a 8 8 0 0,0 -8,8  v 19 a 8 8 0 0,0 8,8  H 50  H 50  V 77  V 87  h -20.5  l -6,4  -3,0  -6,-4  h -6.5 a 8 8 0 0,1 -8,-8 z
+ M 55.319976806640625,5  v 5  c 0,10  -8,-8  -8,7.5  s 8,-2.5  8,7.5  v 13  h 121.19828796386719  v -33 z"
+                                filter="none"
+                              ></path>
+                              <path
+                                class="blocklyPathLight"
+                                stroke="#8cc08c"
+                                d=" m 0,0  m 0.5,0.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 225.33824157714844  H 225.33824157714844  M 20,77  m 1.9895923599143455,-1.9895923599143455 a 8.5 8.5 0 0,0 6.0104076400856545,2.4895923599143455  l 21.5,0  H 49.5  M 0,87  m 2.6966991411008934,-2.6966991411008934 a 7.5 7.5 0 0,1 -2.1966991411008934,-5.303300858899107  V 0.5 
+ M 177.0182647705078,5.5  v 33  h -121.19828796386719  M 55.319976806640625,10  m -5,14.3  l 3.68,-2.1 "
+                                style="display: inline"
+                              ></path>
+                              <g transform="translate(10,10)">
+                                <text class="blocklyText" x="0" y="16">
+                                  もし
+                                </text>
+                              </g>
+                              <g transform="translate(186.5182647705078,10)">
+                                <text class="blocklyText" x="0" y="16">
+                                  なら
+                                </text>
+                              </g>
+                              <g
+                                data-id="f~FP6(A1EjwUK!tyi|[U"
+                                class="blocklyDraggable"
+                                transform="translate(48.319976806640625,6)"
+                                style="display: block"
+                              >
+                                <path
+                                  class="blocklyPathDark"
+                                  transform="translate(1,1)"
+                                  fill="#848449"
+                                  d=" m 8,0  h 119.19828796386719  v 5  H 127.19828796386719  V 5  H 127.19828796386719  V 27  H 127.19828796386719  V 27  V 31  h -119.19828796386719  H 8  V 20  c 0,-10  -8,8  -8,-7.5  s 8,2.5  8,-7.5 z
+"
+                                ></path>
+                                <path
+                                  class="blocklyPath"
+                                  stroke="none"
+                                  fill="#a5a55b"
+                                  d=" m 8,0  h 119.19828796386719  v 5  H 127.19828796386719  V 5  H 127.19828796386719  V 27  H 127.19828796386719  V 27  V 31  h -119.19828796386719  H 8  V 20  c 0,-10  -8,8  -8,-7.5  s 8,2.5  8,-7.5 z
+"
+                                  filter="none"
+                                ></path>
+                                <path
+                                  class="blocklyPathLight"
+                                  stroke="#c0c08c"
+                                  d=" m 8,0  m 0.5,0.5  H 126.69828796386719  H 126.69828796386719  M 8.5,30.5  M 8.5,30.5  V 20  v -1.5  m -7.36,-0.5  q -1.52,-5.5  0,-11  m 7.36,1  V 0.5 
+"
+                                  style="display: inline"
+                                ></path>
+                                <g
+                                  class="blocklyEditableText"
+                                  transform="translate(13,5)"
+                                  style="cursor: default"
+                                >
+                                  <rect
+                                    rx="4"
+                                    ry="4"
+                                    x="0"
+                                    y="0"
+                                    height="22"
+                                    width="42.26914978027344"
+                                    class="blocklyFieldRect blocklyDropdownRect"
+                                    stroke="#c0c08c"
+                                    fill="transparent"
+                                  ></rect>
+                                  <text
+                                    class="blocklyText blocklyDropdownText"
+                                    text-anchor="start"
+                                    x="5"
+                                    y="16"
+                                  >
+                                    左
+                                    <tspan style="fill: rgb(165, 165, 91)">
+                                      ▾
+                                    </tspan>
+                                  </text>
+                                  <image style="display: none"></image>
+                                </g>
+                                <g transform="translate(60.26914978027344,5)">
+                                  <text class="blocklyText" x="0" y="16">
+                                    が
+                                  </text>
+                                </g>
+                                <g
+                                  class="blocklyEditableText"
+                                  transform="translate(79.92913818359375,5)"
+                                  style="cursor: default"
+                                >
+                                  <rect
+                                    rx="4"
+                                    ry="4"
+                                    x="0"
+                                    y="0"
+                                    height="22"
+                                    width="42.26914978027344"
+                                    class="blocklyFieldRect blocklyDropdownRect"
+                                    stroke="#c0c08c"
+                                    fill="transparent"
+                                  ></rect>
+                                  <text
+                                    class="blocklyText blocklyDropdownText"
+                                    text-anchor="start"
+                                    x="5"
+                                    y="16"
+                                  >
+                                    道
+                                    <tspan style="fill: rgb(165, 165, 91)">
+                                      ▾
+                                    </tspan>
+                                  </text>
+                                  <image style="display: none"></image>
+                                </g>
+                              </g>
+                              <g
+                                data-id="Hp0Es)Qag:Hzbbb,8z`w"
+                                class="blocklyDraggable"
+                                transform="translate(21,43)"
+                                style="display: block"
+                              >
+                                <path
+                                  class="blocklyPathDark"
+                                  transform="translate(1,1)"
+                                  fill="#664984"
+                                  d=" m 0,0  m 0,8 a 8 8 0 0,1 8,-8  h 7  l 6,4  3,0  6,-4  h 90.21476745605469  v 5  H 120.21476745605469  V 5  H 120.21476745605469  V 27  H 120.21476745605469  V 27  V 31  h -90.71476745605469  l -6,4  -3,0  -6,-4  h -6.5 a 8 8 0 0,1 -8,-8 z
+"
+                                ></path>
+                                <path
+                                  class="blocklyPath"
+                                  stroke="none"
+                                  fill="#805ba5"
+                                  d=" m 0,0  m 0,8 a 8 8 0 0,1 8,-8  h 7  l 6,4  3,0  6,-4  h 90.21476745605469  v 5  H 120.21476745605469  V 5  H 120.21476745605469  V 27  H 120.21476745605469  V 27  V 31  h -90.71476745605469  l -6,4  -3,0  -6,-4  h -6.5 a 8 8 0 0,1 -8,-8 z
+"
+                                  filter="none"
+                                ></path>
+                                <path
+                                  class="blocklyPathLight"
+                                  stroke="#a68cc0"
+                                  d=" m 0,0  m 0.5,8 a 7.5 7.5 0 0,1 8,-7.5  H 14.5  h 0.5  l 6,4  3,0  6,-4  H 119.71476745605469  H 119.71476745605469  M 0,31  m 2.6966991411008934,-2.6966991411008934 a 7.5 7.5 0 0,1 -2.1966991411008934,-5.303300858899107  V 8 
+"
+                                  style="display: inline"
+                                ></path>
+                                <g
+                                  class="blocklyEditableText"
+                                  transform="translate(5,5)"
+                                  style="cursor: default"
+                                >
+                                  <rect
+                                    rx="4"
+                                    ry="4"
+                                    x="0"
+                                    y="0"
+                                    height="22"
+                                    width="56.23480224609375"
+                                    class="blocklyFieldRect blocklyDropdownRect"
+                                    stroke="#a68cc0"
+                                    fill="transparent"
+                                  ></rect>
+                                  <text
+                                    class="blocklyText blocklyDropdownText"
+                                    text-anchor="start"
+                                    x="5"
+                                    y="16"
+                                  >
+                                    左⟲
+                                    <tspan style="fill: rgb(128, 91, 165)">
+                                      ▾
+                                    </tspan>
+                                  </text>
+                                  <image style="display: none"></image>
+                                </g>
+                                <g transform="translate(66.23480224609375,5)">
+                                  <text class="blocklyText" x="0" y="16">
+                                    をむく
+                                  </text>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+            <g
+              class="blocklyBubbleCanvas"
+              transform="translate(90,-16) scale(1)"
+            ></g>
+            <rect
+              height="25"
+              width="25"
+              class="blocklyScrollbarBackground"
+              x="466.5"
+              y="574.5"
+            ></rect>
+            <defs>
+              <filter id="blocklyEmbossFilter7389230685373658">
+                <feGaussianBlur
+                  in="SourceAlpha"
+                  stdDeviation="1"
+                  result="blur"
+                ></feGaussianBlur>
+                <feSpecularLighting
+                  in="blur"
+                  surfaceScale="1"
+                  specularConstant="0.5"
+                  specularExponent="10"
+                  lighting-color="white"
+                  result="specOut"
+                >
+                  <fePointLight x="-5000" y="-10000" z="20000"></fePointLight>
+                </feSpecularLighting>
+                <feComposite
+                  in="specOut"
+                  in2="SourceAlpha"
+                  operator="in"
+                  result="specOut"
+                ></feComposite>
+                <feComposite
+                  in="SourceGraphic"
+                  in2="specOut"
+                  operator="arithmetic"
+                  k1="0"
+                  k2="1"
+                  k3="1"
+                  k4="0"
+                ></feComposite>
+              </filter>
+              <pattern
+                id="blocklyDisabledPattern7389230685373658"
+                patternUnits="userSpaceOnUse"
+                width="10"
+                height="10"
+              >
+                <rect width="10" height="10" fill="#aaa"></rect>
+                <path d="M 0 0 L 10 10 M 10 0 L 0 10" stroke="#cc0"></path>
+              </pattern>
+              <filter
+                id="blocklyDebugFilter7389230685373658"
+                height="160%"
+                width="180%"
+                y="-30%"
+                x="-40%"
+              >
+                <feComponentTransfer result="outBlur">
+                  <feFuncA
+                    type="table"
+                    tableValues="0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1"
+                  ></feFuncA>
+                </feComponentTransfer>
+                <feFlood
+                  flood-color="#ff0000"
+                  flood-opacity="0.5"
+                  result="outColor"
+                ></feFlood>
+                <feComposite
+                  in="outColor"
+                  in2="outBlur"
+                  operator="in"
+                  result="outGlow"
+                ></feComposite>
+              </filter>
+            </defs>
+          </g>
+        </svg>
+      </div>
     </div>
-    
-    <div class="button">
-        <a href="/index.html">
-            <div class="std_btn">
-                トップページにもどる
-            </div>
-        </a>
-        <a href="/game.html?stage=16">
-            <div class="std_btn">
-                ゲーム画面にもどる
-            </div>
-        </a>
-    </div>
-</body>
 
+    <div class="button">
+      <a href="/index.html">
+        <div class="std_btn">トップページにもどる</div>
+      </a>
+      <a href="/game_default.html?stage=16">
+        <div class="std_btn">ゲーム画面にもどる</div>
+      </a>
+    </div>
+  </body>
 </html>

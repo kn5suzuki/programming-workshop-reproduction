@@ -84,6 +84,17 @@ app.get("/default_stage", function (req, res) {
   res.send(json);
 });
 
+app.get("/posted_stage_info", function (req, res) {
+  const json = require("../../posted_stage/stageinfo.json");
+  res.send(json);
+});
+
+app.get("/posted_stage", function (req, res) {
+  const filename = req.query.filename; // パラメータ名に応じて取得
+  const json = require("../../posted_stage/" + filename);
+  res.send(json);
+});
+
 app.post("/poststage", function (req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(

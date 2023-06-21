@@ -59,7 +59,7 @@ async function load() {
       mapData: mapData,
     });
   } else {
-    const mapDataURL = `../posted_stage/${stage_num}.json`;
+    const mapDataURL = `/posted_stage?filename=${stage_num}.json`;
     const res2 = await fetch(mapDataURL);
     const mapData = await res2.json();
 
