@@ -28,7 +28,7 @@ npm install --save-dev @babel/core @babel/preset-env babel-loader
 
 ```
 npm install  --save-dev html-loader html-webpack-plugin
-npm install --save-dev css-loader style-loader
+npm install --save-dev css-loader style-loader sass-loader sass
 ```
 
 ## 使い方
