@@ -1,0 +1,40 @@
+{
+    "width": 16,
+    "height": 20,
+    "map": [
+        ["grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass", "path", "path", "path", "path", "path", "path", "path","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass", "path","grass","grass","grass","grass","grass", "path","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass", "path","grass", "path", "path", "path","grass", "path","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass", "path","grass", "goal","grass", "path","grass", "path", "path", "path", "path", "path", "path", "path","grass"],
+        ["grass","grass", "path","grass","grass","grass", "path","grass", "path","grass","grass","grass","grass","grass", "path","grass"],
+        ["grass","grass", "path", "path", "path", "path", "path","grass", "path","grass", "path", "path", "path","grass", "path","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass","grass", "path","grass", "path","grass", "path","grass", "path","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass", "path", "path","grass", "path","grass","grass","grass", "path","grass"],
+        ["grass","grass","grass","grass","grass","grass", "path", "path","grass","grass", "path", "path", "path", "path", "path","grass"],
+        ["grass","grass","grass","grass","grass", "path", "path","grass","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass","grass","grass", "path", "path","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass","grass", "path", "path","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass", "path", "path","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass", "path", "path","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass", "path","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"]
+    ],
+    "description": "迷路の一般解",
+    "playerx": 1,
+    "playery": 15,
+    "playerdirection": 3,
+    "teleportx": [],
+    "teleporty": [],
+    "teleportid": [],
+    "blocks": ["moveforward","while","turn","ifelse","check","grouping","callgroup"],
+    "keycnt": 0,
+    "clearlevel": {
+        "star2":{"block":15},
+        "star3":{"block":6,"step":450}
+    },
+    "level": "normal"
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>プログラミング教室2022 ステージ12「共通する操作に注目しよう」</title>
+
+    <link rel="stylesheet" href="/css/common.min.css" />
+    <link rel="stylesheet" href="/css/commentaryBlockly.min.css" />
+    <link rel="stylesheet" href="/css/commentary.min.css" />
+</head>
+
+<body>
+    <h1>ステージ12「共通する操作に注目しよう」</h1>
+    <h2>ヒント</h2>
+    <label for="label1">表示</label>
+    <input type="checkbox" id="label1"/>
+    <div class="hide">
+        <p>
+            ゴールするためには途中で3つの岩をのけなければいけません。どんな時に岩を壊せばいいでしょうか？「繰り返し」と「もし〜なら」のブロックを使ってみよう！
+        </p>
+        <p>
+            星3を取るには一工夫必要です。星2のやり方では「岩をのける」ブロックを2回使ったと思います。岩をのける時、方向転換してから岩をのけるので複数のブロックが必要になります。そこで、上手に方向転換することで「岩をのける」を使うのは岩が…にある時だけになりませんか？
+        </p>
+    </div>
+    <h2>星２の想定解法</h2>
+    <label for="label2">表示</label>
+    <input type="checkbox" id="label2"/>
+    <div class="hide">
+        <p>
+            「繰り返し」と「もし〜なら」などのブロックを次のように使うと星２でクリアできます。岩が右か左にある時にはその方向を向いて岩をのけます。岩が右にある時と左にある時の順番はどちらが先でも良いです。
+        </p>
+        <img src="solutions/stage12_2.png" alt="">
+    </div>
+    <h2>星３の想定解法</h2>
+    <label for="label3">表示</label>
+    <input type="checkbox" id="label3"/>
+    <div class="hide">
+        <p>
+            岩をのける際には「方向転換」と「岩をのける」の2つの動作が必要です。そこで「岩をのける」場合を1つに集約できないでしょうか？
+        </p>
+        <p>
+            次のように、前が草になるまで進んで後ろを向くことで、プレイヤーが岩をのける際に、岩が3つとも共通して進行方向左側にあるようにできます。方向転換して岩をのける代わりに、方向転換だけだと1つの動作で済みます。そのため、星2の解答と比べて「岩をのける」動作を一回削減できるので、1ブロック減らせます。
+        </p>
+        <img src="solutions/stage12_3.png" alt="">
+    </div>
+    
+    <div class="button">
+        <a href="/index.html">
+            <div class="std_btn">
+                トップページにもどる
+            </div>
+        </a>
+        <a href="/game.html?stage=12">
+            <div class="std_btn">
+                ゲーム画面にもどる
+            </div>
+        </a>
+    </div>
+</body>
+
+</html>

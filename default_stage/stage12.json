@@ -1,0 +1,40 @@
+{
+    "width": 16,
+    "height": 20,
+    "map": [
+        ["grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","path","grass","grass","path","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass","grass","grass","grass","path","path","rock","path","path","path","path","grass","grass","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","path","grass","grass","rock","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","rock","grass","grass","path","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass","grass","grass","path", "path", "path","grass", "grass", "path", "grass", "grass","grass","grass","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","path","grass","grass","goal","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"]
+    ],
+    "description": "共通する操作に注目しよう",
+    "playerx": 4,
+    "playery": 7,
+    "playerdirection": 2,
+    "teleportx": [],
+    "teleporty": [],
+    "teleportid": [],
+    "blocks": ["moveforward","while","if","turn","remove","check"],
+    "keycnt": 0,
+    "clearlevel": {
+        "star2":{"block":10},
+        "star3":{"block":9}
+    },
+    "level": "normal"
+}

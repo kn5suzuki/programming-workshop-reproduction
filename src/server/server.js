@@ -1,14 +1,544 @@
 import path from "path";
-import express from "express";
-const app = express(),
-  DIST_DIR = __dirname,
-  HTML_FILE = path.join(DIST_DIR, "index.html");
-app.use(express.static(DIST_DIR));
-app.get("*", (req, res) => {
-  res.sendFile(HTML_FILE);
+const express = require("express");
+const app = express();
+const bodyParser = require("body-parser");
+const fs = require("fs");
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text({ type: "text/plain" }));
+var jsonParser = bodyParser.json();
+
+const { runCheck } = require("./runCheck");
+const crypto = require("crypto");
+
+const WIDTH = 16;
+const HEIGHT = 20;
+
+let stageHashSet = new Set();
+
+function mapToDigest(map) {
+  const tileName = {
+    grass: "0",
+    path: "1",
+    key: "2",
+    teleport1: "3",
+    teleport2: "4",
+    goalN: "5",
+    goal: "6",
+    rock: "7",
+    stone: "8",
+    wood: "9",
+    num0: "a",
+    num1: "b",
+    num2: "c",
+    num3: "d",
+    num4: "e",
+    num5: "f",
+    num6: "g",
+    num7: "h",
+    num8: "i",
+    num9: "j",
+  };
+  let digest = "";
+  for (let y = 0; y < HEIGHT; ++y) {
+    for (let x = 0; x < WIDTH; ++x) {
+      const t = tileName[map[y][x].split(":")[0]];
+      digest += t || "0";
+    }
+  }
+  return digest;
+}
+
+function writeLog(stageId, body) {
+  const date = "[" + new Date(Date.now()).toUTCString() + "] ";
+  fs.appendFile(
+    `./log/${stageId}.log`,
+    date + JSON.stringify(body) + "\n",
+    (e) => {
+      if (e) console.log(e);
+    }
+  );
+}
+
+function makeid() {
+  let result = "";
+  const characters = "abcdefghijklmnopqrstuvwxyz0123456789";
+  for (let i = 0; i < 9; i++) {
+    result += characters.charAt(Math.floor(Math.random() * 36));
+  }
+  return result;
+}
+
+app.listen(3000);
+
+//サーバーとして利用
+app.use(express.static(__dirname));
+
+app.get("/defalt_stage_info", function (req, res) {
+  const json = require("../../default_stage/stageinfo.json");
+  res.send(json);
 });
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`App listening to ${PORT}....`);
-  console.log("Press Ctrl+C to quit.");
+
+app.get("/default_stage", function (req, res) {
+  const filename = req.query.filename; // パラメータ名に応じて取得
+  const json = require("../../default_stage/" + filename);
+  res.send(json);
+});
+
+app.post("/poststage", function (req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  // res.setHeader('Content-Type', 'text/plain');
+
+  res.writeHead(200, { "Content-Type": "text" });
+  // res.write("successfully uploaded");
+  console.log("POST poststage");
+  const reqBody = JSON.parse(req.body);
+  //console.log("data→", reqBody["mapData"])
+  console.log("poststage stage_name→", reqBody.stage_name);
+  console.log("poststage user_name→", reqBody.user_name);
+  //console.log("blocks→", reqBody.blocks)
+
+  // 同一のステージを連続してアップロードしていないかチェック
+  const stageHash = crypto
+    .createHash("sha256")
+    .update(JSON.stringify(reqBody.mapData))
+    .digest()
+    .toString("hex");
+  if (stageHashSet.has(stageHash)) {
+    console.log("poststage double stage");
+    res.write('{"state":"double stage"}');
+    console.log(stageHashSet, stageHash);
+    res.end("");
+    return;
+  }
+  stageHashSet.add(stageHash);
+
+  const dir_path_to_write = "./dist/posted_stage/";
+  const Time = `${Date.now()}`;
+
+  let stageId = makeid();
+  function checkFile() {
+    try {
+      fs.statSync(stageId);
+      return false;
+    } catch (err) {
+      return err.code === "ENOENT";
+    }
+  }
+  while (!checkFile()) {
+    stageId = makeid();
+  }
+
+  if (
+    !reqBody.mapData ||
+    !reqBody.stage_name ||
+    !reqBody.user_name ||
+    !reqBody.blocks ||
+    reqBody.mapData.width != 16 ||
+    reqBody.mapData.height != 20 ||
+    !reqBody.mapData.map ||
+    reqBody.mapData.map.length != 20 ||
+    reqBody.mapData.playerx === undefined ||
+    !(0 <= reqBody.mapData.playerx) ||
+    !(WIDTH > reqBody.mapData.playerx) ||
+    reqBody.mapData.playery === undefined ||
+    !(0 <= reqBody.mapData.playery) ||
+    !(HEIGHT > reqBody.mapData.playery) ||
+    !reqBody.mapData.blocks
+  ) {
+    console.log("poststage ERROR1");
+    res.write('{"state":"ERROR1"}');
+    res.end("");
+    writeLog(stageId, { type: "poststage", state: "ERROR1", req: reqBody });
+    return;
+  }
+
+  let runchecker = new runCheck(reqBody.mapData, reqBody.blocks);
+  let check = false;
+  try {
+    check = runchecker.check(reqBody.steps) && runchecker.checkblocks();
+  } catch (e) {
+    console.log("poststage", e);
+    writeLog(stageId, {
+      type: "poststage",
+      state: "ERROR2_e",
+      req: reqBody,
+      e: e.toString(),
+    });
+    res.write(JSON.stringify({ state: "ERROR2_e" }));
+    res.end("");
+    return;
+  }
+  if (!check) {
+    console.log("poststage ERROR2");
+    res.write('{"state":"ERROR2"}');
+    res.end("");
+    writeLog(stageId, { type: "poststage", state: "ERROR2", req: reqBody });
+    return;
+  }
+
+  var push_stage_info = {
+    filename: stageId + ".json",
+    name: reqBody.stage_name || "",
+    description: reqBody.description || "",
+    submitter: reqBody.user_name || "",
+    clear: 0,
+    date: Time,
+    map: mapToDigest(reqBody.mapData.map),
+  };
+
+  let stageinfo_json = JSON.parse(
+    fs.readFileSync(dir_path_to_write + "stageinfo.json", "utf8")
+  );
+  stageinfo_json["stages"][stageId] = push_stage_info;
+  fs.writeFile(
+    dir_path_to_write + "stageinfo.json",
+    JSON.stringify(stageinfo_json),
+    (err) => {
+      if (err) throw err;
+      console.log("poststage stageinfo_json 正常に書き込みが完了しました");
+    }
+  );
+
+  let output_json = reqBody.mapData;
+  output_json["name"] = reqBody.stage_name;
+  output_json["submitter"] = reqBody.user_name;
+  output_json["description"] = reqBody.description;
+  fs.writeFile(
+    dir_path_to_write + stageId + ".json",
+    JSON.stringify(output_json),
+    (err) => {
+      if (err) throw err;
+      console.log("poststage output_json 正常に書き込みが完了しました");
+    }
+  );
+
+  if (reqBody.deleteKey) {
+    let deleteKeys = JSON.parse(
+      fs.readFileSync("./log/deletekeys.json", "utf8")
+    );
+    deleteKeys[stageId] = reqBody.deleteKey;
+    fs.writeFile("./log/deletekeys.json", JSON.stringify(deleteKeys), (err) => {
+      if (err) throw err;
+      console.log("poststage deleteKeys 正常に書き込みが完了しました");
+    });
+  }
+  let result = {
+    state: "OK",
+    filename: stageId,
+  };
+  res.write(JSON.stringify(result));
+  res.end("");
+  writeLog(stageId, { type: "poststage", state: "OK", req: reqBody });
+});
+
+app.options("/poststage", function (req, res) {
+  console.log("OPTIONS poststage");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+
+  res.writeHead(200, { "Content-Type": "text" });
+  res.end("");
+  //console.log(req.body)
+});
+
+app.post("/postcleardata", function (req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  // res.setHeader('Content-Type', 'text/plain');
+
+  res.writeHead(200, { "Content-Type": "text" });
+  // res.write("successfully uploaded");
+  console.log("POST postcleardata");
+  const reqBody = JSON.parse(req.body);
+  console.log("postcleardata stageId→", reqBody.stageId);
+  //console.log("blocks→", reqBody.blocks)
+  console.log("postcleardata steps→", reqBody.steps);
+  console.log("postcleardata name→", reqBody.name);
+
+  if (
+    !reqBody.stageId ||
+    !reqBody.blocks ||
+    !reqBody.blocks.blocks ||
+    !reqBody.steps ||
+    reqBody.steps < 0 ||
+    reqBody.steps > 10000000
+  ) {
+    console.log("postcleardata ERROR1");
+    res.write("ERROR1");
+    res.end("");
+    writeLog(reqBody.stageId, {
+      type: "postscleardata",
+      state: "ERROR1",
+      req: reqBody,
+    });
+    return;
+  }
+
+  const dir_path_to_write = "./dist/posted_stage/";
+  const mapData = JSON.parse(
+    fs.readFileSync(dir_path_to_write + reqBody.stageId + ".json", "utf8")
+  );
+
+  let runchecker = new runCheck(mapData, reqBody.blocks);
+  let check = false;
+  try {
+    check = runchecker.check(reqBody.steps) && runchecker.checkblocks();
+  } catch (e) {
+    console.log("postcleardata", e);
+    writeLog(reqBody.stageId, {
+      type: "postscleardata",
+      state: "ERROR2_e",
+      req: reqBody,
+      e: e.toString(),
+    });
+    res.write("ERROR2e");
+    res.end("");
+    return;
+  }
+  const blockNum = runchecker.getBlockNum();
+  if (!check) {
+    console.log("postcleardata ERROR2");
+    res.write("ERROR2");
+    res.end("");
+    writeLog(reqBody.stageId, {
+      type: "postscleardata",
+      state: "ERROR2",
+      req: reqBody,
+    });
+    return;
+  }
+
+  let stageinfo_json = JSON.parse(
+    fs.readFileSync(dir_path_to_write + "stageinfo.json", "utf8")
+  );
+  let stage = stageinfo_json["stages"][reqBody.stageId];
+  let recorded = false;
+  if (!stage.shortest || stage.shortest.blocks > blockNum) {
+    stage.shortest = {
+      name: reqBody.name || "",
+      blocks: blockNum,
+      steps: reqBody.steps,
+      clear: 1,
+    };
+    recorded = true;
+  } else if (
+    stage.shortest.blocks == blockNum &&
+    stage.shortest.steps == reqBody.steps
+  ) {
+    stage.shortest.clear = (stage.shortest.clear || 0) + 1;
+  }
+  if (!stage.fastest || stage.fastest.steps > reqBody.steps) {
+    stage.fastest = {
+      name: reqBody.name || "",
+      blocks: blockNum,
+      steps: reqBody.steps,
+      clear: 1,
+    };
+    recorded = true;
+  } else if (
+    stage.fastest.steps == reqBody.steps &&
+    stage.fastest.blocks == blockNum
+  ) {
+    stage.fastest.clear = (stage.fastest.clear || 0) + 1;
+  }
+  stage.clear = (stage.clear || 0) + 1;
+  stageinfo_json["stages"][reqBody.stageId] = stage;
+  fs.writeFile(
+    dir_path_to_write + "stageinfo.json",
+    JSON.stringify(stageinfo_json),
+    (err) => {
+      if (err) throw err;
+      console.log("postcleardata stageinfo_json 正常に書き込みが完了しました");
+    }
+  );
+
+  if (recorded) {
+    res.write("RECORD");
+  } else {
+    res.write("OK");
+  }
+  writeLog(reqBody.stageId, {
+    type: "postscleardata",
+    state: "OK",
+    req: reqBody,
+    blocks: blockNum,
+    steps: reqBody.steps,
+  });
+  res.end("");
+});
+
+app.options("/postcleardata", function (req, res) {
+  console.log("OPTIONS postcleardata");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+
+  res.writeHead(200, { "Content-Type": "text" });
+  res.end("");
+  //console.log(req.body)
+});
+
+app.post("/postlike", function (req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  // res.setHeader('Content-Type', 'text/plain');
+
+  res.writeHead(200, { "Content-Type": "text" });
+  // res.write("successfully uploaded");
+  console.log("POST postlike");
+  const reqBody = JSON.parse(req.body);
+  console.log("postlike stageId→", reqBody.stageId);
+
+  if (!reqBody.stageId) {
+    console.log("postlike ERROR1");
+    res.write("ERROR1");
+    res.end("");
+    writeLog(reqBody.stageId, {
+      type: "postlike",
+      state: "ERROR1",
+      req: reqBody,
+    });
+    return;
+  }
+
+  const dir_path_to_write = "./dist/posted_stage/";
+  let stageinfo_json = JSON.parse(
+    fs.readFileSync(dir_path_to_write + "stageinfo.json", "utf8")
+  );
+  let stage = stageinfo_json["stages"][reqBody.stageId];
+  stage.like = (stage.like || 0) + 1;
+  stageinfo_json["stages"][reqBody.stageId] = stage;
+  fs.writeFile(
+    dir_path_to_write + "stageinfo.json",
+    JSON.stringify(stageinfo_json),
+    (err) => {
+      if (err) throw err;
+      console.log("postlike stageinfo_json 正常に書き込みが完了しました");
+    }
+  );
+  res.write("OK");
+  res.end("");
+  writeLog(reqBody.stageId, { type: "postlike", state: "OK", req: reqBody });
+});
+app.options("/postlike", function (req, res) {
+  console.log("OPTIONS postlike");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+
+  res.writeHead(200, { "Content-Type": "text" });
+  res.end("");
+  //console.log(req.body)
+});
+
+app.post("/deletestage", function (req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  // res.setHeader('Content-Type', 'text/plain');
+
+  res.writeHead(200, { "Content-Type": "text" });
+  // res.write("successfully uploaded");
+  console.log("POST deletestage");
+  const reqBody = JSON.parse(req.body);
+  console.log("deletestage stageId→", reqBody.stageId);
+  console.log("deletestage deleteKey→", reqBody.deleteKey);
+
+  if (!reqBody.stageId || !reqBody.deleteKey) {
+    console.log("deletestage ERROR1");
+    res.write("ERROR1");
+    res.end("");
+    writeLog(reqBody.stageId, {
+      type: "deletestage",
+      state: "ERROR1",
+      req: reqBody,
+    });
+    return;
+  }
+
+  const deleteKeys = JSON.parse(
+    fs.readFileSync("./log/deletekeys.json", "utf8")
+  );
+  const hashedKey = crypto
+    .createHash("sha256")
+    .update(reqBody.deleteKey)
+    .digest()
+    .toString("hex");
+  if (deleteKeys[reqBody.stageId] != hashedKey) {
+    console.log("deletestage ERROR2");
+    res.write("ERROR2");
+    res.end("");
+    writeLog(reqBody.stageId, {
+      type: "deletestage",
+      state: "ERROR2",
+      req: reqBody,
+    });
+    return;
+  }
+
+  const dir_path_to_write = "./dist/posted_stage/";
+  const output_json = { deleted: 1 };
+  fs.writeFile(
+    dir_path_to_write + reqBody.stageId + ".json",
+    JSON.stringify(output_json),
+    (err) => {
+      if (err) throw err;
+      console.log("deletestage output_json 正常に書き込みが完了しました");
+    }
+  );
+
+  let stageinfo_json = JSON.parse(
+    fs.readFileSync(dir_path_to_write + "stageinfo.json", "utf8")
+  );
+  stageinfo_json["stages"][reqBody.stageId] = { deleted: 1 };
+  fs.writeFile(
+    dir_path_to_write + "stageinfo.json",
+    JSON.stringify(stageinfo_json),
+    (err) => {
+      if (err) throw err;
+      console.log("deletestage stageinfo_json 正常に書き込みが完了しました");
+    }
+  );
+  res.write("OK");
+  res.end("");
+  writeLog(reqBody.stageId, { type: "deletestage", state: "OK", req: reqBody });
+});
+app.options("/deletestage", function (req, res) {
+  console.log("OPTIONS deletestage");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+
+  res.writeHead(200, { "Content-Type": "text" });
+  res.end("");
+  //console.log(req.body)
 });

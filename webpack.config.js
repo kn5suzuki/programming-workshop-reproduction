@@ -4,6 +4,7 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: {
     index: "./src/js/index.js",
+    game: "./src/js/game.js",
   },
   output: {
     path: path.join(__dirname, "dist"),
@@ -42,6 +43,10 @@ module.exports = {
         test: /\.(png|svg|jpg|gif)$/,
         type: "asset/resource",
       },
+      {
+        test: /\.json$/,
+        loader: "json-loader",
+      },
     ],
   },
   plugins: [
@@ -50,10 +55,10 @@ module.exports = {
       filename: "./index.html",
       chunks: ["index"],
     }),
-    // new HtmlWebPackPlugin({
-    //   template: "./src/html/game.html",
-    //   filename: "./game.html",
-    //   chunks: ["game"],
-    // }),
+    new HtmlWebPackPlugin({
+      template: "./src/html/game.html",
+      filename: "./game.html",
+      chunks: ["game"],
+    }),
   ],
 };

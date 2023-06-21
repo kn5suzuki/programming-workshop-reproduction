@@ -1,0 +1,40 @@
+{
+    "width": 16,
+    "height": 20,
+    "map": [
+        ["grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass","grass", "goal", "path", "path", "path", "path", "path", "path", "path", "path", "path", "wood","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass", "path","grass","grass","grass","grass","grass", "path","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass", "path","grass","grass","grass","grass","grass", "path","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass", "path","grass","grass","grass","grass","grass", "path","grass","grass"],
+        ["grass", "path", "path","stone", "path", "path", "path", "path", "path", "wood","grass","grass","grass", "path","grass","grass"],
+        ["grass","grass","grass", "path","grass","grass","grass","grass","grass", "path","grass","grass","grass", "path","grass","grass"],
+        ["grass","grass","grass", "path","grass","grass","grass","grass","grass", "path","grass", "path", "path", "path","grass","grass"],
+        ["grass","grass","grass", "path","grass","grass", "path", "path", "path","stone","grass","grass","grass", "path","grass","grass"],
+        ["grass", "path", "path", "path","grass","grass","grass","grass","grass", "path","grass","grass","grass", "path","grass","grass"],
+        ["grass","grass","grass", "path","grass","grass","grass","grass","grass", "path","grass","grass","grass", "path","grass","grass"],
+        ["grass","grass","grass", "path","grass","grass","grass","grass","grass", "path","grass","grass","grass", "path","grass","grass"],
+        ["grass","grass","grass", "wood", "path", "path", "path", "path", "path", "path", "path", "path", "path","stone","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass", "path","grass","grass","grass","grass","grass", "path","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass", "path","grass","grass","grass","grass","grass", "path","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass", "path","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"]
+    ],
+    "description": "「論理和」を使おう",
+    "playerx": 6,
+    "playery": 9,
+    "playerdirection": 2,
+    "teleportx": [],
+    "teleporty": [],
+    "teleportid": [],
+    "blocks": ["while","moveforward","if","check","turn","checkfeet","or"],
+    "keycnt": 0,
+    "clearlevel": {
+        "star2":{"block":7},
+        "star3":{"block":6}
+    },
+    "level": "normal"
+}

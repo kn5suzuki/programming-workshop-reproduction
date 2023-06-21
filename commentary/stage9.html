@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>プログラミング教室2022 ステージ9「「論理積」を使おう」</title>
+
+    <link rel="stylesheet" href="/css/common.min.css" />
+    <link rel="stylesheet" href="/css/commentaryBlockly.min.css" />
+    <link rel="stylesheet" href="/css/commentary.min.css" />
+</head>
+
+<body>
+    <h1>ステージ9「「論理積」を使おう」</h1>
+    <h2>ヒント</h2>
+    <label for="label1">表示</label>
+    <input type="checkbox" id="label1"/>
+    <div class="hide">
+        <p>
+            どのような場合に曲がればゴールに辿り着けるか考えてみましょう。
+        </p>
+    </div>
+    <h2>星２の想定解法</h2>
+    <label for="label2">表示</label>
+    <input type="checkbox" id="label2"/>
+    <div class="hide">
+        <p>
+            次のような条件で左に曲がることでゴールまで辿り着くことができます。このように「〇〇かつ〇〇」というような条件を「論理積」と言います。
+        </p>
+        <img src="solutions/stage9_3.png">
+    </div>
+    <h2>星３の想定解法</h2>
+    <label for="label3">表示</label>
+    <input type="checkbox" id="label3"/>
+    <div class="hide">
+        <p>
+            次のように「もし〜なら」ブロックを2つ使うことで「かつ」を表現することもできます。条件判定で、星2の解法では毎回「左が道」と「かつ」の2つを読んでいましたが、この解法では「足元が石の道」でない時は「足元が石の道」の1つしか読まれません。そのため、条件を読む回数が減り、ステップ数が減ります。
+        </p>
+        <img src="solutions/stage9_2.png">
+    </div>
+    
+    <div class="button">
+        <a href="/index.html">
+            <div class="std_btn">
+                トップページにもどる
+            </div>
+        </a>
+        <a href="/game.html?stage=9">
+            <div class="std_btn">
+                ゲーム画面にもどる
+            </div>
+        </a>
+    </div>
+</body>
+
+</html>

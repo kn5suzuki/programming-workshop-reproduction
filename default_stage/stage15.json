@@ -1,0 +1,41 @@
+{
+    "width": 16,
+    "height": 20,
+    "map": [
+        ["grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass",  "key","grass","grass","grass",  "key","grass","grass","grass",  "key","grass","grass","grass",  "key","grass","grass"],
+        ["grass", "path", "path", "path", "path", "path","grass","grass","grass", "path", "path", "path", "path", "path","grass","grass"],
+        ["grass",  "key","grass", "path","grass",  "key","grass","grass","grass",  "key","grass", "path","grass",  "key","grass","grass"],
+        ["grass","grass","grass", "path","grass","grass","grass","grass","grass","grass","grass", "path","grass","grass","grass","grass"],
+        ["grass","grass","grass", "path", "path", "path", "path", "path", "path", "path", "path", "path","grass","grass","grass","grass"],
+        ["grass","grass","grass", "path","grass","grass","grass", "path","grass","grass","grass", "path","grass","grass","grass","grass"],
+        ["grass",  "key","grass", "path","grass",  "key","grass", "path","grass",  "key","grass", "path","grass",  "key","grass","grass"],
+        ["grass", "path", "path", "path", "path", "path","grass", "path","grass", "path", "path", "path", "path", "path","grass","grass"],
+        ["grass",  "key","grass","grass","grass",  "key","grass", "path","grass",  "key","grass","grass","grass",  "key","grass","grass"],
+        ["grass","grass","grass","grass","grass","grass","grass","goalN","grass","grass","grass","grass","grass","grass","grass","grass"],
+        ["grass",  "key","grass","grass","grass",  "key","grass", "path","grass",  "key","grass","grass","grass",  "key","grass","grass"],
+        ["grass", "path", "path", "path", "path", "path","grass", "path","grass", "path", "path", "path", "path", "path","grass","grass"],
+        ["grass",  "key","grass", "path","grass",  "key","grass", "path","grass",  "key","grass", "path","grass",  "key","grass","grass"],
+        ["grass","grass","grass", "path","grass","grass","grass", "path","grass","grass","grass", "path","grass","grass","grass","grass"],
+        ["grass","grass","grass", "path", "path", "path", "path", "path", "path", "path", "path", "path","grass","grass","grass","grass"],
+        ["grass","grass","grass", "path","grass","grass","grass","grass","grass","grass","grass", "path","grass","grass","grass","grass"],
+        ["grass",  "key","grass", "path","grass",  "key","grass","grass","grass",  "key","grass", "path","grass",  "key","grass","grass"],
+        ["grass", "path", "path", "path", "path", "path","grass","grass","grass", "path", "path", "path", "path", "path","grass","grass"],
+        ["grass",  "key","grass","grass","grass",  "key","grass","grass","grass",  "key","grass","grass","grass",  "key","grass","grass"]
+    ],
+    "description": "枝分かれ of 枝分かれ",
+    "alert": "注意 : カギを全部拾わないとゴールできないよ！",
+    "playerx": 7,
+    "playery": 10,
+    "playerdirection": 2,
+    "teleportx": [],
+    "teleporty": [],
+    "teleportid": [],
+    "blocks": ["moveforward","grouping","callgroup","turn"],
+    "keycnt": 32,
+    "clearlevel": {
+        "star2":{"block":100},
+        "star3":{"block":54}
+    },
+    "level": "hard"
+}
