@@ -31,6 +31,12 @@ npm install  --save-dev html-loader html-webpack-plugin
 npm install --save-dev css-loader style-loader sass-loader sass
 ```
 
+必要なライブラリのインストール
+
+```
+npm install --save blockly phaser
+```
+
 ## 使い方
 
 開発用

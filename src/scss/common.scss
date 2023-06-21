@@ -1,3 +1,57 @@
+@charset "UTF-8";
+// $bg_color: rgb(12, 39, 53);
+$bg_color: rgb(255, 255, 255);
+
 body {
-  background-color: aqua;
+  background-color: $bg_color;
+  // color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  font-family: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴ Pro",
+    "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
+  padding: 2rem;
+  padding-top: 1.2rem;
+  margin-top: 0rem;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.left {
+  text-align: left;
+}
+
+.block {
+  display: block;
+}
+
+// $btn_color: rgb(255, 255, 255);
+$btn_color: rgb(0, 0, 0);
+
+.std_btn {
+  // aの中のdivに対して適用する。ボタンの中をdivで囲うことで、中で改行が起こっても変にならないようにする
+  padding: 1rem;
+  background-color: white;
+  border-radius: 1rem 1rem;
+  color: $btn_color;
+  border-color: $btn_color;
+  border-style: solid;
+  // line-height: 5rem;
+  display: inline-block;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $btn_color;
+    color: $bg_color;
+  }
 }

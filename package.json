@@ -13,7 +13,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "blockly": "^9.3.3",
+    "express": "^4.18.2",
+    "phaser": "^3.60.0"
   },
   "devDependencies": {
     "@babel/core": "^7.22.5",

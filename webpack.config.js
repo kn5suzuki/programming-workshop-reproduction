@@ -4,7 +4,6 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: {
     index: "./src/js/index.js",
-    signin: "./src/js/signin.js",
   },
   output: {
     path: path.join(__dirname, "dist"),
@@ -49,14 +48,12 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./src/html/index.html",
       filename: "./index.html",
-      // excludeChunks: ["server"],
       chunks: ["index"],
     }),
-    new HtmlWebPackPlugin({
-      template: "./src/html/signin.html",
-      filename: "./signin.html",
-      // excludeChunks: ["server"],
-      chunks: ["signin"],
-    }),
+    // new HtmlWebPackPlugin({
+    //   template: "./src/html/game.html",
+    //   filename: "./game.html",
+    //   chunks: ["game"],
+    // }),
   ],
 };
