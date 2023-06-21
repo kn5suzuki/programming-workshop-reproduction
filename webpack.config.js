@@ -3,7 +3,8 @@ const webpack = require("webpack");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: {
-    main: "./src/index.js",
+    index: "./src/js/index.js",
+    signin: "./src/js/signin.js",
   },
   output: {
     path: path.join(__dirname, "dist"),
@@ -48,7 +49,14 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./src/html/index.html",
       filename: "./index.html",
-      excludeChunks: ["server"],
+      // excludeChunks: ["server"],
+      chunks: ["index"],
+    }),
+    new HtmlWebPackPlugin({
+      template: "./src/html/signin.html",
+      filename: "./signin.html",
+      // excludeChunks: ["server"],
+      chunks: ["signin"],
     }),
   ],
 };
