@@ -1,0 +1,95 @@
+@charset "UTF-8";
+body {
+  background-color: white;
+  color: black;
+  font-family: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴ Pro",
+    "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
+  padding: 2rem;
+  padding-top: 1.2rem;
+  margin-top: 0rem;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.left {
+  text-align: left;
+}
+
+.block {
+  display: block;
+}
+
+.std_btn {
+  padding: 1rem;
+  background-color: white;
+  border-radius: 1rem 1rem;
+  color: black;
+  border-color: black;
+  border-style: solid;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.std_btn:hover {
+  background-color: black;
+  color: white;
+}
+
+label {
+  display: block;
+  padding: 15px;
+  border: solid 1px black;
+  cursor: pointer;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+label::before {
+  content: "▼";
+}
+
+label:hover {
+  background: #efefef;
+}
+
+input {
+  display: none;
+}
+
+.hide {
+  max-height: 0;
+  padding-top: 1rem;
+  -webkit-transition: 0.8s;
+  transition: 0.8s;
+  overflow: hidden;
+  -webkit-transition: max-height 0.5s;
+  transition: max-height 0.5s;
+}
+
+input:checked + .hide {
+  max-height: 300vh;
+  -webkit-transition: max-height 0.8s;
+  transition: max-height 0.8s;
+}
+
+.button {
+  text-align: center;
+}
+
+.button a {
+  margin: 0 1rem;
+}

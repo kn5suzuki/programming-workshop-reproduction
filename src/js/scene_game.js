@@ -304,7 +304,7 @@ class SceneGame {
       commentaryButton.style.visibility = "visible";
       commentaryButton.setAttribute(
         "href",
-        "/default_stage/commentary/stage" + this.stageNum + ".html"
+        "/answer/stage" + this.stageNum + ".html"
       );
     }
 
@@ -928,10 +928,7 @@ class SceneGame {
 
     // 解説ボタン
     const ansButton = document.getElementById("ans-button");
-    ansButton.setAttribute(
-      "href",
-      "./default_stage/commentary/stage" + this.stageNum + ".html"
-    );
+    ansButton.setAttribute("href", "./answer/stage" + this.stageNum + ".html");
 
     const nextStageButton2 = document.getElementById("next-stage-button2");
     const nextStageButton3 = document.getElementById("next-stage-button3");
@@ -982,10 +979,7 @@ class SceneGame {
 
     // 解説ボタン
     const ansButton = document.getElementById("ans-button2");
-    ansButton.setAttribute(
-      "href",
-      "./default_stage/commentary/stage" + this.stageNum + ".html"
-    );
+    ansButton.setAttribute("href", "./answer/stage" + this.stageNum + ".html");
 
     //再挑戦ボタン
     const tryAgainButton = document.getElementById("try-again-button2");

@@ -55,10 +55,7 @@ request.addEventListener("load", () => {
     buttonContainer.appendChild(button);
 
     commentaryContainer.setAttribute("class", "stage-select-hide");
-    commentary.setAttribute(
-      "href",
-      `./default_stage/commentary/stage${index}.html`
-    );
+    commentary.setAttribute("href", `./answer/stage${index}.html`);
     // commentary.innerText = `ステージ${index}`;
     commentary.innerText = "ステージ " + ("0" + index).slice(-2);
     commentaryContainer.appendChild(commentary);
