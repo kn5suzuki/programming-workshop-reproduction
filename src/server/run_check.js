@@ -16,7 +16,7 @@ class runCheck {
     );
   }
   check(leftEnergy) {
-    return this.game.run_check(this.blocks, leftEnergy);
+    return this.game.runCheck(this.blocks, leftEnergy);
   }
   getBlockNum() {
     return this.game.countBlocks();

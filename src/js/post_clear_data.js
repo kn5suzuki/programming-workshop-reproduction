@@ -81,7 +81,7 @@ function CheckPostData(stageId, blocks, steps, blockNum, stageName, submitter) {
 }
 
 function postLike(stageId) {
-  const serverUrl = "http://localhost:3000/postlike";
+  const serverUrl = "http://localhost:3000/post_like";
   likeButton.classList.add("posting");
   likeButton.innerText = "いいねを送信中";
 

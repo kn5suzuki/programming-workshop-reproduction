@@ -74,7 +74,7 @@ app.listen(3000);
 app.use(express.static(__dirname));
 
 app.get("/default_stage_info", function (req, res) {
-  const json = require("../../default_stage/stageInfo.json");
+  const json = require("../../default_stage/stage_info.json");
   res.send(json);
 });
 
@@ -85,7 +85,7 @@ app.get("/default_stage", function (req, res) {
 });
 
 app.get("/posted_stage_info", function (req, res) {
-  const json = require("../../posted_stage/stageInfo.json");
+  const json = require("../../posted_stage/stage_info.json");
   res.send(json);
 });
 
@@ -203,11 +203,11 @@ app.post("/post_stage", function (req, res) {
   };
 
   let stageInfo_json = JSON.parse(
-    fs.readFileSync(dir_path_to_write + "stageInfo.json", "utf8")
+    fs.readFileSync(dir_path_to_write + "stage_info.json", "utf8")
   );
   stageInfo_json["stages"][stageId] = push_stage_info;
   fs.writeFile(
-    dir_path_to_write + "stageInfo.json",
+    dir_path_to_write + "stage_info.json",
     JSON.stringify(stageInfo_json),
     (err) => {
       if (err) throw err;
@@ -337,7 +337,7 @@ app.post("/post_clear_data", function (req, res) {
   }
 
   let stageInfo_json = JSON.parse(
-    fs.readFileSync(dir_path_to_write + "stageInfo.json", "utf8")
+    fs.readFileSync(dir_path_to_write + "stage_info.json", "utf8")
   );
   let stage = stageInfo_json["stages"][reqBody.stageId];
   let recorded = false;
@@ -372,7 +372,7 @@ app.post("/post_clear_data", function (req, res) {
   stage.clear = (stage.clear || 0) + 1;
   stageInfo_json["stages"][reqBody.stageId] = stage;
   fs.writeFile(
-    dir_path_to_write + "stageInfo.json",
+    dir_path_to_write + "stage_info.json",
     JSON.stringify(stageInfo_json),
     (err) => {
       if (err) throw err;
@@ -440,13 +440,13 @@ app.post("/post_like", function (req, res) {
 
   const dir_path_to_write = "./posted_stage/";
   let stageInfo_json = JSON.parse(
-    fs.readFileSync(dir_path_to_write + "stageInfo.json", "utf8")
+    fs.readFileSync(dir_path_to_write + "stage_info.json", "utf8")
   );
   let stage = stageInfo_json["stages"][reqBody.stageId];
   stage.like = (stage.like || 0) + 1;
   stageInfo_json["stages"][reqBody.stageId] = stage;
   fs.writeFile(
-    dir_path_to_write + "stageInfo.json",
+    dir_path_to_write + "stage_info.json",
     JSON.stringify(stageInfo_json),
     (err) => {
       if (err) throw err;
@@ -531,11 +531,11 @@ app.post("/delete_stage", function (req, res) {
   );
 
   let stageInfo_json = JSON.parse(
-    fs.readFileSync(dir_path_to_write + "stageInfo.json", "utf8")
+    fs.readFileSync(dir_path_to_write + "stage_info.json", "utf8")
   );
   stageInfo_json["stages"][reqBody.stageId] = { deleted: 1 };
   fs.writeFile(
-    dir_path_to_write + "stageInfo.json",
+    dir_path_to_write + "stage_info.json",
     JSON.stringify(stageInfo_json),
     (err) => {
       if (err) throw err;
