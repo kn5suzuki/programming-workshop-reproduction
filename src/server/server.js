@@ -13,6 +13,9 @@ const crypto = require("crypto");
 const WIDTH = 16;
 const HEIGHT = 20;
 
+const DefaultStagePath = "./default_stage/";
+const PostStagePath = "./posted_stage/";
+
 let stageHashSet = new Set();
 
 function mapToDigest(map) {
@@ -74,24 +77,32 @@ app.listen(3000);
 app.use(express.static(__dirname));
 
 app.get("/default_stage_info", function (req, res) {
-  const json = require("../../default_stage/stage_info.json");
+  // const json = require("../../default_stage/stage_info.json");
+  const json = JSON.parse(
+    fs.readFileSync(DefaultStagePath + "stage_info.json", "utf8")
+  );
   res.send(json);
 });
 
 app.get("/default_stage", function (req, res) {
   const filename = req.query.filename; // パラメータ名に応じて取得
-  const json = require("../../default_stage/" + filename);
+  // const json = require("../../default_stage/" + filename);
+  const json = JSON.parse(fs.readFileSync(DefaultStagePath + filename, "utf8"));
   res.send(json);
 });
 
 app.get("/posted_stage_info", function (req, res) {
-  const json = require("../../posted_stage/stage_info.json");
+  // const json = require("../../posted_stage/stage_info.json");
+  const json = JSON.parse(
+    fs.readFileSync(PostStagePath + "stage_info.json", "utf8")
+  );
   res.send(json);
 });
 
 app.get("/posted_stage", function (req, res) {
   const filename = req.query.filename; // パラメータ名に応じて取得
-  const json = require("../../posted_stage/" + filename);
+  // const json = require("../../posted_stage/" + filename);
+  const json = JSON.parse(fs.readFileSync(PostStagePath + filename, "utf8"));
   res.send(json);
 });
 
@@ -109,8 +120,8 @@ app.post("/post_stage", function (req, res) {
   console.log("POST post_stage");
   const reqBody = JSON.parse(req.body);
   //console.log("data→", reqBody["mapData"])
-  console.log("post_stage stage_name→", reqBody.stage_name);
-  console.log("post_stage user_name→", reqBody.user_name);
+  console.log("post_stage stage_name→", reqBody.stageName);
+  console.log("post_stage user_name→", reqBody.userName);
   //console.log("blocks→", reqBody.blocks)
 
   // 同一のステージを連続してアップロードしていないかチェック
@@ -128,7 +139,6 @@ app.post("/post_stage", function (req, res) {
   }
   stageHashSet.add(stageHash);
 
-  const dir_path_to_write = "./posted_stage/";
   const Time = `${Date.now()}`;
 
   let stageId = makeId();
@@ -146,8 +156,8 @@ app.post("/post_stage", function (req, res) {
 
   if (
     !reqBody.mapData ||
-    !reqBody.stage_name ||
-    !reqBody.user_name ||
+    !reqBody.stageName ||
+    !reqBody.userName ||
     !reqBody.blocks ||
     reqBody.mapData.width != 16 ||
     reqBody.mapData.height != 20 ||
@@ -192,39 +202,39 @@ app.post("/post_stage", function (req, res) {
     return;
   }
 
-  var push_stage_info = {
+  var pushStageInfo = {
     filename: stageId + ".json",
-    name: reqBody.stage_name || "",
+    name: reqBody.stageName || "",
     description: reqBody.description || "",
-    submitter: reqBody.user_name || "",
+    submitter: reqBody.userName || "",
     clear: 0,
     date: Time,
     map: mapToDigest(reqBody.mapData.map),
   };
 
-  let stageInfo_json = JSON.parse(
-    fs.readFileSync(dir_path_to_write + "stage_info.json", "utf8")
+  let stageInfoJson = JSON.parse(
+    fs.readFileSync(PostStagePath + "stage_info.json", "utf8")
   );
-  stageInfo_json["stages"][stageId] = push_stage_info;
+  stageInfoJson["stages"][stageId] = pushStageInfo;
   fs.writeFile(
-    dir_path_to_write + "stage_info.json",
-    JSON.stringify(stageInfo_json),
+    PostStagePath + "stage_info.json",
+    JSON.stringify(stageInfoJson),
     (err) => {
       if (err) throw err;
-      console.log("post_stage stageInfo_json 正常に書き込みが完了しました");
+      console.log("post_stage stageInfoJson 正常に書き込みが完了しました");
     }
   );
 
-  let output_json = reqBody.mapData;
-  output_json["name"] = reqBody.stage_name;
-  output_json["submitter"] = reqBody.user_name;
-  output_json["description"] = reqBody.description;
+  let outputJson = reqBody.mapData;
+  outputJson["name"] = reqBody.stageName;
+  outputJson["submitter"] = reqBody.userName;
+  outputJson["description"] = reqBody.description;
   fs.writeFile(
-    dir_path_to_write + stageId + ".json",
-    JSON.stringify(output_json),
+    PostStagePath + stageId + ".json",
+    JSON.stringify(outputJson),
     (err) => {
       if (err) throw err;
-      console.log("post_stage output_json 正常に書き込みが完了しました");
+      console.log("post_stage outputJson 正常に書き込みが完了しました");
     }
   );
 
@@ -302,9 +312,8 @@ app.post("/post_clear_data", function (req, res) {
     return;
   }
 
-  const dir_path_to_write = "./posted_stage/";
   const mapData = JSON.parse(
-    fs.readFileSync(dir_path_to_write + reqBody.stageId + ".json", "utf8")
+    fs.readFileSync(PostStagePath + reqBody.stageId + ".json", "utf8")
   );
 
   let runChecker = new runCheck(mapData, reqBody.blocks);
@@ -336,10 +345,10 @@ app.post("/post_clear_data", function (req, res) {
     return;
   }
 
-  let stageInfo_json = JSON.parse(
-    fs.readFileSync(dir_path_to_write + "stage_info.json", "utf8")
+  let stageInfoJson = JSON.parse(
+    fs.readFileSync(PostStagePath + "stage_info.json", "utf8")
   );
-  let stage = stageInfo_json["stages"][reqBody.stageId];
+  let stage = stageInfoJson["stages"][reqBody.stageId];
   let recorded = false;
   if (!stage.shortest || stage.shortest.blocks > blockNum) {
     stage.shortest = {
@@ -370,15 +379,13 @@ app.post("/post_clear_data", function (req, res) {
     stage.fastest.clear = (stage.fastest.clear || 0) + 1;
   }
   stage.clear = (stage.clear || 0) + 1;
-  stageInfo_json["stages"][reqBody.stageId] = stage;
+  stageInfoJson["stages"][reqBody.stageId] = stage;
   fs.writeFile(
-    dir_path_to_write + "stage_info.json",
-    JSON.stringify(stageInfo_json),
+    PostStagePath + "stage_info.json",
+    JSON.stringify(stageInfoJson),
     (err) => {
       if (err) throw err;
-      console.log(
-        "post_clear_data stageInfo_json 正常に書き込みが完了しました"
-      );
+      console.log("post_clear_data stageInfoJson 正常に書き込みが完了しました");
     }
   );
 
@@ -438,19 +445,18 @@ app.post("/post_like", function (req, res) {
     return;
   }
 
-  const dir_path_to_write = "./posted_stage/";
-  let stageInfo_json = JSON.parse(
-    fs.readFileSync(dir_path_to_write + "stage_info.json", "utf8")
+  let stageInfoJson = JSON.parse(
+    fs.readFileSync(PostStagePath + "stage_info.json", "utf8")
   );
-  let stage = stageInfo_json["stages"][reqBody.stageId];
+  let stage = stageInfoJson["stages"][reqBody.stageId];
   stage.like = (stage.like || 0) + 1;
-  stageInfo_json["stages"][reqBody.stageId] = stage;
+  stageInfoJson["stages"][reqBody.stageId] = stage;
   fs.writeFile(
-    dir_path_to_write + "stage_info.json",
-    JSON.stringify(stageInfo_json),
+    PostStagePath + "stage_info.json",
+    JSON.stringify(stageInfoJson),
     (err) => {
       if (err) throw err;
-      console.log("post_like stageInfo_json 正常に書き込みが完了しました");
+      console.log("post_like stageInfoJson 正常に書き込みが完了しました");
     }
   );
   res.write("OK");
@@ -519,27 +525,26 @@ app.post("/delete_stage", function (req, res) {
     return;
   }
 
-  const dir_path_to_write = "./posted_stage/";
-  const output_json = { deleted: 1 };
+  const outputJson = { deleted: 1 };
   fs.writeFile(
-    dir_path_to_write + reqBody.stageId + ".json",
-    JSON.stringify(output_json),
+    PostStagePath + reqBody.stageId + ".json",
+    JSON.stringify(outputJson),
     (err) => {
       if (err) throw err;
-      console.log("delete_stage output_json 正常に書き込みが完了しました");
+      console.log("delete_stage outputJson 正常に書き込みが完了しました");
     }
   );
 
-  let stageInfo_json = JSON.parse(
-    fs.readFileSync(dir_path_to_write + "stage_info.json", "utf8")
+  let stageInfoJson = JSON.parse(
+    fs.readFileSync(PostStagePath + "stage_info.json", "utf8")
   );
-  stageInfo_json["stages"][reqBody.stageId] = { deleted: 1 };
+  stageInfoJson["stages"][reqBody.stageId] = { deleted: 1 };
   fs.writeFile(
-    dir_path_to_write + "stage_info.json",
-    JSON.stringify(stageInfo_json),
+    PostStagePath + "stage_info.json",
+    JSON.stringify(stageInfoJson),
     (err) => {
       if (err) throw err;
-      console.log("delete_stage stageInfo_json 正常に書き込みが完了しました");
+      console.log("delete_stage stageInfoJson 正常に書き込みが完了しました");
     }
   );
   res.write("OK");

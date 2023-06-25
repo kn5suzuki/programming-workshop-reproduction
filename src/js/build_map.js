@@ -143,11 +143,11 @@ Promise.all([
     console.log(e);
   });
 
-function updateStage(x, y, stageData) {
+function updateStage(x, y, data) {
   if (x < 0 || WIDTH <= x || y < 0 || HEIGHT <= y) return;
-  if (stageData) {
+  if (data) {
     const prevStage = stageData[y][x];
-    stageData[y][x] = stageData;
+    stageData[y][x] = data;
     if (prevStage == "teleport1") {
       teleportBlack = teleportBlack.filter((e) => e.x != x || e.y != y);
     }
