@@ -46,15 +46,26 @@ npm install --save blockly phaser
 
 ## 使い方
 
-開発用
+初期化
 
 ```
-npm run dev
+docker-compose run --rm app npm install
 ```
 
-公開用
+フロントのテスト
 
 ```
-npm run build
-npm run start
+docker-compose run --rm app npm run dev
+```
+
+ビルド
+
+```
+docker-compose run --rm app npm run build
+```
+
+サーバの起動
+
+```
+docker-compose up
 ```
