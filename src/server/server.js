@@ -164,7 +164,7 @@ app.post("/post_stage", function (req, res) {
     console.log("post_stage ERROR1");
     res.write('{"state":"ERROR1"}');
     res.end("");
-    writeLog(stageId, { type: "poststage", state: "ERROR1", req: reqBody });
+    writeLog(stageId, { type: "postStage", state: "ERROR1", req: reqBody });
     return;
   }
 
@@ -175,7 +175,7 @@ app.post("/post_stage", function (req, res) {
   } catch (e) {
     console.log("post_stage", e);
     writeLog(stageId, {
-      type: "poststage",
+      type: "postStage",
       state: "ERROR2_e",
       req: reqBody,
       e: e.toString(),
@@ -188,7 +188,7 @@ app.post("/post_stage", function (req, res) {
     console.log("post_stage ERROR2");
     res.write('{"state":"ERROR2"}');
     res.end("");
-    writeLog(stageId, { type: "poststage", state: "ERROR2", req: reqBody });
+    writeLog(stageId, { type: "postStage", state: "ERROR2", req: reqBody });
     return;
   }
 
@@ -224,19 +224,23 @@ app.post("/post_stage", function (req, res) {
     JSON.stringify(output_json),
     (err) => {
       if (err) throw err;
-      console.log("poststage output_json 正常に書き込みが完了しました");
+      console.log("post_stage output_json 正常に書き込みが完了しました");
     }
   );
 
   if (reqBody.deleteKey) {
     let deleteKeys = JSON.parse(
-      fs.readFileSync("./log/deletekeys.json", "utf8")
+      fs.readFileSync("./log/delete_keys.json", "utf8")
     );
     deleteKeys[stageId] = reqBody.deleteKey;
-    fs.writeFile("./log/deletekeys.json", JSON.stringify(deleteKeys), (err) => {
-      if (err) throw err;
-      console.log("post_stage deleteKeys 正常に書き込みが完了しました");
-    });
+    fs.writeFile(
+      "./log/delete_keys.json",
+      JSON.stringify(deleteKeys),
+      (err) => {
+        if (err) throw err;
+        console.log("post_stage deleteKeys 正常に書き込みが完了しました");
+      }
+    );
   }
   let result = {
     state: "OK",
@@ -244,11 +248,11 @@ app.post("/post_stage", function (req, res) {
   };
   res.write(JSON.stringify(result));
   res.end("");
-  writeLog(stageId, { type: "poststage", state: "OK", req: reqBody });
+  writeLog(stageId, { type: "postStage", state: "OK", req: reqBody });
 });
 
 app.options("/post_stage", function (req, res) {
-  console.log("OPTIONS poststage");
+  console.log("OPTIONS postStage");
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Headers",
@@ -291,7 +295,7 @@ app.post("/post_clear_data", function (req, res) {
     res.write("ERROR1");
     res.end("");
     writeLog(reqBody.stageId, {
-      type: "postscleardata",
+      type: "postClearData",
       state: "ERROR1",
       req: reqBody,
     });
@@ -310,7 +314,7 @@ app.post("/post_clear_data", function (req, res) {
   } catch (e) {
     console.log("post_clear_data", e);
     writeLog(reqBody.stageId, {
-      type: "postscleardata",
+      type: "postClearData",
       state: "ERROR2_e",
       req: reqBody,
       e: e.toString(),
@@ -325,7 +329,7 @@ app.post("/post_clear_data", function (req, res) {
     res.write("ERROR2");
     res.end("");
     writeLog(reqBody.stageId, {
-      type: "postscleardata",
+      type: "postClearData",
       state: "ERROR2",
       req: reqBody,
     });
@@ -384,7 +388,7 @@ app.post("/post_clear_data", function (req, res) {
     res.write("OK");
   }
   writeLog(reqBody.stageId, {
-    type: "postscleardata",
+    type: "postClearData",
     state: "OK",
     req: reqBody,
     blocks: blockNum,
@@ -407,7 +411,7 @@ app.options("/post_clear_data", function (req, res) {
   //console.log(req.body)
 });
 
-app.post("/postlike", function (req, res) {
+app.post("/post_like", function (req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Headers",
@@ -418,16 +422,16 @@ app.post("/postlike", function (req, res) {
 
   res.writeHead(200, { "Content-Type": "text" });
   // res.write("successfully uploaded");
-  console.log("POST postlike");
+  console.log("POST post_like");
   const reqBody = JSON.parse(req.body);
-  console.log("postlike stageId→", reqBody.stageId);
+  console.log("post_like stageId→", reqBody.stageId);
 
   if (!reqBody.stageId) {
-    console.log("postlike ERROR1");
+    console.log("post_like ERROR1");
     res.write("ERROR1");
     res.end("");
     writeLog(reqBody.stageId, {
-      type: "postlike",
+      type: "postLike",
       state: "ERROR1",
       req: reqBody,
     });
@@ -446,15 +450,15 @@ app.post("/postlike", function (req, res) {
     JSON.stringify(stageInfo_json),
     (err) => {
       if (err) throw err;
-      console.log("postlike stageInfo_json 正常に書き込みが完了しました");
+      console.log("post_like stageInfo_json 正常に書き込みが完了しました");
     }
   );
   res.write("OK");
   res.end("");
-  writeLog(reqBody.stageId, { type: "postlike", state: "OK", req: reqBody });
+  writeLog(reqBody.stageId, { type: "postLike", state: "OK", req: reqBody });
 });
-app.options("/postlike", function (req, res) {
-  console.log("OPTIONS postlike");
+app.options("/post_like", function (req, res) {
+  console.log("OPTIONS post_like");
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Headers",
@@ -478,17 +482,17 @@ app.post("/delete_stage", function (req, res) {
 
   res.writeHead(200, { "Content-Type": "text" });
   // res.write("successfully uploaded");
-  console.log("POST deletestage");
+  console.log("POST delete_stage");
   const reqBody = JSON.parse(req.body);
-  console.log("deletestage stageId→", reqBody.stageId);
-  console.log("deletestage deleteKey→", reqBody.deleteKey);
+  console.log("delete_stage stageId→", reqBody.stageId);
+  console.log("delete_stage deleteKey→", reqBody.deleteKey);
 
   if (!reqBody.stageId || !reqBody.deleteKey) {
-    console.log("deletestage ERROR1");
+    console.log("delete_stage ERROR1");
     res.write("ERROR1");
     res.end("");
     writeLog(reqBody.stageId, {
-      type: "deletestage",
+      type: "deleteStage",
       state: "ERROR1",
       req: reqBody,
     });
@@ -496,7 +500,7 @@ app.post("/delete_stage", function (req, res) {
   }
 
   const deleteKeys = JSON.parse(
-    fs.readFileSync("./log/deletekeys.json", "utf8")
+    fs.readFileSync("./log/delete_keys.json", "utf8")
   );
   const hashedKey = crypto
     .createHash("sha256")
@@ -504,11 +508,11 @@ app.post("/delete_stage", function (req, res) {
     .digest()
     .toString("hex");
   if (deleteKeys[reqBody.stageId] != hashedKey) {
-    console.log("deletestage ERROR2");
+    console.log("deleteStage ERROR2");
     res.write("ERROR2");
     res.end("");
     writeLog(reqBody.stageId, {
-      type: "deletestage",
+      type: "deleteStage",
       state: "ERROR2",
       req: reqBody,
     });
@@ -522,7 +526,7 @@ app.post("/delete_stage", function (req, res) {
     JSON.stringify(output_json),
     (err) => {
       if (err) throw err;
-      console.log("deletestage output_json 正常に書き込みが完了しました");
+      console.log("delete_stage output_json 正常に書き込みが完了しました");
     }
   );
 
@@ -535,15 +539,15 @@ app.post("/delete_stage", function (req, res) {
     JSON.stringify(stageInfo_json),
     (err) => {
       if (err) throw err;
-      console.log("deletestage stageInfo_json 正常に書き込みが完了しました");
+      console.log("delete_stage stageInfo_json 正常に書き込みが完了しました");
     }
   );
   res.write("OK");
   res.end("");
-  writeLog(reqBody.stageId, { type: "deletestage", state: "OK", req: reqBody });
+  writeLog(reqBody.stageId, { type: "deleteStage", state: "OK", req: reqBody });
 });
 app.options("/delete_stage", function (req, res) {
-  console.log("OPTIONS deletestage");
+  console.log("OPTIONS delete_stage");
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Headers",
