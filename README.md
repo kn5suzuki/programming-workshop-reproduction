@@ -69,3 +69,9 @@ docker-compose run --rm app npm run build
 ```
 docker-compose up
 ```
+
+アクセス
+Nginx が 80 番ポートで静的ファイルを返しているのでホストに直接 HTTP を送る
+
+注意
+`webpack.config.json`の`SERVER_URL`は適宜書き換えること
