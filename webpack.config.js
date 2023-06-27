@@ -13,10 +13,10 @@ module.exports = {
     my_stage: "./src/js/my_stage.js",
   },
   output: {
-    path: path.join(__dirname, "dist"),
+    path: path.join(__dirname, "dist/app"),
     publicPath: "/",
     filename: "[name].js",
-    assetModuleFilename: "images/[hash][ext][query]",
+    assetModuleFilename: "image/[hash][ext][query]",
   },
   target: "web",
   devtool: "source-map",
@@ -86,6 +86,9 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      SERVER_URL: JSON.stringify("http://localhost/api"),
+    }),
     new HtmlWebPackPlugin({
       template: "./src/html/index.html",
       filename: "./index.html",

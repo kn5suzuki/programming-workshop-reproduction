@@ -2,7 +2,8 @@ import "../scss/common.scss";
 import "../scss/default_stage.scss";
 
 let request = new XMLHttpRequest();
-request.open("GET", "/default_stage_info");
+const serverUrl = SERVER_URL + "/default_stage_info";
+request.open("GET", serverUrl);
 request.responseType = "json";
 request.send();
 request.addEventListener("load", () => {

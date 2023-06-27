@@ -24,7 +24,7 @@ function addLocalStorage(stageId, deleteKey) {
 
 function send(stageName, userName, description) {
   const postStageState = document.getElementById("post-stage-state");
-  const serverUrl = "http://localhost:3000/post_stage";
+  const serverUrl = SERVER_URL + "/post_stage";
   const deleteKey = crypto.randomBytes(50).toString("hex");
   const deleteKeyHashed = crypto
     .createHash("sha256")

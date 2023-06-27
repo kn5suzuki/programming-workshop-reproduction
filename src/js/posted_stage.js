@@ -3,7 +3,7 @@ import "../scss/posted_stage.scss";
 
 const imgUrl = require("../img/game/tileset.png");
 let request = new XMLHttpRequest();
-request.open("GET", "/posted_stage_info");
+request.open("GET", SERVER_URL + "/posted_stage_info");
 request.responseType = "json";
 request.send();
 

@@ -74,8 +74,8 @@ function makeId() {
 app.listen(3000);
 
 //サーバーとして利用
-app.use(express.static(__dirname));
-app.use("/answer", express.static(path.join(defaultStagePath, "answer")));
+// app.use(express.static(__dirname));
+// app.use("/answer", express.static(path.join(defaultStagePath, "answer")));
 
 app.get("/default_stage_info", function (req, res) {
   const json = JSON.parse(
@@ -89,11 +89,6 @@ app.get("/default_stage", function (req, res) {
   const json = JSON.parse(fs.readFileSync(defaultStagePath + filename, "utf8"));
   res.send(json);
 });
-
-// app.get("/answer/:stage.html", function (req, res) {
-//   var stage = req.params.stage;
-//   res.sendFile(path.resolve(defaultStagePath, `./answer/${stage}.html`));
-// });
 
 app.get("/posted_stage_info", function (req, res) {
   const json = JSON.parse(

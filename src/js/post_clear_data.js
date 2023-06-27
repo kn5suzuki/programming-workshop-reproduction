@@ -16,7 +16,7 @@ function postData(
   stageName,
   submitter
 ) {
-  const serverUrl = "http://localhost:3000/post_clear_data";
+  const serverUrl = SERVER_URL + "/post_clear_data";
 
   //console.log(stageId, blocks, steps, name);
   let xhr = new XMLHttpRequest();
@@ -81,7 +81,7 @@ function CheckPostData(stageId, blocks, steps, blockNum, stageName, submitter) {
 }
 
 function postLike(stageId) {
-  const serverUrl = "http://localhost:3000/post_like";
+  const serverUrl = SERVER_URL + "/post_like";
   likeButton.classList.add("posting");
   likeButton.innerText = "いいねを送信中";
 

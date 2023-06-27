@@ -9,4 +9,17 @@ services:
       - "3000:3000"
     volumes:
       - .:/app
-    command: npm run start
+    command: node ./dist/server/server.js
+    # command: npm run start
+
+  web:
+    container_name: nginx
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./mime.types:/etc/nginx/mime.types
+      - ./dist/app:/usr/share/nginx/app
+    depends_on:
+      - app

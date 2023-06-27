@@ -40,13 +40,13 @@ var config = {
 
 async function load() {
   if (mode == "default") {
-    const res1 = await fetch("/default_stage_info");
+    const res1 = await fetch(SERVER_URL + "/default_stage_info");
     const stageInfo = await res1.json();
 
     const queryString = new URLSearchParams({
       filename: stageInfo.stages[stageNum].filename,
     }).toString();
-    const res2 = await fetch("/default_stage?" + queryString);
+    const res2 = await fetch(SERVER_URL + "/default_stage?" + queryString);
     const mapData = await res2.json();
     console.log(mapData.map);
 
@@ -59,7 +59,7 @@ async function load() {
       mapData: mapData,
     });
   } else {
-    const mapDataURL = `/posted_stage?filename=${stageNum}.json`;
+    const mapDataURL = SERVER_URL + `/posted_stage?filename=${stageNum}.json`;
     const res2 = await fetch(mapDataURL);
     const mapData = await res2.json();
 
